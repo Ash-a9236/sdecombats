@@ -14,7 +14,9 @@ ViewHelper::loadHeader($page_title);
 <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. </p>
 <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. </p>
 
+
 <?php
+
 ViewHelper::loadJsScripts();
 ViewHelper::loadFooter();
 ?>
