@@ -1,0 +1,23 @@
+:root {
+    --background : #2F2F2F;
+    --background-accent : #424769;
+    --other-accent : #FBAA56;
+    --text : #FFF4E2;
+    --text-hightlight : #FEC574;
+
+    --extra-colour : #FECA81;
+    --extra-secondary-colour : #FFCB74;
+    --extra-third-colour : #3F4259;
+}
+
+body.dark {
+    --background : #2F2F2F;
+    --background-accent : #424769;
+    --other-accent : #FBAA56;
+    --text : #FFF4E2;
+    --text-hightlight : #FEC574;
+
+    --extra-colour : #FECA81;
+    --extra-secondary-colour : #FFCB74;
+    --extra-third-colour : #3F4259;
+}

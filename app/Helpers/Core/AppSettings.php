@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Helpers\Core;
 
@@ -10,8 +10,7 @@ namespace App\Helpers\Core;
  * Provides access to application configuration settings stored in an array.
  * @author  frostybee
  */
-class AppSettings
-{
+class AppSettings {
     /**
      * The settings array containing configuration data.
      *
@@ -24,9 +23,8 @@ class AppSettings
      *
      * @param array $settings The configuration settings array.
      */
-    public function __construct(array $settings)
-    {
-        $this->settings = $settings;
+    public function __construct (array $settings) {
+        $this -> settings = $settings;
     }
 
     /**
@@ -35,8 +33,7 @@ class AppSettings
      * @param string $key The configuration key to retrieve. If empty, returns all settings.
      * @return mixed The configuration value for the given key, or all settings if key is empty.
      */
-    public function get(string $key = ''): mixed
-    {
-        return (empty($key)) ? $this->settings : $this->settings[$key];
+    public function get (string $key = '') : mixed {
+        return (empty($key)) ? $this -> settings : $this -> settings[$key];
     }
 }

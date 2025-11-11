@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Middleware;
 
@@ -17,109 +17,70 @@ use Psr\Log\LoggerInterface;
 use Slim\Exception\HttpException;
 use Throwable;
 
-final class ExceptionMiddleware implements MiddlewareInterface
-{
+final class ExceptionMiddleware implements MiddlewareInterface {
     private ResponseFactoryInterface $responseFactory;
     private JsonRenderer $renderer;
     private ?LoggerInterface $logger;
     private bool $displayErrorDetails;
 
-    public function __construct(
+    public function __construct (
         ResponseFactoryInterface $responseFactory,
-        JsonRenderer $jsonRenderer,
-        ?LoggerInterface $logger = null,
-        bool $displayErrorDetails = false,
+        JsonRenderer             $jsonRenderer,
+        ?LoggerInterface         $logger = null,
+        bool                     $displayErrorDetails = false,
     ) {
-        $this->responseFactory = $responseFactory;
-        $this->renderer = $jsonRenderer;
-        $this->displayErrorDetails = $displayErrorDetails;
-        $this->logger = $logger;
+        $this -> responseFactory = $responseFactory;
+        $this -> renderer = $jsonRenderer;
+        $this -> displayErrorDetails = $displayErrorDetails;
+        $this -> logger = $logger;
     }
 
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
-    {
+    public function process (ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface {
         try {
-            return $handler->handle($request);
+            return $handler -> handle ($request);
         } catch (Throwable $exception) {
-            return $this->render($exception, $request);
+            return $this -> render ($exception, $request);
         }
     }
 
-    private function render(
-        Throwable $exception,
+    private function render (
+        Throwable              $exception,
         ServerRequestInterface $request,
-    ): ResponseInterface {
-        $httpStatusCode = $this->getHttpStatusCode($exception);
-        $response = $this->responseFactory->createResponse($httpStatusCode);
+    ) : ResponseInterface {
+        $httpStatusCode = $this -> getHttpStatusCode ($exception);
+        $response = $this -> responseFactory -> createResponse ($httpStatusCode);
 
         // Log error
-        if (isset($this->logger)) {
-            $this->logger->error(
-                sprintf(
+        if (isset($this -> logger)) {
+            $this -> logger -> error (
+                sprintf (
                     '%s;Code %s;File: %s;Line: %s',
-                    $exception->getMessage(),
-                    $exception->getCode(),
-                    $exception->getFile(),
-                    $exception->getLine()
+                    $exception -> getMessage (),
+                    $exception -> getCode (),
+                    $exception -> getFile (),
+                    $exception -> getLine ()
                 ),
-                $exception->getTrace()
+                $exception -> getTrace ()
             );
         }
 
         // Content negotiation
-        if (str_contains($request->getHeaderLine('Accept'), 'application/json')) {
-            $response = $response->withAddedHeader('Content-Type', 'application/json');
+        if (str_contains ($request -> getHeaderLine ('Accept'), 'application/json')) {
+            $response = $response -> withAddedHeader ('Content-Type', 'application/json');
 
             // JSON
-            return $this->renderJson($exception, $response);
+            return $this -> renderJson ($exception, $response);
         }
 
         // HTML
-        return $this->renderHtml($response, $exception);
+        return $this -> renderHtml ($response, $exception);
     }
 
-    public function renderJson(Throwable $exception, ResponseInterface $response): ResponseInterface
-    {
-        $data = [
-            'error' => [
-                'message' => $exception->getMessage(),
-            ],
-        ];
-
-        return $this->renderer->json($response, $data);
-    }
-
-    public function renderHtml(ResponseInterface $response, Throwable $exception): ResponseInterface
-    {
-        $response = $response->withHeader('Content-Type', 'text/html');
-
-        $message = sprintf(
-            "\n<br><strong>Error:</strong> %s (%s)\n<br><strong>Message:</strong> %s\n<br>",
-            $this->html((string)$response->getStatusCode()),
-            $this->html($response->getReasonPhrase()),
-            $this->html($exception->getMessage()),
-        );
-
-        if ($this->displayErrorDetails) {
-            $message .= sprintf(
-                '<strong>File:</strong> %s, <strong>Line:</strong> %s,<hr><br> <strong>Stack Trace:</strong><br> %s',
-                $this->html($exception->getFile()),
-                $this->html((string)$exception->getLine()),
-                $this->html($exception->getTraceAsString())
-            );
-        }
-
-        $response->getBody()->write($message);
-
-        return $response;
-    }
-
-    private function getHttpStatusCode(Throwable $exception): int
-    {
+    private function getHttpStatusCode (Throwable $exception) : int {
         $statusCode = StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR;
 
         if ($exception instanceof HttpException) {
-            $statusCode = $exception->getCode();
+            $statusCode = $exception -> getCode ();
         }
 
         if ($exception instanceof DomainException || $exception instanceof InvalidArgumentException) {
@@ -129,8 +90,41 @@ final class ExceptionMiddleware implements MiddlewareInterface
         return $statusCode;
     }
 
-    private function html(string $text): string
-    {
-        return htmlspecialchars($text, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    public function renderJson (Throwable $exception, ResponseInterface $response) : ResponseInterface {
+        $data = [
+            'error' => [
+                'message' => $exception -> getMessage (),
+            ],
+        ];
+
+        return $this -> renderer -> json ($response, $data);
+    }
+
+    public function renderHtml (ResponseInterface $response, Throwable $exception) : ResponseInterface {
+        $response = $response -> withHeader ('Content-Type', 'text/html');
+
+        $message = sprintf (
+            "\n<br><strong>Error:</strong> %s (%s)\n<br><strong>Message:</strong> %s\n<br>",
+            $this -> html ((string) $response -> getStatusCode ()),
+            $this -> html ($response -> getReasonPhrase ()),
+            $this -> html ($exception -> getMessage ()),
+        );
+
+        if ($this -> displayErrorDetails) {
+            $message .= sprintf (
+                '<strong>File:</strong> %s, <strong>Line:</strong> %s,<hr><br> <strong>Stack Trace:</strong><br> %s',
+                $this -> html ($exception -> getFile ()),
+                $this -> html ((string) $exception -> getLine ()),
+                $this -> html ($exception -> getTraceAsString ())
+            );
+        }
+
+        $response -> getBody () -> write ($message);
+
+        return $response;
+    }
+
+    private function html (string $text) : string {
+        return htmlspecialchars ($text, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     }
 }

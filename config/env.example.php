@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 /**
  * Environment-specific application configuration.
  *
@@ -23,7 +23,7 @@ declare(strict_types=1);
  */
 
 
-return function (array $settings): array {
+return function (array $settings) : array {
     // Database credentials
     $settings['db']['username'] = 'root';
     $settings['db']['database'] = 'worldcup';

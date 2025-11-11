@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Helpers;
 
-class ViewHelper
-{
+class ViewHelper {
 
     /**
      * Load the common header for the page.
@@ -13,8 +12,7 @@ class ViewHelper
      * @param string $page_title The title of the page.
      * @return void
      */
-    public static function loadHeader(string $page_title): void
-    {
+    public static function loadHeader (string $page_title) : void {
         $page_title = $page_title ?? 'Default Title';
         require_once APP_VIEWS_PATH . '/common/header.php';
     }
@@ -24,8 +22,7 @@ class ViewHelper
      *
      * @return void
      */
-    public static function loadJsScripts(): void
-    {
+    public static function loadJsScripts () : void {
         require_once APP_VIEWS_PATH . '/common/js-scripts.php';
     }
 
@@ -34,8 +31,7 @@ class ViewHelper
      *
      * @return void
      */
-    public static function loadFooter(): void
-    {
+    public static function loadFooter () : void {
         require_once APP_VIEWS_PATH . '/common/footer.php';
     }
 
@@ -66,8 +62,7 @@ class ViewHelper
      * @since 1.0.0
      * @see hs() Global HTML escaping function for XSS protection
      */
-    public static function renderSelectOptions(array $items, string $previous_select, string $value_key, string $option_key): string
-    {
+    public static function renderSelectOptions (array $items, string $previous_select, string $value_key, string $option_key) : string {
         $options = '';
         $hasSelection = !empty($previous_select);
 
@@ -81,9 +76,9 @@ class ViewHelper
                 continue;
             }
 
-            $value = hs((string)$item[$value_key]);
-            $text = hs((string)$item[$option_key]);
-            $selected = ($previous_select === (string)$item[$value_key]) ? ' selected' : '';
+            $value = hs ((string) $item[$value_key]);
+            $text = hs ((string) $item[$option_key]);
+            $selected = ($previous_select === (string) $item[$value_key]) ? ' selected' : '';
 
             $options .= "<option value=\"{$value}\"{$selected}>{$text}</option>";
         }

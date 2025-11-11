@@ -1,4 +1,4 @@
-## Sept 17 - Meeting 1 
+## Sept 17 - Meeting 1
 
 Helene
 
@@ -11,10 +11,6 @@ EDITOR 1
 MANAGER 2
 ADMIN 3
 
-
-
-
-
 media queries : 4 (2 phones)
 
 L & D modes
@@ -24,11 +20,11 @@ colours = muted if white mode
 
 keep small & ;age group visible
 
-- src 
-    | - pages (html & JS)
-            ...
-    | - CSS
-    | - assets
+- src
+  | - pages (html & JS)
+  ...
+  | - CSS
+  | - assets
 - be
-    | - DB
-    | - DB handles
+  | - DB
+  | - DB handles

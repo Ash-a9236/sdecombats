@@ -1,17 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 // Application's default settings.
 
 // Error reporting.
 // Default settings: disable all error reporting for production.
-error_reporting(0);
-ini_set('display_errors', '0');
-ini_set('display_startup_errors', '0');
+error_reporting (0);
+ini_set ('display_errors', '0');
+ini_set ('display_startup_errors', '0');
 
 // Timezone.
-date_default_timezone_set('America/Toronto');
+date_default_timezone_set ('America/Toronto');
 
 $settings = [];
 
@@ -38,7 +38,7 @@ $settings['session'] = [
 // Logger settings.
 $settings['logger'] = [
     // Log file location
-    'path' => realpath(__DIR__ . '/../../var/logs'),
+    'path' => realpath (__DIR__ . '/../../var/logs'),
     // Default log level
     'level' => Psr\Log\LogLevel::DEBUG,
 ];

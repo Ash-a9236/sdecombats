@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 //TODO: set the app environment based on the domaine name.
 // The APP_ENV value must be set to either prod or dev
@@ -13,18 +13,18 @@ $settings = require __DIR__ . '/defaults.php';
 
 // Overwrite default settings with environment specific local settings
 $configFiles = [
-    __DIR__ . sprintf('/local.%s.php', $app_environment),
+    __DIR__ . sprintf ('/local.%s.php', $app_environment),
     __DIR__ . '/env.php',
     __DIR__ . '/../../env.php',
 ];
 
 foreach ($configFiles as $configFile) {
-    if (!file_exists($configFile)) {
+    if (!file_exists ($configFile)) {
         continue;
     }
 
     $local = require $configFile;
-    if (is_callable($local)) {
+    if (is_callable ($local)) {
         $settings = $local($settings);
     }
 }
