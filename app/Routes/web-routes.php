@@ -15,6 +15,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 return static function (Slim\App $app): void {
 
 
+    //* NOTE: Route naming pattern: [controller_name].[method_name]
     $app->get('/', [HomeController::class, 'index'])
         ->setName('home.index');
 
