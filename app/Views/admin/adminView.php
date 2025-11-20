@@ -4,7 +4,7 @@ use App\Helpers\ViewHelper;
 
 $basePath = '/sdecombats';
 $page_title = $data['title'];
-ViewHelper::loadHeader($page_title);
+ViewHelper::loadAdminHeader($page_title);
 ?>
 
 <div class="container-fluid">
