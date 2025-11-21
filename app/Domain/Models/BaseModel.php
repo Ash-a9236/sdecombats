@@ -97,6 +97,17 @@ class BaseModel
     }
 
     /**
+     * Gets the last inserted staff (the new staff member)
+     *
+     * @return array|false Single record as array, or false if not found
+     */
+    protected function lastInsertStaff () : array | false {
+        $sql = "SELECT * FROM staff WHERE id = LAST_INSERT_ID()";
+        $stmt = $this -> pdo -> prepare ($sql);
+        return $stmt -> fetch ();
+    }
+
+    /**
      * Begin a database transaction.
      *
      * @return bool True on success, false on failure
