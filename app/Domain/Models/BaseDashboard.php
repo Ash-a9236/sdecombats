@@ -15,12 +15,32 @@ class DashboardM extends BaseModel {
     }
 
     public function addStaff ($user_id, $new_staff_name, $new_staff_level) : mixed {
-        $sql = "INSERT INTO STAFF (name, level) VALUES (?, ?)"
+
+        switch ($new_staff_level) {
+            case 1 || "EMPLOYEE" :
+                $sql = "SELECT MAX(staff_id) FROM staff WHERE staff_id < 2000";
+                break;
+            case 2 || "MANAGER" :
+                $sql = "SELECT MAX(staff_id) FROM staff WHERE staff_id < 3000";
+                break;
+            case 3 || "ADMIN" :
+                $sql = "SELECT MAX(staff_id) FROM staff WHERE staff_id < 4000";
+                break;
+            default :
+                $sql = "SELECT MAX(staff_id) FROM staff WHERE staff_id < 2000";
+                break;
+        }
+
+        $last_staff_id = $this -> selectOne ($sql, []);
+
+        $sql = "INSERT INTO staff (name, level) VALUES (?, ?)"
         $this -> execute ($sql, [$new_staff_name, $new_staff_level]);
 
         $new_staff = $this -> lastInsertStaff ();
 
         if ($new_staff == false || $new_staff == empty || $new_staff == null) {
+            return "ERROR READING LAST INSERTED ID : CHECK MANUALLY IF THE NEW STAFF MEMBER WAS ADDED";
+        } else if ($new_staff[2] != $new_staff_name) {
             return "ERROR DURING THE INSERTION : TRY AGAIN";
         } else {
             $operation = "[$user_id] ADDED NEW STAFF [$new_staff[1] : $new_staff[2]]";
@@ -86,24 +106,36 @@ class DashboardM extends BaseModel {
         }
     }
 
-    public function updateStaffLevel ($user_id, $staff_id) : string {
+    public function removeStaff ($user_id, $staff_id) : string {
         if (($user_id % 4 == 0) || $user_id >= staff_id) {
-            $sql = "DELETE FROM staff WHERE id = ?"
+            $sql = "UPDATE logger SET staff_id = 418 WHERE staff_id = ?" //1. updates logger to set the staff_id to 418 : thus keeping all the operations the staff made but deleting them from the system
             $this -> execute ($sql, [$staff_id]);
+            
+            $sql = "SELECT * FROM logger WHERE id = ?" //2. checks the logger if the old staff_id still remains, if yes => not all the deletion was successful therefore try again
+            $row_count = $this -> execute ($sql, [$staff_id]); //3. if the row_count is 0 or null, then the operation was successful
+            
+            if ($row_count == false || $row_count == empty || $row_count == null || $row_count == 0 ) {
+                $sql = "DELETE FROM staff WHERE id = ?" //4. deletes the staff from the staff table
+                $this -> execute ($sql, [$staff_id]);
 
-            $sql_verification = "SELECT * FROM staff WHERE id = ?"
-            $updated_staff = $this -> selectOne ($sql_verification, [$staff_id]);
+                $sql_verification = "SELECT * FROM staff WHERE id = ?" //5. verification that all is deleted from the staff table
+                $updated_staff = $this -> selectOne ($sql_verification, [$staff_id]);
 
-            if ($updated_staff == false || $updated_staff == empty || $updated_staff == null) {
-                $operation = "[$user_id] DELETED STAFF [$staff_id], ASSOCITATED RECORDS NOW CONTAIN ID 418";
-                log($user_id, $operation);
-                array_push($updated_staff, $operation);
-                return $updated_staff;
+                if ($updated_staff == false || $updated_staff == empty || $updated_staff == null) {
+                    $operation = "[$user_id] DELETED STAFF [$staff_id], ASSOCIATED RECORDS NOW CONTAIN ID 418"; //6. 0 exit => staff ok deleted
+                    log($user_id, $operation);
+                    array_push($updated_staff, $operation);
+                    return $updated_staff;
+                } else {
+                    return "ERROR DURING THE DELETION : $staff_id WAS NOT COMPLETELY DELETED";
+
+                }
             } else {
-                return "ERROR DURING THE UPDATE : IMPOSSIBLE TO CHECK RECORD WITH ID $staff_id";
+                return "ERROR DURING THE DELETION : TRY AGAIN"; // the row_count was not null or 0, therefore the staff still exists within the logger table
             }
+
         } else {
-            return "ERROR BEFORE UPDATE : YOU DO NOT POSSESS THE APPROPRIATE LEVEL TO "
+            return "ERROR BEFORE DELETION : YOU DO NOT POSSESS THE APPROPRIATE LEVEL TO DELETE $staff_id"
         }
     }
 
