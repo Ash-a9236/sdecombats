@@ -1,40 +1,41 @@
 :root {
-    --background : #2F2F2F;
-    --background-accent : #424769;
-    --other-accent : #FBAA56;
-    --text : #FFF4E2;
-    --text-hightlight : #FEC574;
+    --background: #2F2F2F;
+    --background-accent: #424769;
+    --other-accent: #FBAA56;
+    --text: #FFF4E2;
+    --text-hightlight: #FEC574;
 
-    --extra-colour : #FECA81;
-    --extra-secondary-colour : #FFCB74;
-    --extra-third-colour : #3F4259;
+    --extra-colour: #FECA81;
+    --extra-secondary-colour: #FFCB74;
+    --extra-third-colour: #3F4259;
 
-    --font : "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    --font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
     font-family: myFont;
 
     /*some variable examples*/
     --grid-template-columns: 1fr 1fr 2fr;
     --grid-template-rows: auto;
-    --border-linear-gradient : linear-gradient(to-bottom-right, var(--other-accent), var(--text-hightlight)) 30;
-    --box-blur-fliter : blur(10px) saturate(1.1) brightness(1.1);
+    --border-linear-gradient: linear-gradient(to-bottom-right, var(--other-accent), var(--text-hightlight)) 30;
+    --box-blur-fliter: blur(10px) saturate(1.1) brightness(1.1);
     /*this one is used with --webkit-mask-image :*/
-    --some-other-linear-gradient : linear-gradient(to bottom, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 1) 65%);
+    --some-other-linear-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 1) 65%);
 }
 
 body.dark {
-    --background : #2F2F2F;
-    --background-accent : #424769;
-    --other-accent : #FBAA56;
-    --text : #FFF4E2;
-    --text-hightlight : #FEC574;
+    --background: #2F2F2F;
+    --background-accent: #424769;
+    --other-accent: #FBAA56;
+    --text: #FFF4E2;
+    --text-hightlight: #FEC574;
 
-    --extra-colour : #FECA81;
-    --extra-secondary-colour : #FFCB74;
-    --extra-third-colour : #3F4259;
+    --extra-colour: #FECA81;
+    --extra-secondary-colour: #FFCB74;
+    --extra-third-colour: #3F4259;
 }
 
-@font-face { /*you can put all the font files in the font folder and call them -> i.e. find a font for the h1 titles that look like the font of the logo :)*/
+@font-face {
+    /*you can put all the font files in the font folder and call them -> i.e. find a font for the h1 titles that look like the font of the logo :)*/
     font-family: Monoton;
     src: url('../fonts/..') format('woff');
     font-weight: normal;

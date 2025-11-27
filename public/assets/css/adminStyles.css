@@ -7,7 +7,7 @@
     --old-lace: #fff4e2;
     --sunflower-gold: #ffcb74;
     --apricot-cream: #feca81;
-    --border-linear-gradient : linear-gradient(to-bottom-right, var(--other-accent), var(--text-hightlight)) 30;
+    --border-linear-gradient: linear-gradient(to-bottom-right, var(--other-accent), var(--text-hightlight)) 30;
 }
 
 body {

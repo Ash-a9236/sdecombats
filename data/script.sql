@@ -7,7 +7,7 @@ USE sdc_db;
 
 CREATE TABLE IF NOT EXISTS gift_card (
     card_id INT NOT NULL AUTO_INCREMENT,
-    `FOR`   VARCHAR(100),
+    `for`   VARCHAR(100),
     price   DECIMAL(5, 2)
     /*max amount on a card = $999.99*/
 );
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS image (
     image_data MEDIUMBLOB
 );
 
-CREATE TABLE IF NOT EXISTS `TRANSACTION` (
+CREATE TABLE IF NOT EXISTS transactions (
     transaction_id INT NOT NULL AUTO_INCREMENT,
     paid           BOOLEAN DEFAULT FALSE,
     amount         DECIMAL(5, 2),
@@ -48,17 +48,16 @@ CREATE TABLE IF NOT EXISTS `TRANSACTION` (
 );
 
 CREATE TABLE IF NOT EXISTS activity (
-    activity_id VARCHAR(6) NOT NULL,
-    name        VARCHAR(30)
-        UNIQUE,
-    duration    INT        NOT NULL
+    activity_id VARCHAR(6)  NOT NULL,
+    room_id     VARCHAR(15) NOT NULL,
+    name        VARCHAR(30) UNIQUE,
+    duration    INT         NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS package (
     package_id VARCHAR(7) NOT NULL,
     category   ENUM ( 'NOT A PACKAGE', 'INDIVIDUAL', 'SMALL GROUP', 'BIG GROUP', 'DATE NIGHT', 'KIDS BIRTHDAY', 'TEEN BIRTHDAY', 'CORPORATE EVENT', 'OUTSIDE EVENT', 'OTHER' ),
-    name       VARCHAR(40)
-        UNIQUE
+    name       VARCHAR(40) UNIQUE
 );
 
 -- CONNECTING TABLES ------------------------------------------------------------------------------
@@ -77,7 +76,7 @@ CREATE TABLE IF NOT EXISTS membership (
     end           DATE    DEFAULT (CURRENT_DATE + INTERVAL 1 MONTH)
 );
 
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS users (
     user_id       INT         NOT NULL AUTO_INCREMENT,
     language_id   VARCHAR(15) NOT NULL,
     membership_id INT,
@@ -97,8 +96,7 @@ CREATE TABLE IF NOT EXISTS information (
     reference_id      VARCHAR(7)  NOT NULL,
     language_id       VARCHAR(15) NOT NULL,
     reference_type    ENUM ( 'ACTIVITY', 'PACKAGE' ),
-    alt_name          VARCHAR(50)
-        UNIQUE,
+    alt_name          VARCHAR(50) UNIQUE,
     small_description VARCHAR(500),
     full_description  VARCHAR(2000)
 );

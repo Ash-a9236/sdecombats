@@ -24,7 +24,7 @@ ALTER TABLE image
     ADD CONSTRAINT pk_image_image_id
         PRIMARY KEY (image_id);
 
-ALTER TABLE `TRANSACTION`
+ALTER TABLE transactions
     ADD CONSTRAINT pk_transaction_transaction_id
         PRIMARY KEY (transaction_id);
 
@@ -55,7 +55,7 @@ ALTER TABLE membership
             ON UPDATE CASCADE
             ON DELETE RESTRICT;
 
-ALTER TABLE user
+ALTER TABLE users
     ADD CONSTRAINT pk_user_user_id
         PRIMARY KEY (user_id),
     ADD CONSTRAINT fk_language_id_on_user
@@ -80,6 +80,9 @@ ALTER TABLE contains
             REFERENCES package (package_id);
 
 ALTER TABLE information
+    ADD CONSTRAINT fk_activity_id_on_information_reference_id
+        FOREIGN KEY (reference_id)
+            REFERENCES activity (activity_id),
     ADD CONSTRAINT pk_information_reference_id_language_id
         PRIMARY KEY (reference_id, language_id),
     ADD CONSTRAINT fk_language_id_on_information
