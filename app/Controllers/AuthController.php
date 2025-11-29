@@ -30,12 +30,13 @@ class AuthController extends BaseController
     public function store(Request $request, Response $response, array $args): Response
     {
         $userRegistrationInfo = $request->getParsedBody();
-        $fname = $userRegistrationInfo['fname'];
-        $lname = $userRegistrationInfo['lname'];
-        $email = $userRegistrationInfo['email'];
-        $phone = $userRegistrationInfo['phone'];
-        $password = $userRegistrationInfo['password'];
-        $confirm_password = $userRegistrationInfo['confirm_password'];
+        $language_id = $userRegistrationInfo['language_id'];
+        $fname = trim($userRegistrationInfo['fname']);
+        $lname = trim($userRegistrationInfo['lname']);
+        $email = trim($userRegistrationInfo['email']);
+        $phone = trim($userRegistrationInfo['phone']);
+        $password = trim($userRegistrationInfo['password']);
+        $confirm_password = trim($userRegistrationInfo['confirm_password']);
 
         $errors = [];
 
@@ -46,10 +47,21 @@ class AuthController extends BaseController
             }
         }
 
+        $fname = ucfirst($fname);
+        $lname = ucfirst($lname);
+
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "Please input a valid email example@gmail.com";
         } else if ($this->userModel->emailExists($email)) {
             $errors[] = "Email already assigned to a registered user";
+        }
+
+        if (!ctype_digit($phone)) {
+            $errors[] = "Phone number must only contain numbers";
+        }
+
+        if (str_contains($password, ";")) {
+            $errors[] = "Please enter a valid password";
         }
 
         if (strlen($password) < 8) {
@@ -68,17 +80,29 @@ class AuthController extends BaseController
         }
 
         try {
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
             $userData = [
+                'language_id' => $language_id,
                 'fname' => $fname,
                 'lname' => $lname,
                 'email' => $email,
                 'phone' => $phone,
-                'password' => $password
+                'password' => $hashedPassword
             ];
-            $this->userModel->createUser($userData);
+            $modelResponse = $this->userModel->createUser($userData);
 
-            FlashMessage::success('Registration successful. Please log in.');
-            return $this->redirect($request, $response, 'auth.login');
+            if ($modelResponse == 201) {
+                //TODO implement confirmation email
+                FlashMessage::success('Registration successful. Please log in.');
+                return $this->redirect($request, $response, 'auth.login');
+            } elseif ($modelResponse == 500) {
+                FlashMessage::error("Registration Failed. Please try again.");
+                return $this->redirect($request, $response, 'auth.login');
+            } else {
+                FlashMessage::error("Try to login. If it doesn't work, try registration again.");
+                return $this->redirect($request, $response, "auth.register");
+            }
         } catch (\Throwable $th) {
             FlashMessage::success('Registration failed. Please try again');
             return $this->redirect($request, $response, 'auth.register');
@@ -124,7 +148,6 @@ class AuthController extends BaseController
             SessionManager::set('is_authenticated', true);
 
             FlashMessage::success("Welcome back, {$user['fname']} {$user['lname']}!");
-
             return $this->redirect($request, $response, 'user.dashboard');
         } else {
             FlashMessage::error("User not found or password does not match, please try again");
