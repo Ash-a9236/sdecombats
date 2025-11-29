@@ -108,7 +108,7 @@ class BaseModel
     }
 
     public function lastInsertUser(): array | false {
-        $sql = "SELECT * FROM user WHERE user_id = LAST_INSERT_ID()";
+        $sql = "SELECT * FROM users WHERE user_id = LAST_INSERT_ID()";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->fetch();
     }
