@@ -16,17 +16,22 @@ class AuthController extends BaseController
         return parent::__construct($container);
     }
 
+    /**
+     * Display the user registration form
+     */
     public function register(Request $request, Response $response, array $args): Response
     {
-        //! View Name not final
         return $this->render($response, 'auth/register.php');
     }
 
+    /**
+     * Process the registration form to add a new user
+     */
     public function store(Request $request, Response $response, array $args): Response
     {
         $userRegistrationInfo = $request->getParsedBody();
-        $f_name = $userRegistrationInfo['f_name'];
-        $l_name = $userRegistrationInfo['l_name'];
+        $fname = $userRegistrationInfo['fname'];
+        $lname = $userRegistrationInfo['lname'];
         $email = $userRegistrationInfo['email'];
         $phone = $userRegistrationInfo['phone'];
         $password = $userRegistrationInfo['password'];
@@ -55,8 +60,92 @@ class AuthController extends BaseController
             $errors[] = "Passwords do not match";
         }
 
-        if (condition) {
-            # code...
+        if (!empty($errors)) {
+            foreach ($errors as $key => $error) {
+                FlashMessage::error($error);
+                return $this->redirect($request, $response, 'auth.register');
+            }
         }
+
+        try {
+            $userData = [
+                'fname' => $fname,
+                'lname' => $lname,
+                'email' => $email,
+                'phone' => $phone,
+                'password' => $password
+            ];
+            $this->userModel->createUser($userData);
+
+            FlashMessage::success('Registration successful. Please log in.');
+            return $this->redirect($request, $response, 'auth.login');
+        } catch (\Throwable $th) {
+            FlashMessage::success('Registration failed. Please try again');
+            return $this->redirect($request, $response, 'auth.register');
+        }
+    }
+
+    /**
+     * Display the user login form
+     */
+    public function login(Request $request, Response $response, array $args): Response
+    {
+        return $this->render($response, 'auth/login.php');
+    }
+
+    public function authenticate(Request $request, Response $response, array $args): Response
+    {
+        $inputData = $request->getParsedBody();
+
+        $email = $inputData['email'];
+        $password = $inputData['password'];
+
+        $errors = [];
+        $user = [];
+
+        if (empty($email) || empty($password)) {
+            $errors[] = "All fields must be filled";
+        }
+
+        if (!empty($error)) {
+            foreach ($errors as $key => $error) {
+                FlashMessage::error($error);
+                return $this->redirect($request, $response, 'auth.login');
+            }
+        }
+
+        $user = $this->userModel->verifyCredentials($email, $password);
+        if ($user != null) {
+            SessionManager::set('user_id', $user['user_id']);
+            SessionManager::set('fname', $user['fname']);
+            SessionManager::set('lname', $user['lname']);
+            SessionManager::set('email', $user['email']);
+            SessionManager::set('phone', $user['phone']);
+            SessionManager::set('is_authenticated', true);
+
+            FlashMessage::success("Welcome back, {$user['fname']} {$user['lname']}!");
+
+            return $this->redirect($request, $response, 'user.dashboard');
+        } else {
+            FlashMessage::error("User not found or password does not match, please try again");
+            return $this->redirect($request, $response, 'auth.login');
+        }
+    }
+
+    public function logout(Request $request, Response $response, array $args): Response
+    {
+        SessionManager::destroy();
+        SessionManager::start();
+        FlashMessage::success("You have been successfully logged out");
+        return $this->redirect($request, $response, 'auth.login');
+    }
+
+
+    /**
+     * Display the user dashboard
+     */
+    public function dashboard(Request $request, Response $response, array $args): Response
+    {
+        return $this->render($response, 'user/dashboard.php');
     }
 }
