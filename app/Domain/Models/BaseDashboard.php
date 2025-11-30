@@ -10,12 +10,12 @@ class DashboardM extends BaseModel {
     }
 
     public function log ($user_id, $operation) {
-        $sql = "INSERT INTO logger (staff_id, operation) VALUES (?, ?)"
+        $sql = "INSERT INTO logger (staff_id, operation) VALUES (?, ?)";
         $this -> execute ($sql, [$user_id, $operation]);
     }
 
     public function addStaff ($user_id, $new_staff_name, $new_staff_level) : mixed {
-        $sql = "INSERT INTO STAFF (name, level) VALUES (?, ?)"
+        $sql = "INSERT INTO STAFF (name, level) VALUES (?, ?)";
         $this -> execute ($sql, [$new_staff_name, $new_staff_level]);
 
         $new_staff = $this -> lastInsertStaff ();
@@ -31,10 +31,10 @@ class DashboardM extends BaseModel {
     }
 
     public function updateStaffName ($user_id, $staff_id, $staff_name) : mixed {
-        $sql = "UPDATE STAFF SET name = ? WHERE id = ?"
+        $sql = "UPDATE STAFF SET name = ? WHERE id = ?";
         $this -> execute ($sql, [$staff_name, $staff_id]);
 
-        $sql_verification = "SELECT * FROM staff WHERE id = ?"
+        $sql_verification = "SELECT * FROM staff WHERE id = ?";
         $updated_staff = $this -> selectOne ($sql_verification, [$staff_id]);
 
         if ($updated_staff == false || $updated_staff == empty || $updated_staff == null) {
@@ -48,10 +48,10 @@ class DashboardM extends BaseModel {
     }
 
     public function updateStaffPassword ($user_id, $staff_id, $staff_password) : mixed {
-        $sql = "UPDATE STAFF SET password = ? WHERE id = ?"
+        $sql = "UPDATE STAFF SET password = ? WHERE id = ?";
         $this -> execute ($sql, [$staff_password, $staff_id]);
 
-        $sql_verification = "SELECT * FROM staff WHERE id = ?"
+        $sql_verification = "SELECT * FROM staff WHERE id = ?";
         $updated_staff = $this -> selectOne ($sql_verification, [$staff_id]);
 
         if ($updated_staff == false || $updated_staff == empty || $updated_staff == null) {
@@ -67,10 +67,10 @@ class DashboardM extends BaseModel {
     //TODO : find a way to change the id to reflect the change of level within the staff (might have some conflicts to just update the first number : might need to create a new user altogether and delete the old one)
     public function updateStaffLevel ($user_id, $staff_id, $staff_level) : mixed {
         if ((($user_id % 4 == 0) || $user_id >= staff_id) && (substr(strval($user_id), 0, 1) >= substr(strval($staff_level), 0, 1) || substr(strval($user_id), 0, 1) == 4)) { // if the user making change is an admin or of a higher (or same) level of the staff to be modified and that the new staff id is not at a higher level than the staff modifying (except when its an admin) then you can proceed :...
-            $sql = "UPDATE STAFF SET level = ? WHERE id = ?"
+            $sql = "UPDATE STAFF SET level = ? WHERE id = ?";
             $this -> execute ($sql, [$staff_level, $staff_id]);
 
-            $sql_verification = "SELECT * FROM staff WHERE id = ?"
+            $sql_verification = "SELECT * FROM staff WHERE id = ?";
             $updated_staff = $this -> selectOne ($sql_verification, [$staff_id]);
 
             if ($updated_staff == false || $updated_staff == empty || $updated_staff == null) {
@@ -82,16 +82,16 @@ class DashboardM extends BaseModel {
                 return $updated_staff;
             }
         } else {
-            return "ERROR BEFORE UPDATE : YOU DO NOT POSSESS THE APPROPRIATE LEVEL TO "
+            return "ERROR BEFORE UPDATE : YOU DO NOT POSSESS THE APPROPRIATE LEVEL TO ";
         }
     }
 
     public function updateStaffLevel ($user_id, $staff_id) : string {
         if (($user_id % 4 == 0) || $user_id >= staff_id) {
-            $sql = "DELETE FROM staff WHERE id = ?"
+            $sql = "DELETE FROM staff WHERE id = ?";
             $this -> execute ($sql, [$staff_id]);
 
-            $sql_verification = "SELECT * FROM staff WHERE id = ?"
+            $sql_verification = "SELECT * FROM staff WHERE id = ?";
             $updated_staff = $this -> selectOne ($sql_verification, [$staff_id]);
 
             if ($updated_staff == false || $updated_staff == empty || $updated_staff == null) {
@@ -103,7 +103,7 @@ class DashboardM extends BaseModel {
                 return "ERROR DURING THE UPDATE : IMPOSSIBLE TO CHECK RECORD WITH ID $staff_id";
             }
         } else {
-            return "ERROR BEFORE UPDATE : YOU DO NOT POSSESS THE APPROPRIATE LEVEL TO "
+            return "ERROR BEFORE UPDATE : YOU DO NOT POSSESS THE APPROPRIATE LEVEL TO ";
         }
     }
 
