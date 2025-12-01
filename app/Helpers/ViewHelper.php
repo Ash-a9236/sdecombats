@@ -16,13 +16,13 @@ class ViewHelper
     public static function loadHeader(string $page_title): void
     {
         $page_title = $page_title ?? 'Default Title';
-        require_once APP_VIEWS_PATH . '/common/header.php';
+        require_once APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'common' . DIRECTORY_SEPARATOR . 'header.php';
     }
 
-        public static function loadAdminHeader(string $page_title): void
+    public static function loadAdminHeader(string $page_title): void
     {
         $page_title = $page_title ?? 'Default Title';
-        require_once APP_VIEWS_PATH . '/common/adminHeader.php';
+        require_once APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'common' . DIRECTORY_SEPARATOR . 'adminHeader.php';
     }
 
     /**
@@ -32,7 +32,7 @@ class ViewHelper
      */
     public static function loadJsScripts(): void
     {
-        require_once APP_VIEWS_PATH . '/common/js-scripts.php';
+        require_once APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'common' . DIRECTORY_SEPARATOR . 'js-scripts.php';
     }
 
     /**
@@ -42,7 +42,7 @@ class ViewHelper
      */
     public static function loadFooter(): void
     {
-        require_once APP_VIEWS_PATH . '/common/footer.php';
+        require_once APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'common' . DIRECTORY_SEPARATOR . 'footer.php';
     }
 
     /**
@@ -67,7 +67,7 @@ class ViewHelper
      * echo '<select name="country">' . $options . '</select>';
      *
      * @example With no pre-selected value
-     * $options = ViewHelper::renderSelectOptions($users, '', 'user_id', 'full_name');
+     * $options = ViewHelper::renderSelectOptions($users, '', 'user_id', '  full_name');
      *
      * @since 1.0.0
      * @see hs() Global HTML escaping function for XSS protection

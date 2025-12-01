@@ -1,0 +1,168 @@
+/* Button Components */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        sans-serif;
+}
+
+.btn-small {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+}
+
+.btn-medium {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+}
+
+.btn-large {
+    padding: 1.25rem 3rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #fbaa56 0%, #ffc300 100%);
+    color: #fff4e2;
+    box-shadow: 0 4px 15px rgba(251, 170, 86, 0.4);
+    display: block;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #ffc300 0%, #fbaa56 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(251, 170, 86, 0.6);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #fbaa56 0%, #ffc300 100%);
+    color: #fff4e2;
+    box-shadow: 0 4px 15px rgba(251, 170, 86, 0.4);
+    display: block;
+    width: 60%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #ffc300 0%, #fbaa56 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(251, 170, 86, 0.6);
+}
+
+/* Icon Button Component */
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+    opacity: 0.8;
+}
+
+.icon-img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Navigation Item Component */
+.nav-item {
+    margin: 0;
+}
+
+.nav-link {
+    display: block;
+    padding: 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    background: #3a3a3a;
+    color: #e8b865;
+}
+
+/* Divider Component */
+.divider {
+    height: 2px;
+    margin: 2rem 0;
+}
+
+.divider-gradient {
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        #e8b865 50%,
+        transparent 100%
+    );
+}
+
+.divider-solid {
+    background: #3a3a3a;
+}
+
+/* Carousel Indicators Component */
+.carousel-indicators {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 50;
+}
+
+.carousel-indicator {
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(180deg, #fbaa56 0%, #ffc300 100%);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    opacity: 0.5;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 50;
+}
+
+.carousel-indicator:hover {
+    opacity: 0.8;
+    transform: scale(1.15);
+}
+
+.carousel-indicator.active {
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(255, 195, 0, 0.5);
+}
