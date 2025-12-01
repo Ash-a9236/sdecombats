@@ -40,7 +40,7 @@ class ReservationM extends BaseModel {
         }
 
         //also assumes the date within the reservations are all formated as : Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
-        $sql = "SELECT * FROM reservations WHERE activity_id = ? AND WHERE (START BETWEEN ? AND ?)";
+        $sql = "SELECT activity_id, start, COUNT(num_of_users) FROM reservations WHERE activity_id = ? AND WHERE (start BETWEEN ? AND ?) GROUP BY start"; //TODO check if the `start` column doesnt mess with a keyword
         return $this -> selectAll($sql, [$activity_id, $start, $end]);
     }
 
