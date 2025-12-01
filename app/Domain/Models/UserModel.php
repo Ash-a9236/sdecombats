@@ -15,18 +15,18 @@ class UserModel extends BaseModel
     {
         $lastInsertedId = $this->lastInsertUser();
         if ($lastInsertedId == 203) {
-            $sql = "INSERT INTO users (user_id, language_id, fname, lname, email, phone, password) VALUES (205, :language_id, :f_name, :l_name, :email, :phone, :password)";
+            $sql = "INSERT INTO users (user_id, language_id, fname, lname, email, phone, password) VALUES (205, ?, ?, ?, ?, ?, ?)";
         } else {
-            $sql = "INSERT INTO users (language_id, fname, lname, email, phone, password) VALUES (:language_id, :f_name, :l_name, :email, :phone, :password)";
+            $sql = "INSERT INTO users (language_id, fname, lname, email, phone, password) VALUES (?, ?, ?, ?, ?, ?)";
         }
 
         $this->execute($sql, [
-            'language_id' => $data['language_id'],
-            'fname' => $data['fname'],
-            'lname' => $data['lname'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'password' =>  $data['password']
+            $data['language_id'],
+            $data['fname'],
+            $data['lname'],
+            $data['email'],
+            $data['phone'],
+            $data['password']
         ]);
 
         $sql = "SELECT email, password FROM users WHERE user_id = LAST_INSERT_ID()";
@@ -41,27 +41,22 @@ class UserModel extends BaseModel
 
     public function emailExists(string $email): bool
     {
-        $sql = "SELECT COUNT(*) FROM users WHERE email = :email)";
-        $count = $this->execute($sql, [
-            'email' => $email
-        ]);
+        $sql = "SELECT COUNT(*) FROM users WHERE email = ?)";
+        $count = $this->execute($sql, [$email]);
         return $count > 0;
     }
 
     public function findByEmail(string $email): mixed
     {
-        $sql = "SELECT * FROM users WHERE email = :email";
-        $user = $this->selectOne($sql, [
-            'email' => $email
-        ]);
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $user = $this->selectOne($sql, [$email]);
         return $user;
     }
 
-    public function findById(int $user_id) {
-        $sql = "SELECT * FROM users WHERE user_id = :user_id";
-        $user = $this->selectOne($sql, [
-            'user_id' => $user_id
-        ]);
+    public function findById(int $user_id)
+    {
+        $sql = "SELECT * FROM users WHERE user_id = ?";
+        $user = $this->selectOne($sql, [$user_id]);
         return $user;
     }
 
@@ -116,17 +111,17 @@ class UserModel extends BaseModel
         ]);
     }
 
-    public function verifyCredentials(string $email, string $password): ?array
+    public function verifyCredentials(string $email, string $password): mixed
     {
         $user = $this->findByEmail($email);
         if (!$user) {
-            return null;
+            return 500;
         }
 
         if (password_verify($password, $user['password_hash'])) {
             return $user;
         } else {
-            return null;
+            return 500;
         }
     }
 }
