@@ -57,8 +57,23 @@ class UserModel extends BaseModel
         return $user;
     }
 
-    public function changeUserInformation(int $user_id, string $new_password = '', string $new_email = '', string $new_phone = '', string $new_fname = '', string $new_lname = '')
+    public function findById(int $user_id) {
+        $sql = "SELECT * FROM users WHERE user_id = :user_id";
+        $user = $this->selectOne($sql, [
+            'user_id' => $user_id
+        ]);
+        return $user;
+    }
+
+    public function changeUserInformation(array $data)
     {
+        $user_id = $data['user_id'];
+        $new_password = $data['new_password'] ?? '';
+        $new_email = $data['new_email'] ?? '';
+        $new_phone = $data['new_phone'] ?? '';
+        $new_fname = $data['new_fname'] ?? '';
+        $new_lname = $data['new_lname'] ?? '';
+
         $sql = "UPDATE users SET user_id = user_id";
         $params = [];
 
