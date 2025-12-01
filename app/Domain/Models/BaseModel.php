@@ -107,6 +107,12 @@ class BaseModel
         return $stmt -> fetch ();
     }
 
+    public function lastInsertUser(): array | false {
+        $sql = "SELECT * FROM users WHERE user_id = LAST_INSERT_ID()";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->fetch();
+    }
+
     /**
      * Begin a database transaction.
      *

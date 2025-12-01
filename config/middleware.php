@@ -3,10 +3,12 @@
 declare(strict_types=1);
 
 use App\Middleware\ExceptionMiddleware;
+use App\Middleware\SessionMiddleware;
 use Slim\App;
 
 return function (App $app) {
     //TODO: Add your middleware here.
+    $app->add(SessionMiddleware::class);
 
     $app->addBodyParsingMiddleware();
     $app->addRoutingMiddleware();
