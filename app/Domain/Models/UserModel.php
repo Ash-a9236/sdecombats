@@ -11,6 +11,11 @@ class UserModel extends BaseModel
         parent::__construct($db_service);
     }
 
+    /**
+     * Adds a new user to the database in the users table
+     * @param array $data the array containing the data for the new user
+     * @return int Returns 201 if successful and 500 if the user wasn't added
+     */
     public function createUser(array $data)
     {
         $lastInsertedId = $this->lastInsertUser();
@@ -39,6 +44,11 @@ class UserModel extends BaseModel
         }
     }
 
+    /**
+     * Checks if a user with this email already exists in the database
+     * @param string $email The input email to check
+     * @return bool True if a user with the email already exists and false if not
+     */
     public function emailExists(string $email): bool
     {
         $sql = "SELECT COUNT(*) FROM users WHERE email = ?)";
@@ -46,6 +56,11 @@ class UserModel extends BaseModel
         return $count > 0;
     }
 
+    /**
+     * Find a user by his email in the database
+     * @param string $email The input email
+     * @return array|bool Returns the user data if a user was found with the input email and false if no user was found
+     */
     public function findByEmail(string $email): mixed
     {
         $sql = "SELECT * FROM users WHERE email = ?";
@@ -53,6 +68,11 @@ class UserModel extends BaseModel
         return $user;
     }
 
+    /**
+     * Finds a user by his ID in the database
+     * @param int $user_id The input user ID
+     * @return array|bool Returns the user data if a user was found with the input ID and false if no user was found
+     */
     public function findById(int $user_id)
     {
         $sql = "SELECT * FROM users WHERE user_id = ?";
@@ -60,57 +80,147 @@ class UserModel extends BaseModel
         return $user;
     }
 
-    public function changeUserInformation(array $data)
+    /**
+     * Updates the password of a user
+     * @param int $user_id The input user ID
+     * @param string $new_password The new password
+     * @return int Returns 201 if the password has successfully been updated and 500 if not
+     */
+    public function updateUserPassword(int $user_id, string $new_password)
     {
-        $user_id = $data['user_id'];
-        $new_password = $data['new_password'] ?? '';
-        $new_email = $data['new_email'] ?? '';
-        $new_phone = $data['new_phone'] ?? '';
-        $new_fname = $data['new_fname'] ?? '';
-        $new_lname = $data['new_lname'] ?? '';
+        $sql = "UPDATE users SET password = ? WHERE user_id = ?";
+        $this->execute($sql, [
+            $new_password,
+            $user_id
+        ]);
 
-        $sql = "UPDATE users SET user_id = user_id";
-        $params = [];
+        $sql = "SELECT password FROM users WHERE $user_id = ?";
+        $updated_user = $this->selectOne($sql, [$user_id]);
 
-        if (!empty($new_password)) {
-            $sql .= ", password = :new_password";
-            $params['new_password'] = $new_password;
+        if ($updated_user == false || empty($updated_user) || $updated_user == null) {
+            return 500;
+        } else {
+            return 201;
         }
-        if (!empty($new_email)) {
-            $sql .= ", email = :new_email";
-            $params['new_email'] = $new_email;
-        }
-        if (!empty($new_phone)) {
-            $sql .= ", phone = :new_phone";
-            $params['new_phone'] = $new_phone;
-        }
-        if (!empty($new_fname)) {
-            $sql .= ", fname = :new_fname";
-            $params['new_fname'] = $new_fname;
-        }
-        if (!empty($new_lname)) {
-            $sql .= ", lname = :new_lname";
-            $params['new_lname'] = $new_lname;
-        }
+    }
 
-        if (empty($params)) {
-            return;
+    /**
+     * Updates the email of a user
+     * @param int $user_id The input user ID
+     * @param string $new_email The new email
+     * @return int Returns 500 if the email has successfully been updated and 500 if not
+     */
+    public function updateUserEmail(int $user_id, string $new_email)
+    {
+        $sql = "UPDATE users SET email = ? WHERE user_id = ?";
+        $this->execute($sql, [
+            $new_email,
+            $user_id
+        ]);
+
+        $sql = "SELECT password FROM users WHERE $user_id = ?";
+        $updated_user = $this->selectOne($sql, [$user_id]);
+
+        if ($updated_user == false || empty($updated_user) || $updated_user == null) {
+            return 500;
+        } else {
+            return 201;
         }
+    }
 
-        $sql .= " WHERE user_id = :user_id";
-        $params['user_id'] = $user_id;
+    /**
+     * Updates the phone number of a user
+     * @param int $user_id The input user ID
+     * @param string $new_phone The new phone number
+     * @return int Returns 500 if the phone number has successfully been updated and 500 if not
+     */
+    public function updateUserPhone(int $user_id, string $new_phone)
+    {
+        $sql = "UPDATE users SET phone = ? WHERE user_id = ?";
+        $this->execute($sql, [
+            $new_phone,
+            $user_id
+        ]);
 
-        $this->execute($sql, $params);
+        $sql = "SELECT password FROM users WHERE $user_id = ?";
+        $updated_user = $this->selectOne($sql, [$user_id]);
+
+        if ($updated_user == false || empty($updated_user) || $updated_user == null) {
+            return 500;
+        } else {
+            return 201;
+        }
+    }
+
+    /**
+     * Updates the first name of a user
+     * @param int $user_id The input user ID
+     * @param string $new_fname The new first name
+     * @return int Returns 500 if the first name has successfully been updated and 500 if not
+     */
+    public function updateUserFirstName(int $user_id, string $new_fname)
+    {
+        $sql = "UPDATE users SET fname = ? WHERE user_id = ?";
+        $this->execute($sql, [
+            $new_fname,
+            $user_id
+        ]);
+
+        $sql = "SELECT password FROM users WHERE $user_id = ?";
+        $updated_user = $this->selectOne($sql, [$user_id]);
+
+        if ($updated_user == false || empty($updated_user) || $updated_user == null) {
+            return 500;
+        } else {
+            return 201;
+        }
+    }
+
+    /**
+     * Updates the last name of a user
+     * @param int $user_id The input user ID
+     * @param string $new_lname The new last name
+     * @return int Returns 500 if the last name has successfully been updated and 500 if not
+     */
+    public function updateUserLastName(int $user_id, string $new_lname)
+    {
+        $sql = "UPDATE users SET lname = ? WHERE user_id = ?";
+        $this->execute($sql, [
+            $new_lname,
+            $user_id
+        ]);
+
+        $sql = "SELECT password FROM users WHERE $user_id = ?";
+        $updated_user = $this->selectOne($sql, [$user_id]);
+
+        if ($updated_user == false || empty($updated_user) || $updated_user == null) {
+            return 500;
+        } else {
+            return 201;
+        }
     }
 
     public function deleteUser(int $user_id)
     {
-        $sql = "DELETE FROM users WHERE user_id = :user_id";
-        $this->execute($sql, [
-            'user_id' => $user_id
-        ]);
+        $sql = "UPDATE users SET user_id = 204 WHERE user_id = ?";
+        $this->execute($sql, [$user_id]);
+
+        $sql = "SELECT * FROM users WHERE user_id = ?";
+        $deleted_user = $this->selectOne($sql, [$user_id]);
+
+        if ($deleted_user == false || empty($deleted_user) || $deleted_user == null) {
+            return 200;
+        } else {
+            return 500;
+        }
     }
 
+    /**
+     * Verifies the password of a user
+     * @param string $email The email of the user
+     * @param string $password The input password
+     * @return array|bool|int Return an array containing the data of the user if the password was correct and return 500 if not
+     */
     public function verifyCredentials(string $email, string $password): mixed
     {
         $user = $this->findByEmail($email);

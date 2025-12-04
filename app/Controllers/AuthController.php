@@ -239,16 +239,14 @@ class AuthController extends BaseController
             }
         }
 
-        $data['new_fname'] = $fname;
-        $data['new_lname'] = $lname;
-        $data['new_email'] = $email;
-        $data['new_phone'] = $phone;
-        $data['new_password'] = $password;
-
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         $user_id = SessionManager::get('user_id');
-        $data['user_id'] = $user_id;
 
-        $this->userModel->changeUserInformation($data);
+        $this->userModel->updateUserPassword($user_id, $hashed_password);
+        $this->userModel->updateUserEmail($user_id, $email);
+        $this->userModel->updateUserPhone($user_id, $phone);
+        $this->userModel->updateUserFirstName($user_id, $fname);
+        $this->userModel->updateUserLastName($user_id, $lname);
 
         FlashMessage::success("Successfully updated your information!");
         //! temporary route name
