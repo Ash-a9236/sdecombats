@@ -10,6 +10,25 @@ class StaffM extends BaseModel {
         parent ::__construct($pdo_service);
     }
 
+    public function verifyCredentials (string $id, string $password): ?array {
+        $staff = $this -> findById($id);
+        if (!$staff) return [];
+
+        if (password_verify($password, $staff['password_hash'])) {
+            return $staff;
+        } else {
+            return [];
+        }
+    }
+
+    public function findById (string $id): mixed {
+        $sql = "SELECT * FROM staff WHERE id = ?";
+        $staff = $this -> selectOne($sql, [
+            'id' => $id
+        ]);
+        return $staff;
+    }
+
     /**
      * will insert the operation performed by a staff member into the LOGGER table in the database
      * @param $user_id the user which performs the action
@@ -32,6 +51,7 @@ class StaffM extends BaseModel {
                 1 => "SELECT MAX(staff_id) FROM staff WHERE staff_id < 2000",
                 2 => "SELECT MAX(staff_id) FROM staff WHERE staff_id < 3000",
                 3 => "SELECT MAX(staff_id) FROM staff WHERE staff_id < 4000",
+                4 => "SELECT MAX(staff_id) FROM staff WHERE staff_id > 4000",
                 default => "SELECT MAX(staff_id) FROM staff WHERE staff_id < 2000",
             };
 
@@ -42,6 +62,7 @@ class StaffM extends BaseModel {
 
             $sql = match ($staff_level) {
                 "EMPLOYEE" => "SELECT MAX(staff_id) FROM staff WHERE staff_id < 2000",
+                "EMPLOYEE" => "SELECT MAX(staff_id) FROM staff WHERE staff_id > 4000",
                 "MANAGER" => "SELECT MAX(staff_id) FROM staff WHERE staff_id < 3000",
                 "ADMIN" => "SELECT MAX(staff_id) FROM staff WHERE staff_id < 4000",
                 default => "SELECT MAX(staff_id) FROM staff WHERE staff_id < 2000",
@@ -121,7 +142,7 @@ class StaffM extends BaseModel {
     }
 
     public function updateStaffLevel ($user_id, $staff_id, $staff_new_level): mixed {
-        if ((($user_id % 4 == 0) || $user_id >= $staff_id) && (substr(strval($user_id), 0, 1) >= substr(strval($staff_new_level), 0, 1) || substr(strval($user_id), 0, 1) == 4)) { // if the user making change is an admin or of a higher (or same) level of the staff to be modified and that the new staff id is not at a higher level than the staff modifying (except when its an admin) then you can proceed :...
+        if ((($user_id % 4 == 0) || $user_id >= $staff_id) && (substr(strval($user_id), 0, 1) >= substr(strval($staff_new_level), 0, 1) || substr(strval($user_id), 0, 1) == 4)) { // if the user making change is an login-protected or of a higher (or same) level of the staff to be modified and that the new staff id is not at a higher level than the staff modifying (except when its an login-protected) then you can proceed :...
             $sql = "UPDATE staff SET level = ? WHERE id = ?"; // first updates the enum level
             $this -> execute($sql, [$staff_new_level, $staff_id]);
 

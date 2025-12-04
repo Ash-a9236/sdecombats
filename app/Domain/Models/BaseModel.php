@@ -14,7 +14,7 @@ use PDO;
  * It is intended to be extended by specific model classes.
  *
  * @example
- * class UserModel extends BaseModel {
+ * class UserM extends BaseModel {
  *     public function findById(int $id): array|false {
  *         return $this->selectOne('SELECT * FROM users WHERE id = ?', [$id]);
  *     }
