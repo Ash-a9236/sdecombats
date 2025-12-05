@@ -5,7 +5,7 @@ namespace App\Domain\Models;
 use App\Helpers\Core\PDOService;
 use App\Domain\Models\LockerModel;
 
-class MembershipModel extends BaseModel
+class MembershipM extends BaseModel
 {
     public function __construct(PDOService $db_service)
     {
