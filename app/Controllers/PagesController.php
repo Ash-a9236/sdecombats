@@ -18,7 +18,7 @@ class PagesController extends BaseController {
             'title' => 'Home',
             'message' => 'Welcome to the home page',
         ];
-        return $this->render($response, 'pages/home.php', $data);
+        return $this->render($response, 'homeView.php', $data);
     }
 
     public function error(Request $request, Response $response, array $args): Response {

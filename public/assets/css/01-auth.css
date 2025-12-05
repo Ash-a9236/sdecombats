@@ -1,0 +1,153 @@
+.auth-message {
+    width: 100%;
+    font-size: 200%;
+    text-align: center;
+    background-color: var(--background);
+}
+
+.auth-form {
+    clip-path: polygon(
+        50.00% 15.00%,
+        80.31% 32.50%,
+        80.31% 67.50%,
+        50.00% 85.00%,
+        19.69% 67.50%,
+        19.69% 32.50%
+    );
+    border: 2px solid transparent;
+    /*background: radial-gradient(var(--background-rgba), var(--background-faded-rgba));*/
+    background-color: var(--background);
+    /*border-top: 1px solid rgba(32, 68, 32, 0.5);*/
+    /*border-right: 1px solid rgba(32, 68, 32, 0.5);*/
+
+    /*backdrop-filter: blur(8px);*/
+    /*-webkit-backdrop-filter: blur(8px);*/
+
+    height: 70.5rem;
+    width: 70.5rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-button-section {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-form > form {
+    display: flex;
+    flex-flow: column nowrap;
+    top: 3rem;
+    align-items: center;
+    min-width: 100%;
+    min-height: 100%;
+
+    & > label, input {
+        min-width: 100%;
+    }
+}
+
+.auth-form-wrapper {
+    display: flex;
+    flex-flow: column wrap;
+    width: 40%;
+    margin-top: 6rem;
+}
+
+.auth-form-shadow {
+    clip-path: polygon(
+        50.00% 15.00%,
+        80.31% 32.50%,
+        80.31% 67.50%,
+        50.00% 85.00%,
+        19.69% 67.50%,
+        19.69% 32.50%
+    );
+    height: 71rem;
+    width: 71rem;
+    padding: 1rem;
+    background-color: var(--background);
+    position: relative;
+    margin-top: -5rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    transition: transform 1s ease-in;
+    transition-delay: 0.3s;
+}
+
+/*.auth-form-shadow:hover, .auth-form-shadow:focus-within, .auth-form-shadow:focus {*/
+/*    background-image: var(--linear-gradient);*/
+/*}*/
+
+.auth-form-shadow:hover::after,
+.auth-form-shadow:focus-within::after {
+    opacity: 1;
+}
+
+.auth-form-shadow::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--linear-gradient);
+    clip-path: polygon(
+        50.00% 15.00%,
+        80.31% 32.50%,
+        80.31% 67.50%,
+        50.00% 85.00%,
+        19.69% 67.50%,
+        19.69% 32.50%
+    );
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#signup-label {
+    display: inline-block;
+    width: 50%;
+}
+
+.form-button-section {
+    margin-top: -1rem;
+}
+
+.form-button-section > a {
+    margin: 1rem;
+}
+
+.form-button-section > button {
+    padding: 0.7rem 1.5rem;
+}
+
+.lang-switcher {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: end;
+    padding: 0 1rem;
+    width: 100%;
+    background-color: var(--background);
+}
+
+.lang-switcher > a,
+.lang-switcher > a:visited,
+.lang-switcher > a:active,
+.lang-switcher > a:hover {
+    padding: 1rem;
+    position: revert-layer;
+    text-decoration: none;
+    color: var(--text-hightlight);
+}
