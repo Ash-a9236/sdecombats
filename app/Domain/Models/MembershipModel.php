@@ -19,23 +19,32 @@ class MembershipModel extends BaseModel
      * @param string $name The name of the user
      * @return int Returns 200 if the membership has successfully been created and 500 if not
      */
-    public function createMembership(array $data, int $user_id, string $name)
+    public function createMembership(array $data, int $user_id, string $name, bool $locker)
     {
-        $locker_id = $this->searchAvailableLocker($data['type']);
+        if ($locker) {
+            $locker_id = $this->searchAvailableLocker($data['type']);
 
-        if ($locker_id == 500) {
-            return 500;
+            if ($locker_id == 303) {
+                return 303;
+            } else {
+                $this->assignLockerToUser($locker_id, $name);
+            }
+
+            $sql = "INSERT INTO membership (locker_id, bow_rental, end) VALUES (?, ?, ?)";
+
+            $this->execute($sql, [
+                $locker_id,
+                $data['bow_rental'],
+                "DATE_ADD(CURRENT_DATE(), INTERVAL {$data['duration']} MONTH)"
+            ]);
         } else {
-            $this->assignLockerToUser($locker_id, $name);
+            $sql = "INSERT INTO membership (bow_rental, end) VALUES (?, ?)";
+
+            $this->execute($sql, [
+                $data['bow_rental'],
+                "DATE_ADD(CURRENT_DATE(), INTERVAL {$data['duration']} MONTH)"
+            ]);
         }
-
-        $sql = "INSERT INTO membership (locker_id, bow_rental, end) VALUES (?, ?, ?)";
-
-        $this->execute($sql, [
-            $locker_id,
-            $data['bow_rental'],
-            "DATE_ADD(CURRENT_DATE(), INTERVAL {$data['duration']} MONTH)"
-        ]);
 
         $membership_id = $this->lastInsertMembershipId();
 
@@ -52,7 +61,7 @@ class MembershipModel extends BaseModel
         if ($data['membership_id'] != $membership_id) {
             return 500;
         } else {
-            return 201;
+            return $membership_id;
         }
     }
 
@@ -69,7 +78,7 @@ class MembershipModel extends BaseModel
 
         //! TEMPORARY ERROR CODE
         if ($locker == false ||  empty($locker) || $locker == null) {
-            return 500;
+            return 303;
         } else {
             return $locker['locker_id'];
         }
