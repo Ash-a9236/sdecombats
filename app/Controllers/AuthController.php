@@ -227,7 +227,7 @@ class AuthController extends BaseController {
     {
         $user_id = SessionManager::get('user_id');
 
-        $user = $this->userModel->findById($user_id);
+        $user = $this->userM->findById($user_id);
 
         $data['user'] = $user;
 
@@ -259,7 +259,7 @@ class AuthController extends BaseController {
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "Please input a valid email example@gmail.com";
-        } else if ($this->userModel->emailExists($email)) {
+        } else if ($this->userM->emailExists($email)) {
             $errors[] = "Email already assigned to a registered user";
         }
 
@@ -290,11 +290,11 @@ class AuthController extends BaseController {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         $user_id = SessionManager::get('user_id');
 
-        $this->userModel->updateUserPassword($user_id, $hashed_password);
-        $this->userModel->updateUserEmail($user_id, $email);
-        $this->userModel->updateUserPhone($user_id, $phone);
-        $this->userModel->updateUserFirstName($user_id, $fname);
-        $this->userModel->updateUserLastName($user_id, $lname);
+        $this->userM->updateUserPassword($user_id, $hashed_password);
+        $this->userM->updateUserEmail($user_id, $email);
+        $this->userM->updateUserPhone($user_id, $phone);
+        $this->userM->updateUserFirstName($user_id, $fname);
+        $this->userM->updateUserLastName($user_id, $lname);
 
         FlashMessage::success("Successfully updated your information!");
         //! temporary route name
