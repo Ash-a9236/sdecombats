@@ -6,6 +6,10 @@ vendor/
 build/
 node_modules/
 
+# config files
+config/constants.php
+config/container.php
+
 # VisualStudioCode
 # Local History for Visual Studio Code
 .history/
