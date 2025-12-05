@@ -22,7 +22,7 @@ class ViewHelper
     public static function loadAdminHeader(string $page_title): void
     {
         $page_title = $page_title ?? 'Default Title';
-        require_once APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'common' . DIRECTORY_SEPARATOR . 'adminHeader.php';
+        require_once APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'common' . DIRECTORY_SEPARATOR . 'dashboardHeader.php';
     }
 
     /**
