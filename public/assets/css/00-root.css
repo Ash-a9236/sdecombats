@@ -1,4 +1,4 @@
-:root {
+/*:root {
     --background: #2F2F2F;
     --background-accent: #424769;
     --other-accent: #FBAA56;
@@ -14,31 +14,440 @@
     font-family: myFont;
 
     /*some variable examples*/
-    --grid-template-columns: 1fr 1fr 2fr;
-    --grid-template-rows: auto;
-    --border-linear-gradient: linear-gradient(to-bottom-right, var(--other-accent), var(--text-hightlight)) 30;
-    --box-blur-fliter: blur(10px) saturate(1.1) brightness(1.1);
-    /*this one is used with --webkit-mask-image :*/
-    --some-other-linear-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 1) 65%);
-}
+/*--grid-template-columns: 1fr 1fr 2fr;
+--grid-template-rows: auto;
+--border-linear-gradient: linear-gradient(to-bottom-right, var(--other-accent), var(--text-hightlight)) 30;
+--box-blur-fliter: blur(10px) saturate(1.1) brightness(1.1);
+/*this one is used with --webkit-mask-image :*/
+/*--some-other-linear-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 1) 65%);
+}*/
 
-body.dark {
+body {
     --background: #2F2F2F;
+    --background-rgba: rgba(132, 122, 122, 0.5);
+    --background-faded-rgba: rgba(132, 122, 122, 0.27);
+
     --background-accent: #424769;
     --other-accent: #FBAA56;
+    --other-accent-two: #FFC300;
     --text: #FFF4E2;
+    --placeholder-text: rgba(255, 255, 255, 0.51);
     --text-hightlight: #FEC574;
 
     --extra-colour: #FECA81;
     --extra-secondary-colour: #FFCB74;
     --extra-third-colour: #3F4259;
+
+    --linear-gradient: linear-gradient(155deg, var(--other-accent), var(--other-accent-two));
+    --form-linear-gradient: linear-gradient(var(--background-rgba), var(--background-faded-rgba));
+
+    background: var(--background);
+    font-family: Inter, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
 }
 
 @font-face {
     /*you can put all the font files in the font folder and call them -> i.e. find a font for the h1 titles that look like the font of the logo :)*/
-    font-family: Monoton;
-    src: url('../fonts/..') format('woff');
+    font-family: Hemi;
+    src: url('../../fonts/Hemi_Head_Bd_It.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
+}
+
+
+/* ========================== */
+/* Base Carousel */
+/* ========================== */
+.base-carousel {
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+}
+
+@keyframes base-carousel {
+    0%, 10% { left: 0; }
+    15%, 25% { left: -100%; }
+    30%, 40% { left: -200%; }
+    45%, 55% { left: -300%; }
+    60%, 70% { left: -200%; }
+    75%, 85% { left: -100%; }
+    90%, 100% { left: 0; }
+}
+
+.base-carousel-images-wrapper {
+    display: flex;
+    width: 600%;
+    height: 100%;
+    position: relative;
+    left: 0;
+    animation: 10s infinite;
+}
+
+.base-carousel-image-div {
+    width: 100%;
+    height: 100%;
+}
+
+.base-carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.base-carousel-indicator {
+    position: absolute;
+    margin: 2rem;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    background: var(--text-hightlight);
+    clip-path: polygon(
+        50.00% 15.00%,
+        80.31% 32.50%,
+        80.31% 67.50%,
+        50.00% 85.00%,
+        19.69% 67.50%,
+        19.69% 32.50%
+    );
+}
+.indicator-1:focus ~ .base-carousel-images-wrapper { animation: none; left: 0; }
+.indicator-2 {
+    margin-top: 5rem;
+}
+.indicator-2:focus ~ .base-carousel-images-wrapper { animation: none; left: -100%; }
+.indicator-3:focus ~ .base-carousel-images-wrapper { animation: none; left: -200%; }
+.indicator-4:focus ~ .base-carousel-images-wrapper { animation: none; left: -300%; }
+.indicator-5:focus ~ .base-carousel-images-wrapper { animation: none; left: -400%; }
+.indicator-6:focus ~ .base-carousel-images-wrapper { animation: none; left: -500%; }
+
+.indicator-3 {
+    margin-top: 5rem;
+}
+
+.indicator-4 {
+    margin-top: 8rem;
+}
+
+.indicator-5 {
+    margin-top: 11rem;
+}
+
+.indicator-6 {
+    margin-top: 14rem;
+}
+
+.base-carousel-indicator:focus {
+    background: var(--other-accent-two);
+    box-shadow: 0 0 1rem 0.5rem var(--other-accent-two);
+}
+
+/* ========================== */
+/* Buttons */
+/* ========================== */
+.button-section {
+}
+
+.base-button {
+    margin: 1rem;
+    padding: 0.8rem;
+
+    font-weight: bold;
+    color: var(--text);
+
+    border: none;
+    border-radius: 0.7rem;
+
+    background-image: var(--linear-gradient);
+    box-shadow: 0 0 1rem 0.05rem var(--other-accent-two);
+}
+
+.base-button:hover, .secondary-base-button:hover {
+    color: var(--background);
+}
+
+.secondary-base-button {
+    margin: 1rem;
+    padding: 0.8rem;
+
+    font-weight: bold;
+    color: var(--text);
+
+    border: none;
+    border-radius: 0.7rem;
+
+    background-color: var(--background-accent);
+}
+
+.dark-button {
+}
+
+.light-button {
+}
+
+.icon-button {
+}
+
+/* ========================== */
+/* Table */
+/* ========================== */
+.base-table {
+}
+
+.base-table-head {
+}
+
+.base-table-head-row {
+}
+
+.base-table-head-cell {
+}
+
+.base-table-body {
+}
+
+.base-table-row {
+}
+
+.base-table-cell {
+}
+
+/* ========================== */
+/* Links */
+/* ========================== */
+.links-section {
+}
+
+.base-link {
+}
+
+/* ========================== */
+/* Form */
+/* ========================== */
+.base-form {
+    padding: 2rem;
+    background: radial-gradient(var(--background-rgba), var(--background-faded-rgba));
+    background-color: var(--background);
+    /*box-shadow: 0 0 1rem 0.05rem #000000;*/
+
+    width: calc(100vw - 40%);
+}
+
+.form-row {
+    padding: 0.5rem;
+}
+
+.base-form-label {
+}
+
+.input-wrapper {
+    position: relative;
+    border-radius: 0.5rem;
+}
+
+.base-form-input {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    border-radius: 0.8rem;
+    border: none;
+    outline: none;
+    padding: 1.3rem;
+    margin-bottom: 3rem;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: var(--form-linear-gradient);
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.base-form-input:focus::placeholder {
+    color: transparent;
+}
+
+.base-form-label {
+    z-index: 3;
+    /*color: var(--placeholder-text);*/
+    color: transparent;
+    position: relative;
+    bottom: 6rem;
+    font-size: 0.7rem;
+    transition: 0.2s;
+}
+
+.base-form-input:focus {
+    padding: 1.5rem 1.3rem 1rem 1.3rem;
+    border: 1px solid var(--extra-secondary-colour);
+}
+
+.base-form-input:focus +.base-form-label {
+    color: var(--extra-secondary-colour);
+    bottom: 6.5rem;
+    left: 1.3rem;
+    font-size: 0.7rem;
+    transition: cubic-bezier(.55,.06,.68,.19);
+    transition-duration: 0.3s;
+}
+
+.base-form-input:visited +.base-form-label {
+    color: transparent;
+}
+
+.base-form-email-label {
+}
+
+.base-form-email-input {
+}
+
+.base-form-password-label {
+}
+
+.base-form-password-input {
+}
+
+.base-form-number-label {
+}
+
+.base-form-number-input {
+}
+
+.base-form-tel-label {
+}
+
+.base-form-tel-input {
+}
+
+.base-form-url-label {
+}
+
+.base-form-url-input {
+}
+
+.base-form-date-label {
+}
+
+.base-form-date-input {
+}
+
+.base-form-time-label {
+}
+
+.base-form-time-input {
+}
+
+.base-form-checkbox-label {
+}
+
+.base-form-checkbox-input {
+}
+
+.base-form-radio-label {
+}
+
+.base-form-radio-input {
+}
+
+.base-form-range-label {
+}
+
+.base-form-range-input {
+}
+
+.base-form-color-label {
+}
+
+.base-form-color-input {
+}
+
+.base-form-search-label {
+}
+
+.base-form-search-input {
+}
+
+.base-form-file-label {
+}
+
+.base-form-file-input {
+}
+
+.base-form-select-label {
+}
+
+.base-form-select-input {
+}
+
+.base-form-textarea-label {
+}
+
+.base-form-textarea-input {
+}
+
+/* ========================== */
+/* Simple Text Div */
+/* ========================== */
+.simple-text-div {
+    display: flex;
+    flex-flow: column nowrap;
+
+    width: calc(100vw - 45%);
+    margin-left: calc((100vw - 45%) / 8);
+    padding: 2rem;
+
+    background-color: #c09240;
+
+    clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0% 20%);
+}
+
+.logo-holder {
+}
+
+/* ========================== */
+/* Detailed Div */
+/* ========================== */
+.detailed-div {
+}
+
+.detailed-image-carousel {
+}
+
+.detailed-carousel-image {
+}
+
+.detailed-wrapper-list {
+}
+
+.detailed-wrapper-item {
+}
+
+/* ========================== */
+/* Two Column Layout */
+/* ========================== */
+.two-column-wrapper {
+}
+
+.two-column-A {
+}
+
+.two-column-B {
+}
+
+/* ========================== */
+/* Three Column Layout */
+/* ========================== */
+.three-column-wrapper {
+}
+
+.three-column-A {
+}
+
+.three-column-B {
+}
+
+.three-column-C {
 }
 
