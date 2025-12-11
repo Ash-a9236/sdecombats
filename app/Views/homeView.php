@@ -123,5 +123,9 @@ include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATO
 ?>
 
 <?php
+include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'activity-popup.php';
+?>
+
+<?php
 ViewHelper::loadFooter();
 ?>

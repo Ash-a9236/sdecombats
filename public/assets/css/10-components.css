@@ -1,3 +1,13 @@
+.components-full-page-wrapper {
+    width: 100%;
+    height: 70rem;
+    padding: 2rem;
+    background-color: var(--background);
+    /*background-image: url("https://cdn.pixabay.com/photo/2019/08/04/21/21/destination-table-4384800_960_720.jpg");*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* Button Components */
 .btn {
     display: inline-block;
@@ -6,8 +16,8 @@
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 20px;
+    letter-spacing: 0.0625rem;
+    border-radius: 1.25rem;
     transition: all 0.3s ease;
     cursor: pointer;
     border: none;
@@ -40,30 +50,55 @@
 .btn-primary {
     background: linear-gradient(135deg, #fbaa56 0%, #ffc300 100%);
     color: #fff4e2;
-    box-shadow: 0 4px 15px rgba(251, 170, 86, 0.4);
+    box-shadow: 0 0.25rem 0.9375rem rgba(251, 170, 86, 0.4);
     display: block;
 }
 
 .btn-primary:hover {
     background: linear-gradient(135deg, #ffc300 0%, #fbaa56 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(251, 170, 86, 0.6);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.375rem 1.25rem rgba(251, 170, 86, 0.6);
 }
 
 .btn-secondary {
     background: linear-gradient(135deg, #fbaa56 0%, #ffc300 100%);
     color: #fff4e2;
-    box-shadow: 0 4px 15px rgba(251, 170, 86, 0.4);
+    box-shadow: 0 0.25rem 0.9375rem rgba(251, 170, 86, 0.4);
     display: block;
     width: 60%;
-    max-width: 400px;
+    max-width: 25rem;
     margin: 0 auto;
 }
 
 .btn-secondary:hover {
     background: linear-gradient(135deg, #ffc300 0%, #fbaa56 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(251, 170, 86, 0.6);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.375rem 1.25rem rgba(251, 170, 86, 0.6);
+}
+
+/* Base Button for Popup */
+.base-button {
+    background: linear-gradient(135deg, #fbaa56 0%, #ffc300 100%);
+    color: #fff4e2;
+    box-shadow: 0 0.25rem 0.9375rem rgba(251, 170, 86, 0.4);
+    padding: 0.75rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
+    border-radius: 1.25rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        sans-serif;
+}
+
+.base-button:hover {
+    background: linear-gradient(135deg, #ffc300 0%, #fbaa56 100%);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.375rem 1.25rem rgba(251, 170, 86, 0.6);
 }
 
 /* Icon Button Component */
@@ -83,8 +118,8 @@
 }
 
 .icon-img {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
     object-fit: cover;
     display: block;
 }
@@ -102,7 +137,7 @@
     font-size: 1.125rem;
     font-weight: 600;
     text-align: center;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.03125rem;
     transition: all 0.2s ease;
 }
 
@@ -113,7 +148,7 @@
 
 /* Divider Component */
 .divider {
-    height: 2px;
+    height: 0.125rem;
     margin: 2rem 0;
 }
 
@@ -143,10 +178,17 @@
 }
 
 .carousel-indicator {
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     background: linear-gradient(180deg, #fbaa56 0%, #ffc300 100%);
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    clip-path: polygon(
+        50% 15%,
+        80.31% 32.5%,
+        80.31% 67.5%,
+        50% 85%,
+        19.69% 67.5%,
+        19.69% 32.5%
+    );
     opacity: 0.5;
     cursor: pointer;
     border: none;
@@ -164,5 +206,346 @@
 .carousel-indicator.active {
     opacity: 1;
     transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(255, 195, 0, 0.5);
+    box-shadow: 0 0 0.625rem rgba(255, 195, 0, 0.5);
+}
+
+/* ===== ACTIVITY POPUP - ENHANCED STYLING ===== */
+
+/* Popup - Hidden by default */
+.activity-popup {
+    display: none;
+    animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.activity-popup.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Overlay with backdrop blur */
+.activity-popup__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(0.25rem);
+    z-index: 999;
+    animation: overlayFadeIn 0.3s ease;
+}
+
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Container with gradient border */
+.activity-popup__container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 2rem);
+    max-width: 25rem;
+    max-height: calc(100vh - 4rem);
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #ff7700 0%, #ffdd00 100%);
+    padding: 0.1875rem;
+    border-radius: 0.75rem;
+    z-index: 1000;
+    animation: popupSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 1.25rem 3.125rem rgba(0, 0, 0, 0.5),
+        0 0 3.125rem rgba(255, 195, 0, 0.3);
+}
+
+@keyframes popupSlideIn {
+    from {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Inner container for content with dark background */
+.activity-popup__container::before {
+    content: "";
+    position: absolute;
+    inset: 0.1875rem;
+    background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+    border-radius: 0.625rem;
+    z-index: 0;
+}
+
+/* Thick corner decorations */
+.activity-popup__container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: 0.75rem;
+    background:
+        /* Top-left corner */ linear-gradient(
+                to right,
+                #ffc300 0%,
+                #ffc300 2.5rem
+            )
+            top 0.1875rem left 0.1875rem / 2.5rem 0.3rem no-repeat,
+        linear-gradient(to bottom, #ffc300 0%, #ffc300 2.5rem) top 0.1875rem
+            left 0.1875rem / 0.3rem 2.5rem no-repeat,
+        /* Bottom-right corner */
+            linear-gradient(to left, #ff7700 0%, #ff7700 2.5rem) bottom
+            0.1875rem right 0.1875rem / 2.5rem 0.3rem no-repeat,
+        linear-gradient(to top, #ff7700 0%, #ff7700 2.5rem) bottom 0.1875rem
+            right 0.1875rem / 0.3rem 2.5rem no-repeat;
+    z-index: 1;
+}
+
+/* Close Button - Enhanced */
+.activity-popup__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(45, 45, 45, 0.9);
+    border: 0.125rem solid #ffc300;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.activity-popup__close svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.activity-popup__close svg path {
+    stroke: #ffffff;
+    transition: stroke 0.3s ease;
+}
+
+.activity-popup__close:hover {
+    background: rgba(255, 195, 0, 0.2);
+    border-color: #ffdd00;
+    transform: rotate(90deg);
+}
+
+.activity-popup__close:hover svg path {
+    stroke: #ffc300;
+}
+
+/* Content Layout */
+.activity-popup__content {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 5rem);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem 1rem 1rem;
+}
+
+.top-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Info Section */
+.activity-popup__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+/* Header with gradient text */
+.activity-popup__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.125rem solid rgba(255, 195, 0, 0.3);
+}
+
+.activity-popup__title {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    text-align: center;
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 1.25rem rgba(255, 195, 0, 0.5);
+}
+
+/* Image with border glow */
+.activity-popup__image-container {
+    position: relative;
+    width: 100%;
+    height: 12.5rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    border: 0.1875rem solid #ffc300;
+    box-shadow: 0 0 1.25rem rgba(255, 195, 0, 0.3),
+        inset 0 0 1.25rem rgba(255, 195, 0, 0.1);
+}
+
+.activity-popup__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.activity-popup__image-container:hover .activity-popup__image {
+    transform: scale(1.05);
+}
+
+/* Description with custom scrollbar */
+.activity-popup__description {
+    color: #d3d3d3;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: center;
+    padding: 0 0.5rem;
+    max-height: 10rem;
+    overflow-y: auto;
+}
+
+.activity-popup__description::-webkit-scrollbar {
+    width: 0.375rem;
+}
+
+.activity-popup__description::-webkit-scrollbar-track {
+    background: rgba(255, 195, 0, 0.1);
+    border-radius: 0.1875rem;
+}
+
+.activity-popup__description::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ffc300 0%, #ff7700 100%);
+    border-radius: 0.1875rem;
+}
+
+/* Bottom Area */
+.activity-popup__bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem 1rem;
+    border-top: 0.125rem solid rgba(255, 195, 0, 0.2);
+    margin-top: 1rem;
+}
+
+/* Offer Buttons Layout - Enhanced */
+.activity-popup__offers {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.activity-popup__offer-btn {
+    position: relative;
+    width: 3rem;
+    height: 4.5rem;
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 0.125rem solid rgba(255, 195, 0, 0.3);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    overflow: visible;
+}
+
+.activity-popup__offer-btn:hover {
+    background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+    border-color: #ffc300;
+    transform: translateY(-0.25rem);
+    box-shadow: 0 0.5rem 1rem rgba(255, 195, 0, 0.3);
+}
+
+.activity-popup__offer-btn:active {
+    transform: translateY(0);
+}
+
+/* Polygon decorations - Enhanced glow */
+.activity-popup__offer-polygon--top-right {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background: linear-gradient(135deg, #ffc300 0%, #ffdd00 100%);
+    clip-path: polygon(
+        50% 15%,
+        80.31% 32.5%,
+        80.31% 67.5%,
+        50% 85%,
+        19.69% 67.5%,
+        19.69% 32.5%
+    );
+    pointer-events: none;
+    filter: drop-shadow(0 0 0.375rem rgba(255, 195, 0, 0.8));
+}
+
+.activity-popup__offer-polygon--bottom-left {
+    position: absolute;
+    bottom: -0.5rem;
+    left: -0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background: linear-gradient(135deg, #ff7700 0%, #ff7700 100%);
+    clip-path: polygon(
+        50% 15%,
+        80.31% 32.5%,
+        80.31% 67.5%,
+        50% 85%,
+        19.69% 67.5%,
+        19.69% 32.5%
+    );
+    pointer-events: none;
+    filter: drop-shadow(0 0 0.375rem #ff7700);
+}
+
+/* Responsive adjustments */
+@media (min-width: 48rem) {
+    .activity-popup__container {
+        max-width: 28rem;
+    }
+
+    .activity-popup__title {
+        font-size: 1.5rem;
+    }
+
+    .activity-popup__image-container {
+        height: 15rem;
+    }
 }

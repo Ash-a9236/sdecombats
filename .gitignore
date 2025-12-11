@@ -1,6 +1,10 @@
 env.php
 config/env.php
 
+# config files
+config/constants.php
+config/container.php
+
 # Composer and dependencies
 vendor/
 build/
@@ -67,3 +71,6 @@ $RECYCLE.BIN/
 
 app/src/Controllers/TestController.php
 app/src/Models/TestModel.php
+
+config/constants.php
+config/container.php
