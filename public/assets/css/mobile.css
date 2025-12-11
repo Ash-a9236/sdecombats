@@ -132,15 +132,8 @@ body {
 }
 
 /* Hero Section */
-.hero-section {
-    position: relative;
-    min-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 2rem;
-}
 
+<<<<<<< HEAD
 .hero-image-container {
     position: absolute;
     top: 0;
@@ -201,6 +194,8 @@ body {
         font-size: 2rem;
     }
 }
+=======
+>>>>>>> 2279c1cc7abc9b34bef50b90289b45ba754772de
 
 /* Intro Text Section */
 .intro-text {
