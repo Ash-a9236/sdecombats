@@ -25,10 +25,6 @@ class PagesController extends BaseController
         return $this->render($response, 'homeView.php', $data);
     }
 
-<<<<<<< HEAD
-    public function error(Request $request, Response $response, array $args): Response
-    {
-=======
     public function menu(Request $request, Response $response, array $args): Response {
         $data['data'] = [
             'title' => 'Navigation',
@@ -37,7 +33,6 @@ class PagesController extends BaseController
     }
 
     public function error(Request $request, Response $response, array $args): Response {
->>>>>>> 2279c1cc7abc9b34bef50b90289b45ba754772de
         return $this->render($response, 'errorView.php');
     }
 
