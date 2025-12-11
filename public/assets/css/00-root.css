@@ -44,6 +44,8 @@ body {
     background: var(--background);
     font-family: Inter, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text);
+
+    padding: 2rem;
 }
 
 @font-face {
@@ -254,7 +256,7 @@ body {
     border: none;
     outline: none;
     padding: 1.3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 
     appearance: none;
     -webkit-appearance: none;
@@ -274,7 +276,7 @@ body {
     /*color: var(--placeholder-text);*/
     color: transparent;
     position: relative;
-    bottom: 6rem;
+    bottom: 3rem;
     font-size: 0.7rem;
     transition: 0.2s;
 }
@@ -286,7 +288,7 @@ body {
 
 .base-form-input:focus +.base-form-label {
     color: var(--extra-secondary-colour);
-    bottom: 6.5rem;
+    bottom: 5.5rem;
     left: 1.3rem;
     font-size: 0.7rem;
     transition: cubic-bezier(.55,.06,.68,.19);
@@ -294,6 +296,58 @@ body {
 }
 
 .base-form-input:visited +.base-form-label {
+    color: transparent;
+}
+
+.base-form-two-column-input {
+    display: block;
+    position: relative;
+
+    width: 90%;
+    border-radius: 0.8rem;
+    border: none;
+    outline: none;
+    padding: 1.3rem;
+    margin-bottom: 2rem;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: var(--form-linear-gradient);
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.base-form-two-column-input:focus::placeholder {
+    color: transparent;
+}
+
+.base-form-two-column-label {
+    z-index: 3;
+    /*color: var(--placeholder-text);*/
+    color: transparent;
+    position: relative;
+    bottom: 3rem;
+    font-size: 0.7rem;
+    transition: 0.2s;
+}
+
+.base-form-two-column-input:focus {
+    padding: 1.5rem 1.3rem 1rem 1.3rem;
+    border: 1px solid var(--extra-secondary-colour);
+}
+
+.base-form-two-column-input:focus +.base-form-two-column-label {
+    color: var(--extra-secondary-colour);
+    bottom: 3.5rem;
+    left: 0.3rem;
+    font-size: 0.7rem;
+    transition: cubic-bezier(.55,.06,.68,.19);
+    transition-duration: 0.3s;
+}
+
+.base-form-two-column-input:visited +.base-form-two-column-label {
     color: transparent;
 }
 

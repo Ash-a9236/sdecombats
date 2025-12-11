@@ -19,11 +19,17 @@ return static function(Slim\App $app): void {
 
     $app -> get('/', [PagesController::class, 'index']) -> setName('pages.index');
     $app -> get('/home', [PagesController::class, 'index']) -> setName('pages.index');
+    $app -> get('/menu', [PagesController::class, 'displayMenu']) -> setName('pages.menu');
     $app -> get('/activities', [PagesController::class, 'displayActivities']) -> setName('pages.activities');
     $app -> get('/archery', [PagesController::class, 'archery']) -> setName('pages.archery');
     $app -> get('/big-groups', [PagesController::class, 'bigGroups']) -> setName('pages.big-groups');
     $app -> get('/birthdays', [PagesController::class, 'birthdays']) -> setName('pages.birthdays');
     $app -> get('/blog', [PagesController::class, 'blog']) -> setName('pages.blog');
+    $app -> get('/competitions', [PagesController::class, 'competition']) -> setName('pages.competition');
+    $app -> get('/contact', [PagesController::class, 'contact']) -> setName('pages.contact');
+    $app -> get('/corporate', [PagesController::class, 'corporate']) -> setName('pages.corporate');
+    $app -> get('/date-night', [PagesController::class, 'dateNight']) -> setName('pages.date-night');
+    $app -> get('/gift-cards', [PagesController::class, 'giftCards']) -> setName('pages.gift-cards');
     $app -> get('/outside-events', [PagesController::class, 'outsideEvents']) -> setName('pages.outside-events');
     $app -> get('/small-groups', [PagesController::class, 'smallGroups']) -> setName('pages.small-groups');
 

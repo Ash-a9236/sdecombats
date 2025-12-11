@@ -17,8 +17,16 @@ class PagesController extends BaseController {
         $data['data'] = [
             'title' => 'Home',
             'message' => 'Welcome to the home page',
+            //'carousel-images' => array of images
         ];
-        return $this->render($response, 'homeView.php', $data);
+        return $this->render($response, 'pages/home.php', $data);
+    }
+
+    public function menu(Request $request, Response $response, array $args): Response {
+        $data['data'] = [
+            'title' => 'Navigation',
+        ];
+        return $this->render($response, 'pages/menu.php', $data);
     }
 
     public function error(Request $request, Response $response, array $args): Response {

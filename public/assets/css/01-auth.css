@@ -23,8 +23,8 @@
     /*backdrop-filter: blur(8px);*/
     /*-webkit-backdrop-filter: blur(8px);*/
 
-    height: 70.5rem;
-    width: 70.5rem;
+    height: 73.5rem;
+    width: 73.5rem;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -55,6 +55,10 @@
     }
 }
 
+#register-form-section {
+    padding-top: 3rem;
+}
+
 .auth-form-wrapper {
     display: flex;
     flex-flow: column wrap;
@@ -71,8 +75,8 @@
         19.69% 67.50%,
         19.69% 32.50%
     );
-    height: 71rem;
-    width: 71rem;
+    height: 74rem;
+    width: 74rem;
     padding: 1rem;
     background-color: var(--background);
     position: relative;
@@ -114,6 +118,29 @@
     z-index: -1;
     opacity: 0;
     transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-form-row {
+    display:  flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.auth-form-row-sub-column {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+}
+
+.auth-form-row-sub-column:first-child{
+    align-self: start;
+}
+
+.auth-form-row-sub-column:last-child{
+    align-self: end;
 }
 
 #signup-label {
