@@ -234,4 +234,16 @@ class UserM extends BaseModel
             return 500;
         }
     }
+
+    public function getReservations(int $user_id)
+    {
+        $sql = "SELECT * FROM reservation WHERE user_id = ? AND end > CURRENT_DATE()";
+        $reservations = $this->selectAll($sql, [$user_id]);
+
+        if ($reservations == false || empty($reservations) || $reservations == null) {
+            return 500;
+        } else {
+            return $reservations;
+        }
+    }
 }
