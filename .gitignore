@@ -71,6 +71,3 @@ $RECYCLE.BIN/
 
 app/src/Controllers/TestController.php
 app/src/Models/TestModel.php
-
-config/constants.php
-config/container.php
