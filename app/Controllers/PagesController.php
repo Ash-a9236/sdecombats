@@ -32,6 +32,13 @@ class PagesController extends BaseController
         return $this->render($response, 'pages/menu.php', $data);
     }
 
+    public function giftCards(Request $request, Response $response, array $args): Response {
+        $data['data'] = [
+            'title' => 'Gift Card',
+        ];
+        return $this->render($response, 'pages/gift-cards.php', $data);
+    }
+
     public function error(Request $request, Response $response, array $args): Response {
         return $this->render($response, 'errorView.php');
     }
