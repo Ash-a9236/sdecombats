@@ -25,21 +25,24 @@ class PagesController extends BaseController
         return $this->render($response, 'homeView.php', $data);
     }
 
-    public function menu(Request $request, Response $response, array $args): Response {
+    public function menu(Request $request, Response $response, array $args): Response
+    {
         $data['data'] = [
             'title' => 'Navigation',
         ];
         return $this->render($response, 'pages/menu.php', $data);
     }
 
-    public function giftCards(Request $request, Response $response, array $args): Response {
+    public function giftCards(Request $request, Response $response, array $args): Response
+    {
         $data['data'] = [
             'title' => 'Gift Card',
         ];
         return $this->render($response, 'pages/gift-cards.php', $data);
     }
 
-    public function error(Request $request, Response $response, array $args): Response {
+    public function error(Request $request, Response $response, array $args): Response
+    {
         return $this->render($response, 'errorView.php');
     }
 
@@ -97,14 +100,6 @@ class PagesController extends BaseController
             'title' => 'Small Groups',
         ];
         return $this->render($response, 'pages/small-groups.php', $data);
-    }
-
-    public function giftCards(Request $request, Response $response): Response
-    {
-        $data['data'] = [
-            'title' => 'Gift Cards',
-        ];
-        return $this->render($response, 'pages/gift-cards.php', $data);
     }
 
     public function showLoginForm(Request $request, Response $response): Response
