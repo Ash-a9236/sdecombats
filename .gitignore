@@ -1,10 +1,6 @@
 env.php
 config/env.php
 
-# config files
-config/constants.php
-config/container.php
-
 # Composer and dependencies
 vendor/
 build/
@@ -13,6 +9,8 @@ node_modules/
 # config files
 config/constants.php
 config/container.php
+/var/www/sdecombats/config/constants.php
+/var/www/sdecombats/config/container.php
 
 # VisualStudioCode
 # Local History for Visual Studio Code
