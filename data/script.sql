@@ -6,7 +6,7 @@ USE sdc_db;
 -- STAND ALONE TABLES -----------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS gift_card (
-    card_id INT NOT NULL AUTO_INCREMENT,
+    card_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `for`   VARCHAR(100),
     price   DECIMAL(5, 2)
     /*max amount on a card = $999.99*/
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS image (
 );
 
 CREATE TABLE IF NOT EXISTS transactions (
-    transaction_id INT NOT NULL AUTO_INCREMENT,
+    transaction_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     paid           BOOLEAN DEFAULT FALSE,
     amount         DECIMAL(5, 2),
     type           ENUM ( 'CASH', 'DEBIT', 'CREDIT', 'CREDIT - MASTERCARD', 'CREDIT - VISA', 'CREDIT - AMEX', 'CHEQUE', 'OTHER' )
@@ -62,14 +62,14 @@ CREATE TABLE IF NOT EXISTS package (
 
 -- CONNECTING TABLES ------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS logger (
-    log_id    INT          NOT NULL AUTO_INCREMENT,
+    log_id    INT          NOT NULL PRIMARY KEY AUTO_INCREMENT,
     staff_id  INT          NOT NULL DEFAULT 418,
     operation VARCHAR(100) NOT NULL,
     log_time  DATE                  DEFAULT NOW()
 );
 
 CREATE TABLE IF NOT EXISTS membership (
-    membership_id INT NOT NULL AUTO_INCREMENT,
+    membership_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     locker_id     INT,
     bow_rental    BOOLEAN DEFAULT FALSE,
     start         DATE    DEFAULT CURRENT_DATE,
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS membership (
 );
 
 CREATE TABLE IF NOT EXISTS users (
-    user_id       INT         NOT NULL AUTO_INCREMENT,
+    user_id       INT         NOT NULL PRIMARY KEY AUTO_INCREMENT,
     language_id   VARCHAR(15) NOT NULL,
     membership_id INT,
     fname         VARCHAR(75),
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS reservation (
     user_id        INT        NOT NULL,
     transaction_id INT        NOT NULL,
     activity_id    VARCHAR(6) NOT NULL,
-    package_id     INT        NOT NULL,
+    package_id     VARCHAR(7) NOT NULL,
     start          DATE,
     end            DATE,
     num_of_users   SMALLINT DEFAULT 1
