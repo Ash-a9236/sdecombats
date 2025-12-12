@@ -1,4 +1,12 @@
-<?php include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'common' . DIRECTORY_SEPARATOR . 'header.php'; ?>
+<?php
+
+use App\Helpers\UserContext;
+use App\Helpers\ViewHelper;
+
+ViewHelper::loadHeader('');
+
+$user = UserContext::getCurrentUser();
+?>
 <!-- Gift Cards Hero Section -->
 <section class="gift-cards-hero">
     <div class="gift-cards-hero-content">
@@ -68,7 +76,7 @@
         </div>
     </div>
 </section>
-
+<div class="divider"></div>
 <!-- Benefits Section -->
 <section class="gift-cards-benefits">
     <div class="gift-cards-benefits-header">
@@ -145,7 +153,7 @@
         <a href="#" class="gift-cards-redeem-link">Redeem Gift Voucher</a>
     </div>
 </section>
-
+<div class="divider"></div>
 <!-- FAQ Section -->
 <section class="gift-cards-faq">
     <div class="gift-cards-faq-header">
@@ -238,4 +246,7 @@
         </div>
     </div>
 </section>
-<?php include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'common' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
+<div class="divider"></div>
+<?php
+ViewHelper::loadFooter();
+?>

@@ -8,6 +8,7 @@ use DI\Container;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
+
 class UserController extends BaseController {
     public function __construct(Container $container) {
         parent::__construct($container);
