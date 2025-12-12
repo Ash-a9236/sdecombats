@@ -1,8 +1,8 @@
 USE sdc_db;
 
-ALTER TABLE gift_card
-    ADD CONSTRAINT pk_gift_card_card_id
-        PRIMARY KEY (card_id);
+-- ALTER TABLE gift_card
+--     ADD CONSTRAINT pk_gift_card_card_id
+--         PRIMARY KEY (card_id);
 
 ALTER TABLE staff
     ADD CONSTRAINT pk_staff_staff_id
@@ -24,9 +24,9 @@ ALTER TABLE image
     ADD CONSTRAINT pk_image_image_id
         PRIMARY KEY (image_id);
 
-ALTER TABLE transactions
-    ADD CONSTRAINT pk_transaction_transaction_id
-        PRIMARY KEY (transaction_id);
+-- ALTER TABLE transactions
+--     ADD CONSTRAINT pk_transaction_transaction_id
+--         PRIMARY KEY (transaction_id);
 
 ALTER TABLE activity
     ADD CONSTRAINT pk_activity_activity_id
@@ -38,8 +38,8 @@ ALTER TABLE package
 
 -- CONNECTING TABLES ------------------------------------------------------------------------------
 ALTER TABLE logger
-    ADD CONSTRAINT pk_logger_log_id
-        PRIMARY KEY (log_id),
+    -- ADD CONSTRAINT pk_logger_log_id
+    --     PRIMARY KEY (log_id),
     ADD CONSTRAINT fk_staff_id_on_logger
         FOREIGN KEY (staff_id)
             REFERENCES staff (staff_id)
@@ -47,8 +47,8 @@ ALTER TABLE logger
             ON DELETE RESTRICT;
 
 ALTER TABLE membership
-    ADD CONSTRAINT pk_membership_membership_id
-        PRIMARY KEY (membership_id),
+    -- ADD CONSTRAINT pk_membership_membership_id
+    --     PRIMARY KEY (membership_id),
     ADD CONSTRAINT fk_locker_id_on_membership
         FOREIGN KEY (locker_id)
             REFERENCES locker (locker_id)
@@ -56,8 +56,8 @@ ALTER TABLE membership
             ON DELETE RESTRICT;
 
 ALTER TABLE users
-    ADD CONSTRAINT pk_user_user_id
-        PRIMARY KEY (user_id),
+    -- ADD CONSTRAINT pk_user_user_id
+    --     PRIMARY KEY (user_id),
     ADD CONSTRAINT fk_language_id_on_user
         FOREIGN KEY (language_id)
             REFERENCES language (language_id)
@@ -111,10 +111,10 @@ ALTER TABLE reservation
         PRIMARY KEY (reservation_id),
     ADD CONSTRAINT fk_user_id_on_reservation
         FOREIGN KEY (user_id)
-            REFERENCES user (user_id),
+            REFERENCES users (user_id),
     ADD CONSTRAINT fk_transaction_id_on_reservation
         FOREIGN KEY (transaction_id)
-            REFERENCES transaction (transaction_id),
+            REFERENCES transactions (transaction_id),
     ADD CONSTRAINT fk_activity_id_on_reservation
         FOREIGN KEY (activity_id)
             REFERENCES activity (activity_id),

@@ -219,4 +219,85 @@ class AuthController extends BaseController {
     public function dashboard (Request $request, Response $response, array $args): Response {
         return $this -> render($response, 'user/dashboard.php');
     }
+
+    /**
+     * Display the user information edit form
+     */
+    public function editUserInfo(Request $request, Response $response, array $args): Response
+    {
+        $user_id = SessionManager::get('user_id');
+
+        $user = $this->userM->findById($user_id);
+
+        $data['user'] = $user;
+
+        //! Temporary view name
+        return $this->render($response, 'userEditInfoView.php', $data);
+    }
+
+    public function updateUserInfo(Request $request, Response $response, array $args): Response
+    {
+        $user_info = $request->getParsedBody();
+        $fname = trim($user_info['fname']);
+        $lname = trim($user_info['lname']);
+        $email = trim($user_info['email']);
+        $phone = trim($user_info['phone']);
+        $password = trim($user_info['password']);
+        $confirm_password = trim($user_info['confirm_password']);
+
+        $errors = [];
+
+        foreach ($user_info as $key => $userData) {
+            if (empty($userData)) {
+                $errors[] = "All data must be filled";
+                break;
+            }
+        }
+
+        $fname = ucfirst($fname);
+        $lname = ucfirst($lname);
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Please input a valid email example@gmail.com";
+        } else if ($this->userM->emailExists($email)) {
+            $errors[] = "Email already assigned to a registered user";
+        }
+
+        if (!ctype_digit($phone)) {
+            $errors[] = "Phone number must only contain numbers";
+        }
+
+        if (str_contains($password, ";")) {
+            $errors[] = "Please enter a valid password";
+        }
+
+        if (strlen($password) < 8) {
+            $errors[] = "Password must be at least 8 characters long";
+        }
+
+        if ($password != $confirm_password) {
+            $errors[] = "Passwords do not match";
+        }
+
+        if (!empty($errors)) {
+            foreach ($errors as $key => $error) {
+                FlashMessage::error($error);
+                //! temporary route name
+                return $this->redirect($request, $response, 'user.edit');
+            }
+        }
+
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+        $user_id = SessionManager::get('user_id');
+
+        $this->userM->updateUserPassword($user_id, $hashed_password);
+        $this->userM->updateUserEmail($user_id, $email);
+        $this->userM->updateUserPhone($user_id, $phone);
+        $this->userM->updateUserFirstName($user_id, $fname);
+        $this->userM->updateUserLastName($user_id, $lname);
+
+        FlashMessage::success("Successfully updated your information!");
+        //! temporary route name
+        return $this->redirect($request, $response, 'user.edit');
+    }
 }
