@@ -5,6 +5,7 @@
 <script src="/sdecombats/assets/js/mobile-nav.js"></script>
 <script src="/sdecombats/assets/js/activity-popup.js"></script>
 <script src="/sdecombats/assets/js/gift-cards.js"></script>
+<script src="/sdecombats/assets/js/activities.js"></script>
 </body>
 
 </html>

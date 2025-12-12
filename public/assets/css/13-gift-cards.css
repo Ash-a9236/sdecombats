@@ -421,6 +421,23 @@
     margin: 0;
 }
 
+/* Bottom Divider */
+.divider {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #fbaa56,
+        #ffc300,
+        #fbaa56,
+        transparent
+    );
+    box-shadow: 0 0 15px rgba(251, 170, 86, 0.8),
+        0 0 30px rgba(251, 170, 86, 0.4);
+}
+
 /* Tablet Styles */
 @media (min-width: 768px) {
     .gift-cards-hero {
