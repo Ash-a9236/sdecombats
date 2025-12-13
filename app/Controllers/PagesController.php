@@ -41,6 +41,14 @@ class PagesController extends BaseController
         return $this->render($response, 'pages/gift-cards.php', $data);
     }
 
+    public function contact(Request $request, Response $response, array $args): Response
+    {
+        $data['data'] = [
+            'title' => 'Contact Us',
+        ];
+        return $this->render($response, 'pages/contact.php', $data);
+    }
+
     public function error(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'errorView.php');

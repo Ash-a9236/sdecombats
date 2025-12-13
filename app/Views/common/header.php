@@ -23,69 +23,21 @@
     <link rel="stylesheet" href="/sdecombats/assets/css/11-header.css">
     <link rel="stylesheet" href="/sdecombats/assets/css/12-footer.css">
     <link rel="stylesheet" href="/sdecombats/assets/css/13-gift-cards.css">
+    <link rel="stylesheet" href="/sdecombats/assets/css/14-contact.css">
 </head>
 
 <body>
 
-<?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-header.php'; ?>
-<?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-nav.php'; ?>
+    <?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-header.php'; 
+    ?>
+    <?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-nav.php'; 
+    ?>
 
-<header>
-    <script src="././assets/js/navbar.ts" defer></script>
-    <nav class="mobile-nav">
-        <a href="/menu" class="hamburger-menu">
-            <img src="./assets/icons/white/menu.svg" alt="Menu">
-        </a>
-        <a href="/home" class="mobile-logo">
-            <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png" alt="Sports De Combats Logo">
-        </a>
-        <a id="mobile-login-link" href="/login">
-            <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
-        </a>
-    </nav>
-    <nav class="desktop-nav">
-        <div id="nav-bar-first-row">
-            <a href="/home">
-                <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png"
-                     alt="Sports De Combats Logo">
-            </a>
-            <ul>
-                <li>
-                    <a class="nav-bar-link" href="/activities">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/archery.svg">
-                        <span class="nav-text">ARCHERY</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-bar-link" href="/competitions">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/trophy.svg">
-                        <span class="nav-text">COMPETITIONS</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/blog">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/blog.svg">
-                        <span class="nav-text">BLOG</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/contact">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/phone.svg">
-                        <span class="nav-text">FAQ & CONTACT</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/gift-cards">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/gift-card.svg">
-                        <span class="nav-text">GIFT CARDS</span>
-                    </a>
-                </li>
-            </ul>
-            <a id="login-link" href="/login">
-                <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
+    <header>
+        <script src="././assets/js/navbar.ts" defer></script>
+        <nav class="mobile-nav">
+            <a href="/menu" class="hamburger-menu">
+                <img src="./assets/icons/white/menu.svg" alt="Menu">
             </a>
             <a href="/home" class="mobile-logo">
                 <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png" alt="Sports De Combats Logo">
@@ -93,6 +45,57 @@
             <a id="mobile-login-link" href="/login">
                 <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
             </a>
+        </nav>
+        <nav class="desktop-nav">
+            <div id="nav-bar-first-row">
+                <a href="/home">
+                    <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png"
+                        alt="Sports De Combats Logo">
+                </a>
+                <ul>
+                    <li>
+                        <a class="nav-bar-link" href="/activities">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/archery.svg">
+                            <span class="nav-text">ARCHERY</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-bar-link" href="/competitions">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/trophy.svg">
+                            <span class="nav-text">COMPETITIONS</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-bar-link" href="/blog">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/blog.svg">
+                            <span class="nav-text">BLOG</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-bar-link" href="/contact">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/phone.svg">
+                            <span class="nav-text">FAQ & CONTACT</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-bar-link" href="/gift-cards">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/gift-card.svg">
+                            <span class="nav-text">GIFT CARDS</span>
+                        </a>
+                    </li>
+                </ul>
+                <a id="login-link" href="/login">
+                    <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
+                </a>
+                <a href="/home" class="mobile-logo">
+                    <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png" alt="Sports De Combats Logo">
+                </a>
+                <a id="mobile-login-link" href="/login">
+                    <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
+                </a>
         </nav>
         <nav class="desktop-nav">
             <div id="nav-bar-first-row">

@@ -366,6 +366,100 @@
     margin-top: 3rem;
 }
 
+/* Reservation Modal */
+.reservation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.reservation-modal.modal-active {
+    opacity: 1;
+}
+
+.reservation-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+.reservation-modal-content {
+    position: relative;
+    background: #2f2f2f;
+    border-radius: 0.75rem;
+    max-width: 1200px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 2px solid #fbaa56;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(251, 170, 86, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.reservation-modal.modal-active .reservation-modal-content {
+    transform: scale(1);
+}
+
+.reservation-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background: #3f3f3fff;
+    border: 2px solid #3f3f3fff;
+    color: #fff4e2;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.reservation-modal-close:hover {
+    background: linear-gradient(135deg, #fbaa56, #ffc300);
+    border-color: #ffc300;
+    color: #2f2f2f;
+    transform: rotate(90deg);
+}
+
+.reservation-modal-header {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid rgba(251, 170, 86, 0.2);
+}
+
+.reservation-modal-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg, #fbaa56, #ffc300);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.reservation-modal-body {
+    padding: 2rem;
+}
+
 /* Tablet Styles */
 @media (min-width: 768px) {
     .activities-container {
