@@ -53,7 +53,7 @@
 <?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-nav.php'; ?>
 
 <header>
-    <script src="././assets/js/navbar.ts" defer></script>
+    <script src="././assets/js/desktop-nav.js" defer></script>
     <nav class="mobile-nav">
         <a href="/menu" class="hamburger-menu">
             <img src="./assets/icons/white/menu.svg" alt="Menu">
@@ -68,7 +68,7 @@
     <nav class="desktop-nav">
         <div id="nav-bar-first-row">
             <a href="/home">
-                <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png"
+                <img id="nav-bar-logo" src="./assets/images/website-images/horizontal-logo.png"
                      alt="Sports De Combats Logo">
             </a>
             <ul>
@@ -167,7 +167,7 @@
     <nav class="scrolled-desktop-nav">
         <div id="nav-bar-first-row">
             <a href="/home">
-                <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png"
+                <img id="nav-bar-logo" src="./assets/images/website-images/small-logo.png""
                      alt="Sports De Combats Logo">
             </a>
             <ul>
