@@ -51,6 +51,12 @@ ________________
 <br>
 
 
+This documentation page contains what is called the **Database Dictionnary**. Sdecombats is a web application which uses a databse made to allow expansion, reusability, and modification easily. Because simply looking at the code or the database diagram does not always give all the information, this page is there to clarify how the database works.
+
+
+To access the database diagram : [<span style="color: var(--link)">CLICK HERE</span>](https://drive.google.com/file/d/14gugtfFWU8OkBomGb8nQPA7o_9y-_INB/view?usp=sharing)
+
+
 <br> <br>
 
 ________
@@ -60,6 +66,8 @@ ________
 ________________
 
 <br>
+
+The stand alone tables are the tables which will be later used by other tables. They mostly contain the base information needed in the database.
 
 <br>
 
@@ -265,6 +273,8 @@ ________________
 <br>
 
 ```Connects with table [STAFF](#staff) ```
+
+Note that the logger table is made to keep track of all the actions a staff member makes. Any operation made by a staff member (the tavle is not accessible by the client will be recorded to be accessed at any time.
 
 | COLUMN    | DATATYPE  | CONSTRAINTS                                | NOTES                                                                                                                                                                                                                  |
 |-----------|-----------|--------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
