@@ -23,217 +23,262 @@
     <link rel="stylesheet" href="/sdecombats/assets/css/11-header.css">
     <link rel="stylesheet" href="/sdecombats/assets/css/12-footer.css">
     <link rel="stylesheet" href="/sdecombats/assets/css/13-gift-cards.css">
+    <link rel="stylesheet" href="/sdecombats/assets/css/14-contact.css">
 </head>
 
 <body>
-<<<<<<< HEAD
-    <?php include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-header.php'; ?>
-    <?php include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-nav.php'; ?>
 
-    <main class="main-content">
-=======
+    <?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-header.php'; 
+    ?>
+    <?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-nav.php'; 
+    ?>
 
-<?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-header.php'; ?>
-<?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-nav.php'; ?>
-
-<header>
-    <script src="././assets/js/navbar.ts" defer></script>
-    <nav class="mobile-nav">
-        <a href="/menu" class="hamburger-menu">
-            <img src="./assets/icons/white/menu.svg" alt="Menu">
-        </a>
-        <a href="/home" class="mobile-logo">
-            <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png" alt="Sports De Combats Logo">
-        </a>
-        <a id="mobile-login-link" href="/login">
-            <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
-        </a>
-    </nav>
-    <nav class="desktop-nav">
-        <div id="nav-bar-first-row">
-            <a href="/home">
-                <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png"
-                     alt="Sports De Combats Logo">
+    <header>
+        <script src="././assets/js/navbar.ts" defer></script>
+        <nav class="mobile-nav">
+            <a href="/menu" class="hamburger-menu">
+                <img src="./assets/icons/white/menu.svg" alt="Menu">
             </a>
-            <ul>
-                <li>
-                    <a class="nav-bar-link" href="/activities">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/archery.svg">
-                        <span class="nav-text">ARCHERY</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-bar-link" href="/competitions">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/trophy.svg">
-                        <span class="nav-text">COMPETITIONS</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/blog">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/blog.svg">
-                        <span class="nav-text">BLOG</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/contact">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/phone.svg">
-                        <span class="nav-text">FAQ & CONTACT</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/gift-cards">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/gift-card.svg">
-                        <span class="nav-text">GIFT CARDS</span>
-                    </a>
-                </li>
-            </ul>
-            <a id="login-link" href="/login">
+            <a href="/home" class="mobile-logo">
+                <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png" alt="Sports De Combats Logo">
+            </a>
+            <a id="mobile-login-link" href="/login">
                 <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
             </a>
-        </div>
-        <div id="nav-bar-second-row">
-            <ul>
-                <li>
-                    <a class="nav-bar-link" href="/activities">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/axe.svg">
-                        <span class="nav-text">ALL ACTIVITIES</span>
-                    </a>
-                </li>
+        </nav>
+        <nav class="desktop-nav">
+            <div id="nav-bar-first-row">
+                <a href="/home">
+                    <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png"
+                        alt="Sports De Combats Logo">
+                </a>
+                <ul>
+                    <li>
+                        <a class="nav-bar-link" href="/activities">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/archery.svg">
+                            <span class="nav-text">ARCHERY</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-bar-link" href="/competitions">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/trophy.svg">
+                            <span class="nav-text">COMPETITIONS</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/bow-heart.svg">
-                        <span class="nav-text">DATE NIGHT</span>
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/blog">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/blog.svg">
+                            <span class="nav-text">BLOG</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/small-groups">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/small-group.svg">
-                        <span class="nav-text">SMALL GROUPS</span>
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/contact">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/phone.svg">
+                            <span class="nav-text">FAQ & CONTACT</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/big-groups">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/big-group.svg">
-                        <span class="nav-text">BIG GROUPS</span>
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/gift-cards">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/gift-card.svg">
+                            <span class="nav-text">GIFT CARDS</span>
+                        </a>
+                    </li>
+                </ul>
+                <a id="login-link" href="/login">
+                    <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
+                </a>
+                <a href="/home" class="mobile-logo">
+                    <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png" alt="Sports De Combats Logo">
+                </a>
+                <a id="mobile-login-link" href="/login">
+                    <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
+                </a>
+        </nav>
+        <nav class="desktop-nav">
+            <div id="nav-bar-first-row">
+                <a href="/home">
+                    <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png"
+                        alt="Sports De Combats Logo">
+                </a>
+                <ul>
+                    <li>
+                        <a class="nav-bar-link" href="/activities">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/archery.svg">
+                            <span class="nav-text">ARCHERY</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-bar-link" href="/competitions">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/trophy.svg">
+                            <span class="nav-text">COMPETITIONS</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/birthdays">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/birthday.svg">
-                        <span class="nav-text">BIRTHDAYS</span>
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/blog">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/blog.svg">
+                            <span class="nav-text">BLOG</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/corporate">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/event.svg">
-                        <span class="nav-text">CORPORATE EVENTS</span>
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/contact">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/phone.svg">
+                            <span class="nav-text">FAQ & CONTACT</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/outside-events">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/map-location-pin.svg">
-                        <span class="nav-text">OUTSIDE EVENTS</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div id="separator-div"></div>
-    </nav>
-    <nav class="scrolled-desktop-nav">
-        <div id="nav-bar-first-row">
-            <a href="/home">
-                <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png"
-                     alt="Sports De Combats Logo">
-            </a>
-            <ul>
-                <li>
-                    <a class="nav-bar-link" href="/archery">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/archery.svg">
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-bar-link" href="/competitions">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/trophy.svg">
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/gift-cards">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/gift-card.svg">
+                            <span class="nav-text">GIFT CARDS</span>
+                        </a>
+                    </li>
+                </ul>
+                <a id="login-link" href="/login">
+                    <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
+                </a>
+            </div>
+            <div id="nav-bar-second-row">
+                <ul>
+                    <li>
+                        <a class="nav-bar-link" href="/activities">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/axe.svg">
+                            <span class="nav-text">ALL ACTIVITIES</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/blog">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/blog.svg">
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/bow-heart.svg">
+                            <span class="nav-text">DATE NIGHT</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/contact">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/phone.svg">
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/small-groups">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/small-group.svg">
+                            <span class="nav-text">SMALL GROUPS</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/gift-card">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/gift-card.svg">
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/big-groups">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/big-group.svg">
+                            <span class="nav-text">BIG GROUPS</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/activities">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/axe.svg">
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/birthdays">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/birthday.svg">
+                            <span class="nav-text">BIRTHDAYS</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/date-night">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/bow-heart.svg">
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/corporate">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/event.svg">
+                            <span class="nav-text">CORPORATE EVENTS</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/small-groups">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/small-group.svg">
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/outside-events">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/map-location-pin.svg">
+                            <span class="nav-text">OUTSIDE EVENTS</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="separator-div"></div>
+        </nav>
+        <nav class="scrolled-desktop-nav">
+            <div id="nav-bar-first-row">
+                <a href="/home">
+                    <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png"
+                        alt="Sports De Combats Logo">
+                </a>
+                <ul>
+                    <li>
+                        <a class="nav-bar-link" href="/archery">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/archery.svg">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-bar-link" href="/competitions">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/trophy.svg">
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/big-groups">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/big-group.svg">
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/blog">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/blog.svg">
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/birthdays">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/birthday.svg">
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/contact">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/phone.svg">
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/corporate">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/event.svg">
-                    </a>
-                </li>
+                    <li>
+                        <a class="nav-bar-link" href="/gift-card">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/gift-card.svg">
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="nav-bar-link" href="/outside-events">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/map-location-pin.svg">
-                    </a>
-                </li>
-            </ul>
-            <a id="login-link" href="/login">
-                <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
-            </a>
-        </div>
-    </nav>
-</header>
+                    <li>
+                        <a class="nav-bar-link" href="/activities">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/axe.svg">
+                        </a>
+                    </li>
 
-<body>
+                    <li>
+                        <a class="nav-bar-link" href="/date-night">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/bow-heart.svg">
+                        </a>
+                    </li>
 
+                    <li>
+                        <a class="nav-bar-link" href="/small-groups">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/small-group.svg">
+                        </a>
+                    </li>
 
->>>>>>> 2279c1cc7abc9b34bef50b90289b45ba754772de
+                    <li>
+                        <a class="nav-bar-link" href="/big-groups">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/big-group.svg">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-bar-link" href="/birthdays">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/birthday.svg">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-bar-link" href="/corporate">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/event.svg">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-bar-link" href="/outside-events">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/map-location-pin.svg">
+                        </a>
+                    </li>
+                </ul>
+                <a id="login-link" href="/login">
+                    <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <body>
