@@ -99,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     description: "Additional parking spots (1 FREE included)",
                 },
             ],
-            bookingUrl: "#",
         },
         "teens-birthday": {
             title: "TEENS ADVENTURE BIRTHDAY PARTY",
@@ -162,7 +161,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     description: "Additional parking spots (1 FREE included)",
                 },
             ],
-            bookingUrl: "#",
         },
         "special-occasions": {
             title: "SPECIAL OCCASIONS",
@@ -260,7 +258,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Zero tolerance for inappropriate/unsafe behavior (no refund)",
             ],
             pricing: "Packages range from $29.99 to $84.99 per person",
-            bookingUrl: "#",
         },
         "corporate-events": {
             title: "CORPORATE TEAM BUILDING",
@@ -386,7 +383,6 @@ document.addEventListener("DOMContentLoaded", function () {
             ],
             pricing:
                 "Packages range from $24.99 to $79.99 per person (weekdays)",
-            bookingUrl: "#",
         },
     };
 
@@ -609,7 +605,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document
             .getElementById("bookPackage")
             .addEventListener("click", function () {
-                window.location.href = data.bookingUrl;
+                closeModal();
+                // Trigger reservation page popup
+                const reservationPage =
+                    document.querySelector(".reservation-page");
+                if (reservationPage) {
+                    reservationPage.classList.add("active");
+                    document.body.style.overflow = "hidden";
+                }
             });
 
         document.addEventListener("keydown", handleEscape);
@@ -634,6 +637,34 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleEscape(e) {
         if (e.key === "Escape") {
             closeModal();
+            closeReservationPopup();
         }
     }
+
+    // Close Reservation Popup
+    function closeReservationPopup() {
+        const reservationPage = document.querySelector(".reservation-page");
+        if (reservationPage && reservationPage.classList.contains("active")) {
+            reservationPage.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+    }
+
+    // Add escape key listener for reservation popup globally
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            closeReservationPopup();
+        }
+    });
+
+    // Add click outside to close reservation popup
+    document.addEventListener("click", function (e) {
+        const reservationPage = document.querySelector(".reservation-page");
+        if (reservationPage && reservationPage.classList.contains("active")) {
+            // Check if click is directly on the reservation-page backdrop (not inside the form)
+            if (e.target === reservationPage) {
+                closeReservationPopup();
+            }
+        }
+    });
 });

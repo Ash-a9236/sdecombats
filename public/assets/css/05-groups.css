@@ -316,6 +316,24 @@
     box-shadow: 0 5px 15px rgba(251, 170, 86, 0.4);
 }
 
+/* Hide reservation popup by default on groups pages */
+.reservation-page {
+    display: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.9);
+    overflow-y: auto;
+}
+
+/* Show reservation popup when triggered */
+.reservation-page.active {
+    display: block !important;
+}
+
 /* Dates Grid */
 .dates-grid {
     max-width: 1400px;
@@ -1452,6 +1470,10 @@
     color: rgba(255, 244, 226, 0.8);
     font-size: 0.9rem;
     margin: 0;
+}
+
+.reservation-form-container-compact {
+    transform: scale(0.85);
 }
 
 /* Features & Services */

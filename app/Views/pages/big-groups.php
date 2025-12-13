@@ -209,5 +209,5 @@ $user = UserContext::getCurrentUser();
     <div class="small-groups-bottom-divider"></div>
 </main>
 
-
+<?php include __DIR__ . '/../components/dashboard-make-reservation.php'; ?>
 <?php ViewHelper::loadFooter(); ?>
