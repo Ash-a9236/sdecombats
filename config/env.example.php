@@ -25,9 +25,13 @@ declare(strict_types=1);
 
 return function (array $settings): array {
     // Database credentials
+    $settings['db']['host'] = 'localhost';
+    $settings['db']['port'] = 3306;
     $settings['db']['username'] = 'root';
-    $settings['db']['database'] = 'worldcup';
-    $settings['db']['password'] = '';
+    $settings['db']['database'] = 'sdecombats_db';
+    $settings['db']['password'] = 'password';
+    $settings['db']['charset'] = 'utf8mb4';
+    $settings['db']['collation'] = 'utf8mb4_unicode_ci';
 
     //TODO: Additional settings/configs can be declared here.
     return $settings;

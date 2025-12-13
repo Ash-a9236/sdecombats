@@ -1,0 +1,41 @@
+@media (min-width: 768px) {
+    .mobile-header {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: none;
+    }
+
+    .header {
+        display: flex;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .text-card {
+        max-width: 600px;
+    }
+
+    .text-card-left {
+        margin-left: auto;
+        margin-right: var(--spacing-xl);
+    }
+
+    .text-card-right {
+        margin-left: var(--spacing-xl);
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-section {
+        min-height: 80vh;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+    }
+}

@@ -1,0 +1,516 @@
+/* =================================================================
+   13. GIFT CARDS PAGE
+   ================================================================= */
+
+/* Hero Section */
+.gift-cards-hero {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, #ff7700 0%, #ffc300 100%);
+    color: var(--color-white);
+}
+
+.gift-cards-hero-content {
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+.gift-cards-hero-subtitle {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.gift-cards-hero-title {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.gift-cards-hero-secondary {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+}
+
+.gift-cards-hero-tagline {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* Activities Carousel */
+.gift-cards-activities {
+    padding: 2rem 0;
+    background: var(--color-background);
+}
+
+.gift-cards-activities-carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0 1.5rem 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.gift-cards-activities-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.gift-cards-activity-card {
+    flex: 0 0 70%;
+    scroll-snap-align: center;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gift-cards-activity-card:active {
+    transform: scale(0.98);
+}
+
+.gift-cards-activity-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+}
+
+/* Carousel Indicators */
+.gift-cards-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 1.5rem;
+}
+
+.gift-cards-carousel-indicators .indicator {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-text-light);
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.gift-cards-carousel-indicators .indicator.active {
+    opacity: 1;
+    background: var(--color-primary);
+    transform: scale(1.2);
+}
+
+/* Description Section */
+.gift-cards-description {
+    padding: 2rem 1.5rem;
+    background: var(--color-white);
+}
+
+.gift-cards-description-content {
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.gift-cards-description-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.gift-cards-description-highlight {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0;
+}
+
+/* CTA Section */
+.gift-cards-cta {
+    padding: 2rem 1.5rem;
+    background: var(--color-background);
+}
+
+.gift-cards-cta-content {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+.gift-cards-cta-card {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gift-cards-cta-card:active {
+    transform: scale(0.98);
+}
+
+.gift-cards-cta-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    display: block;
+}
+
+.gift-cards-cta-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.gift-cards-cta-text {
+    color: var(--color-white);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Benefits Section */
+.gift-cards-benefits {
+    padding: 3rem 1.5rem;
+    background: var(--color-white);
+}
+
+.gift-cards-benefits-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.gift-cards-benefits-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.gift-cards-benefits-grid {
+    display: grid;
+    gap: 2rem;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.gift-cards-benefit-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--color-background);
+    border-radius: 0.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gift-cards-benefit-card:active {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.gift-cards-benefit-icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+.gift-cards-benefit-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.gift-cards-benefit-title {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+}
+
+.gift-cards-benefit-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+/* Purchase Section */
+.gift-cards-purchase {
+    padding: 3rem 1.5rem;
+    background: var(--color-background);
+}
+
+.gift-cards-purchase-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.gift-cards-purchase-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.gift-cards-purchase-note {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-style: italic;
+    margin: 0;
+}
+
+.gift-cards-purchase-widget {
+    max-width: 50rem;
+    margin: 0 auto 2rem;
+}
+
+.gift-cards-purchase-placeholder {
+    background: var(--color-white);
+    border: 2px dashed var(--color-border);
+    border-radius: 0.75rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.gift-cards-purchase-icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    opacity: 0.5;
+}
+
+.gift-cards-purchase-placeholder-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
+.gift-cards-purchase-placeholder-subtext {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+.gift-cards-redeem {
+    text-align: center;
+}
+
+.gift-cards-redeem-link {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--color-secondary);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.gift-cards-redeem-link:hover,
+.gift-cards-redeem-link:focus {
+    background: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* FAQ Section */
+.gift-cards-faq {
+    padding: 3rem 1.5rem;
+    background: var(--color-white);
+}
+
+.gift-cards-faq-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.gift-cards-faq-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.gift-cards-faq-list {
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.gift-cards-faq-item {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.gift-cards-faq-item:last-child {
+    border-bottom: none;
+}
+
+.gift-cards-faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 1.25rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.3s ease;
+}
+
+.gift-cards-faq-question:hover {
+    padding-left: 1rem;
+}
+
+.gift-cards-faq-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-primary);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.gift-cards-faq-item.active .gift-cards-faq-icon {
+    transform: rotate(45deg);
+}
+
+.gift-cards-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.gift-cards-faq-item.active .gift-cards-faq-answer {
+    max-height: 20rem;
+    padding-bottom: 1.25rem;
+}
+
+.gift-cards-faq-answer p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+/* Bottom Divider */
+.divider {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #fbaa56,
+        #ffc300,
+        #fbaa56,
+        transparent
+    );
+    box-shadow: 0 0 15px rgba(251, 170, 86, 0.8),
+        0 0 30px rgba(251, 170, 86, 0.4);
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+    .gift-cards-hero {
+        padding: 3rem 2rem;
+    }
+
+    .gift-cards-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .gift-cards-hero-secondary {
+        font-size: 1.5rem;
+    }
+
+    .gift-cards-activities-carousel {
+        padding: 0 2rem 1rem;
+    }
+
+    .gift-cards-activity-card {
+        flex: 0 0 45%;
+    }
+
+    .gift-cards-cta-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gift-cards-benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+
+    .gift-cards-benefit-icon {
+        width: 5rem;
+        height: 5rem;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    .gift-cards-hero {
+        padding: 4rem 2rem;
+    }
+
+    .gift-cards-hero-title {
+        font-size: 3rem;
+    }
+
+    .gift-cards-hero-secondary {
+        font-size: 1.75rem;
+    }
+
+    .gift-cards-activities-carousel {
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow-x: visible;
+        scroll-snap-type: none;
+    }
+
+    .gift-cards-activity-card {
+        flex: 0 0 18%;
+    }
+
+    .gift-cards-activity-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .gift-cards-benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gift-cards-benefit-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+}

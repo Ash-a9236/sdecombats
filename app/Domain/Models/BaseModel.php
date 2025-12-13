@@ -14,7 +14,7 @@ use PDO;
  * It is intended to be extended by specific model classes.
  *
  * @example
- * class UserModel extends BaseModel {
+ * class UserM extends BaseModel {
  *     public function findById(int $id): array|false {
  *         return $this->selectOne('SELECT * FROM users WHERE id = ?', [$id]);
  *     }
@@ -94,6 +94,33 @@ class BaseModel
     protected function lastInsertId(?string $name = null): string
     {
         return $this->pdo->lastInsertId($name);
+    }
+
+    /**
+     * Gets the last inserted staff (the new staff member)
+     *
+     * @return array|false Single record as array, or false if not found
+     */
+    protected function lastInsertStaff(): array | false
+    {
+        $sql = "SELECT * FROM staff WHERE id = LAST_INSERT_ID()";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->fetch();
+    }
+
+    public function lastInsertUser(): array | false
+    {
+        $sql = "SELECT * FROM users WHERE user_id = LAST_INSERT_ID()";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->fetch();
+    }
+
+    public function lastInsertMembershipId(): int | false
+    {
+        $sql = "SELECT * FROM membership WHERE membership_id = LAST INSERT_ID()";
+        $stmt = $this->pdo->prepare($sql);
+        $membership = $stmt->fetch();
+        return $membership['membership_id'];
     }
 
     /**
