@@ -285,8 +285,13 @@ document.addEventListener("DOMContentLoaded", function () {
             .getElementById("bookPackage")
             .addEventListener("click", function () {
                 closeModal();
-                window.location.href =
-                    "https://bookeo.com/sportsdecombats?category=41560WR4R4618080A1D677";
+                // Trigger reservation page popup
+                const reservationPage =
+                    document.querySelector(".reservation-page");
+                if (reservationPage) {
+                    reservationPage.classList.add("active");
+                    document.body.style.overflow = "hidden";
+                }
             });
 
         document.addEventListener("keydown", handleEscape);
@@ -389,7 +394,13 @@ document.addEventListener("DOMContentLoaded", function () {
             .getElementById("bookDate")
             .addEventListener("click", function () {
                 closeModal();
-                window.location.href = "#";
+                // Trigger reservation page popup
+                const reservationPage =
+                    document.querySelector(".reservation-page");
+                if (reservationPage) {
+                    reservationPage.classList.add("active");
+                    document.body.style.overflow = "hidden";
+                }
             });
 
         document.addEventListener("keydown", handleEscape);
@@ -414,6 +425,34 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleEscape(e) {
         if (e.key === "Escape") {
             closeModal();
+            closeReservationPopup();
         }
     }
+
+    // Close Reservation Popup
+    function closeReservationPopup() {
+        const reservationPage = document.querySelector(".reservation-page");
+        if (reservationPage && reservationPage.classList.contains("active")) {
+            reservationPage.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+    }
+
+    // Add escape key listener for reservation popup globally
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            closeReservationPopup();
+        }
+    });
+
+    // Add click outside to close reservation popup
+    document.addEventListener("click", function (e) {
+        const reservationPage = document.querySelector(".reservation-page");
+        if (reservationPage && reservationPage.classList.contains("active")) {
+            // Check if click is directly on the reservation-page backdrop (not inside the form)
+            if (e.target === reservationPage) {
+                closeReservationPopup();
+            }
+        }
+    });
 });
