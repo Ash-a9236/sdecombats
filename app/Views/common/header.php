@@ -170,83 +170,28 @@
                 <img id="nav-bar-logo" src="./assets/images/website-images/small-logo.png""
                      alt="Sports De Combats Logo">
             </a>
-            <ul>
-                <li>
-                    <a class="nav-bar-link" href="/archery">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/archery.svg">
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-bar-link" href="/competitions">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/trophy.svg">
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/blog">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/blog.svg">
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/contact">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/phone.svg">
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/gift-card">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/gift-card.svg">
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/activities">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/axe.svg">
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/date-night">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/bow-heart.svg">
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/small-groups">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/small-group.svg">
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/big-groups">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/big-group.svg">
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/birthdays">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/birthday.svg">
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/corporate">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/event.svg">
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-bar-link" href="/outside-events">
-                        <img class="nav-bar-link-icon" src="./assets/icons/white/map-location-pin.svg">
-                    </a>
-                </li>
-            </ul>
-            <a id="login-link" href="/login">
+            <a id="mobile-login-link" href="./login">
                 <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
             </a>
-        </div>
-    </nav>
-</header>
+        </nav>
+        <nav class="desktop-nav">
+            <div id="nav-bar-first-row">
+                <a href="/home">
+                    <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png"
+                        alt="Sports De Combats Logo">
+                </a>
+                <ul>
+                    <li>
+                        <a class="nav-bar-link" href="/activities">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/archery.svg">
+                            <span class="nav-text">ARCHERY</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-bar-link" href="/competitions">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/trophy.svg">
+                            <span class="nav-text">COMPETITIONS</span>
+                        </a>
+                    </li>
 
 <body>
