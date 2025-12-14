@@ -10,6 +10,7 @@ $title = $data['title'] ?? 'Dashboard';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?> - Sports de Combats</title>
     <link rel="stylesheet" href="/sdecombats/public/assets/css/00-root.css">
+    <link rel="stylesheet" href="/sdecombats/public/assets/css/01-auth.css">
     <link rel="stylesheet" href="/sdecombats/public/assets/css/10-components.css">
     <link rel="stylesheet" href="/sdecombats/public/assets/css/09-dashboard.css">
 </head>
@@ -39,6 +40,18 @@ $title = $data['title'] ?? 'Dashboard';
                         <span class="nav-text">Update Info</span>
                     </button>
                 </a>
+                <a href="/sdecombats/dashboard/user/update-user-info">
+                    <button class="nav-btn <?php echo $section === 'update-user-info' ? 'active' : ''; ?>">
+                        <span class="nav-icon">👤</span>
+                        <span class="nav-text">Update Account Info</span>
+                    </button>
+                </a>
+                <a href="/sdecombats/dashboard/user/update-password">
+                    <button class="nav-btn <?php echo $section === 'update-password' ? 'active' : ''; ?>">
+                        <span class="nav-icon">🔑</span>
+                        <span class="nav-text">Change Password</span>
+                    </button>
+                </a>
                 <a href="/sdecombats/sign-out">
                     <button class="nav-btn" style="margin-top: 2rem; border-color: #ff4444;">
                         <span class="nav-icon">🚪</span>
@@ -61,6 +74,12 @@ $title = $data['title'] ?? 'Dashboard';
                     break;
                 case 'update-info':
                     include __DIR__ . '/../components/dashboard-update-info.php';
+                    break;
+                case 'update-user-info':
+                    include __DIR__ . '/../components/dashboard-update-user-info.php';
+                    break;
+                case 'update-password':
+                    include __DIR__ . '/../components/dashboard-update-password.php';
                     break;
                 default:
                     // Default dashboard view
