@@ -26,7 +26,7 @@ class PagesController extends BaseController
             'message' => 'Welcome to the home page',
             //'carousel-images' => array of images
         ];
-        return $this->render($response, 'homeView.php', $data);
+        return $this->render($response, 'pages/home.php', $data);
     }
 
     public function menu(Request $request, Response $response, array $args): Response
