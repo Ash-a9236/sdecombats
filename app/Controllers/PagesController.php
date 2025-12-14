@@ -229,7 +229,7 @@ class PagesController extends BaseController
         if (is_numeric($email)) {
             $user = $this -> staffM -> verifyCredentials($email, $password);
 
-            if ($user != null) {
+            if ($user != 500) {
                 SessionManager ::set('user_id', $user['user_id']);
                 SessionManager ::set('name', $user['name']);
                 SessionManager ::set('level', $user['level']);
@@ -248,7 +248,7 @@ class PagesController extends BaseController
 
         } else if (str_contains($email, '@') && !is_numeric($email)) {
             $user = $this -> userM -> verifyCredentials($email, $password);
-            if ($user != null) {
+            if ($user != 500) {
                 SessionManager ::set('language_id', $user['language_id']);
                 SessionManager ::set('user_id', $user['user_id']);
                 SessionManager ::set('fname', $user['fname']);

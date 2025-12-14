@@ -66,6 +66,10 @@ return static function (Slim\App $app): void {
         $group->get('/reservations', [UserController::class, 'displayReservations'])->setName('dashboard.reservations');
         $group->get('/membership', [UserController::class, 'membership'])->setName('dashboard.membership');
         $group->get('/update-info', [UserController::class, 'updateInfo'])->setName('dashboard.update-info');
+        $group->get('/update-user-info', [UserController::class, 'updateUserInfo'])->setName('dashboard.update-user-info');
+        $group->post('/update-user-info', [UserController::class, 'submitUpdateUserInfo'])->setName('dashboard.submit-update-user-info');
+        $group->get('/update-password', [UserController::class, 'updatePassword'])->setName('dashboard.update-password');
+        $group->post('/update-password', [UserController::class, 'submitUpdatePassword'])->setName('dashboard.submit-update-password');
     })->add(AuthMiddleware::class);
 
     $app->group('/dashboard/employee', function ($group) {
