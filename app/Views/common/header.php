@@ -28,9 +28,9 @@
 
 <body>
 
-    <?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-header.php'; 
+    <?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-header.php';
     ?>
-    <?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-nav.php'; 
+    <?php //include APP_VIEWS_PATH . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'mobile-nav.php';
     ?>
 
     <header>
@@ -42,7 +42,7 @@
             <a href="/home" class="mobile-logo">
                 <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png" alt="Sports De Combats Logo">
             </a>
-            <a id="mobile-login-link" href="/login">
+            <a id="mobile-login-link" href="./login">
                 <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
             </a>
         </nav>
@@ -87,13 +87,13 @@
                         </a>
                     </li>
                 </ul>
-                <a id="login-link" href="/login">
+                <a id="login-link" href="./login">
                     <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
                 </a>
                 <a href="/home" class="mobile-logo">
                     <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png" alt="Sports De Combats Logo">
                 </a>
-                <a id="mobile-login-link" href="/login">
+                <a id="mobile-login-link" href="./login">
                     <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
                 </a>
         </nav>
@@ -138,7 +138,7 @@
                         </a>
                     </li>
                 </ul>
-                <a id="login-link" href="/login">
+                <a id="login-link" href="./login">
                     <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
                 </a>
             </div>
@@ -274,7 +274,7 @@
                         </a>
                     </li>
                 </ul>
-                <a id="login-link" href="/login">
+                <a id="login-link" href="./login">
                     <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
                 </a>
             </div>

@@ -9,6 +9,7 @@ declare(strict_types=1);
 use App\Controllers\PagesController;
 use App\Controllers\AdminController;
 use App\Controllers\UserController;
+use App\Middleware\AuthMiddleware;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -65,7 +66,7 @@ return static function (Slim\App $app): void {
         $group->get('/reservations', [UserController::class, 'displayReservations'])->setName('dashboard.reservations');
         $group->get('/membership', [UserController::class, 'membership'])->setName('dashboard.membership');
         $group->get('/update-info', [UserController::class, 'updateInfo'])->setName('dashboard.update-info');
-    });
+    })->add(AuthMiddleware::class);
 
     $app->group('/dashboard/employee', function ($group) {
         $group->get('', [EmployeeController::class, 'dashboard'])->setName('dashboard.index');
