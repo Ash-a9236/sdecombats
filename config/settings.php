@@ -14,8 +14,8 @@ $settings = require __DIR__ . '/defaults.php';
 // Overwrite default settings with environment specific local settings
 $configFiles = [
     __DIR__ . sprintf('/local.%s.php', $app_environment),
-    __DIR__ . '/env.php',
-    __DIR__ . '/../../env.php',
+    __DIR__ . '/env.example.php',
+    __DIR__ . '/../../env.example.php',
 ];
 
 foreach ($configFiles as $configFile) {
