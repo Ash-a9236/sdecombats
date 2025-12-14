@@ -103,3 +103,7 @@ $user = UserContext ::getCurrentUser();
         <button type="button" class="base-button">BOOK YOUR NEXT ADVENTURE TODAY</button>
     </a>
 </div>
+
+<?php
+
+ViewHelper ::loadFooter('Home');
