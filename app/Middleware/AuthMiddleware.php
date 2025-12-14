@@ -22,7 +22,7 @@ class AuthMiddleware implements MiddlewareInterface
         if (!$isAuthenticated) {
             FlashMessage::error("Please log in to access this page.");
             $routeParser = RouteContext::fromRequest($request)->getRouteParser();
-            $loginUrl = $routeParser->urlFor('auth.login');
+            $loginUrl = $routeParser->urlFor('pages.signin.form');
             $psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
             $response = $psr17Factory->createResponse(302);
             return $response->withHeader('Location', $loginUrl)->withStatus(302);

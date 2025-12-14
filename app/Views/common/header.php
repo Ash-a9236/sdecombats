@@ -170,6 +170,29 @@
                 <img id="nav-bar-logo" src="./assets/images/website-images/small-logo.png""
                      alt="Sports De Combats Logo">
             </a>
+            <a id="mobile-login-link" href="./login">
+                <img class="nav-bar-link-icon" src="./assets/icons/white/user.svg" alt="Login Icon">
+            </a>
+        </nav>
+        <nav class="desktop-nav">
+            <div id="nav-bar-first-row">
+                <a href="/home">
+                    <img id="nav-bar-logo" src="./assets/images/placeholders/logo_placeholder.png"
+                        alt="Sports De Combats Logo">
+                </a>
+                <ul>
+                    <li>
+                        <a class="nav-bar-link" href="/activities">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/archery.svg">
+                            <span class="nav-text">ARCHERY</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-bar-link" href="/competitions">
+                            <img class="nav-bar-link-icon" src="./assets/icons/white/trophy.svg">
+                            <span class="nav-text">COMPETITIONS</span>
+                        </a>
+                    </li>
             <ul>
                 <li>
                     <a class="nav-bar-link" href="/archery">

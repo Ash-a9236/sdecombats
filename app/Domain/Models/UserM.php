@@ -31,8 +31,9 @@ class UserM extends BaseModel {
             $data['password']
         ]);
 
-        $sql = "SELECT email, password FROM users WHERE user_id = last_insert_id()";
-        $user = $this -> selectOne($sql);
+        $lastInsertId = $this->lastInsertId();
+        $sql = "SELECT email, password FROM users WHERE user_id = ?";
+        $user = $this->selectOne($sql, [$lastInsertId]);
 
         if ($data['password'] == $user['password'] && $data['email'] == $user['email']) {
             return 201;
@@ -46,9 +47,10 @@ class UserM extends BaseModel {
      * @param string $email The input email to check
      * @return bool True if a user with the email already exists and false if not
      */
-    public function emailExists (string $email): bool {
-        $sql = "SELECT COUNT(*) FROM users WHERE email = ?)";
-        $count = $this -> execute($sql, [$email]);
+    public function emailExists(string $email): bool
+    {
+        $sql = "SELECT COUNT(*) FROM users WHERE email = ?";
+        $count = $this->count($sql, [$email]);
         return $count > 0;
     }
 
@@ -215,7 +217,7 @@ class UserM extends BaseModel {
             return 500;
         }
 
-        if (password_verify($password, $user['password_hash'])) {
+        if (password_verify($password, $user['password'])) {
             return $user;
         } else {
             return 500;
