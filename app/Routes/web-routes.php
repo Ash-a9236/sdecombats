@@ -65,6 +65,7 @@ return static function (Slim\App $app): void {
         $group->get('/make-reservation', [UserController::class, 'makeReservation'])->setName('dashboard.make-reservation');
         $group->get('/reservations', [UserController::class, 'displayReservations'])->setName('dashboard.reservations');
         $group->get('/membership', [UserController::class, 'membership'])->setName('dashboard.membership');
+        $group->post('/membership', [UserController::class, 'createMembership'])->setName('dashboard.create-membership');
         $group->get('/update-info', [UserController::class, 'updateInfo'])->setName('dashboard.update-info');
         $group->get('/update-user-info', [UserController::class, 'updateUserInfo'])->setName('dashboard.update-user-info');
         $group->post('/update-user-info', [UserController::class, 'submitUpdateUserInfo'])->setName('dashboard.submit-update-user-info');

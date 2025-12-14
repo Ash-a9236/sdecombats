@@ -11,7 +11,7 @@ use App\Helpers\SessionManager;
 <div>
     <?= App\Helpers\FlashMessage::render() ?></div>
 
-<div class="auth-form-wrapper">
+<div class="form-section-medium">
     <form method="POST" action="./update-password">
         <input class="base-form-input" type="password" name="password" id="password"
             placeholder="Current Password"
