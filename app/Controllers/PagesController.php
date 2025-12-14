@@ -14,12 +14,12 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class PagesController extends BaseController {
-    public function __construct (Container $container, PagesM $pagesM, private UserM $userM, private StaffM $staffM) {
+    public function __construct (Container $container, private PagesM $pagesM, private UserM $userM, private StaffM $staffM) {
         parent ::__construct($container);
     }
 
     public function index (Request $request, Response $response, array $args): Response {
-        $images = $this -> $pagesM -> getHomeData();
+        $images = $this -> pagesM -> getHomeData();
         $data['data'] = [
             'title' => 'Home',
             'message' => 'Welcome to the home page',

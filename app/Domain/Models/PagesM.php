@@ -10,7 +10,7 @@ class PagesM extends BaseModel {
     }
 
     public function getHomeData (): mixed {
-        $sql = "SELECT * FROM images WHERE img_id LIKE 'HOMEP_CRSL_%'";
+        $sql = "SELECT * FROM image WHERE image_id LIKE 'HOMEP_CRSL_%'";
         $page_data = $this -> selectAll($sql);
         return $page_data;
     }
