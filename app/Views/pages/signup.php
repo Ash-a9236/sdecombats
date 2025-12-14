@@ -11,7 +11,7 @@ ViewHelper ::loadAuthHeader('Login');
     <div class="auth-form-shadow">
         <div class="auth-form">
             <div class="form-section" id="register-form-section">
-                <form method="POST" action="./sign-up">
+                <form method="POST" action="./register">
                     <div class="auth-form-row">
                         <div class="auth-form-row-sub-column">
                             <input type="text" class="base-form-two-column-input" name="first_name" id="first-name"
