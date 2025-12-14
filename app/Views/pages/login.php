@@ -12,7 +12,7 @@ ViewHelper ::loadAuthHeader('Login');
     <div class="auth-form-shadow">
         <div class="auth-form">
             <div class="auth-form-wrapper">
-                <form method="POST" action="./sign-in">
+                <form method="POST" action="./login">
                     <input class="base-form-input" type="text" name="email" placeholder="Email" id="email" required>
                     <label class="base-form-label" id="signup-label" for="email">Email Address</label>
 

@@ -108,10 +108,11 @@ class BaseModel
         return $stmt->fetch();
     }
 
-    public function lastInsertUser(): array | false
+    public function lastInsertUser(): mixed
     {
-        $sql = "SELECT * FROM users WHERE user_id = LAST_INSERT_ID()";
+        $sql = "SELECT MAX(user_id) FROM users";
         $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
         return $stmt->fetch();
     }
 

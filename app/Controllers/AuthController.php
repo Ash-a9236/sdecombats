@@ -112,7 +112,6 @@ class AuthController extends BaseController {
             $modelResponse = $this -> userM -> createUser($userData);
 
             if ($modelResponse == 201) {
-                //TODO implement confirmation email
                 FlashMessage ::success('Registration successful. Please log in.');
                 return $this -> redirect($request, $response, '/login');
             } elseif ($modelResponse == 500) {
