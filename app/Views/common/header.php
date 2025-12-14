@@ -195,7 +195,7 @@
                 </li>
 
                 <li>
-                    <a class="nav-bar-link" href="/gift-card">
+                    <a class="nav-bar-link" href="/gift-cards">
                         <img class="nav-bar-link-icon" src="./assets/icons/white/gift-card.svg">
                     </a>
                 </li>

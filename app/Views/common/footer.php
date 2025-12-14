@@ -28,8 +28,13 @@
             </ul>
         </div>
 
+        <img src="./assets/images/website-images/tripdvisor-2025-640w-400x400.webp" alt="tripadvisor award 2025"
+             width="400" height="400">
+    </div>
+    <div class="footer-section footer-section-copyright">
+        <span class="footer-copyright">Copyright 2025 Vanier College Green Team | All Rights Reserved</span>
+
         <div class="footer-section footer-section-social">
-            <img src="./assets/images/website-images/tripdvisor-2025-640w-400x400.webp" alt="tripadvisor award 2025" width="400" height="400">
             <div class="footer-social">
                 <a href="#" class="footer-social-icon" aria-label="X (Twitter)">
                     <img src="./././assets/images/placeholders/icon_placeholder.png" alt="X">
@@ -45,9 +50,6 @@
                 </a>
             </div>
         </div>
-    </div>
-    <div class="footer-section footer-section-copyright">
-        <p class="footer-copyright">Copyright 2025 Vanier College Green Team | All Rights Reserved</p>
     </div>
 </footer>
 
