@@ -4,7 +4,7 @@
     text-align: center;
     background-color: var(--background);
 }
-
+/**/
 .auth-form {
     clip-path: polygon(
         50.00% 15.00%,
@@ -47,16 +47,13 @@
     flex-flow: column nowrap;
     top: 3rem;
     align-items: center;
+    justify-content: space-between;
     min-width: 100%;
     min-height: 100%;
 
     & > label, input {
         min-width: 100%;
     }
-}
-
-#register-form-section {
-    padding-top: 3rem;
 }
 
 .auth-form-wrapper {
@@ -143,6 +140,21 @@
     align-self: end;
 }
 
+#register-form-section {
+    padding-top: 9rem;
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+    /*align-items: center;*/
+    justify-content: center;
+    justify-items: center;
+}
+
+#register-form-button {
+    font-size: 10px;
+    padding: 1rem;
+}
+
 #signup-label {
     display: inline-block;
     width: 50%;
@@ -160,12 +172,27 @@
     padding: 0.7rem 1.5rem;
 }
 
+.form-button-sections {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: -1rem;
+}
+
+/*.form-button-sections > a {*/
+/*    */
+/*}*/
+
+.form-button-sections > button {
+    padding: 0.7rem 3.5rem;
+}
+
 .lang-switcher {
     display: flex;
     flex-flow: row wrap;
     justify-content: end;
     padding: 0 1rem;
-    width: 100%;
+    width: 40%;
     background-color: var(--background);
 }
 

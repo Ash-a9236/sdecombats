@@ -28,7 +28,7 @@ $user = UserContext ::getCurrentUser();
                 <?php endfor; ?>
             </div>
             <a>
-                <button type="button" class="base-button">RESERVE NOW</button>
+                <button type="button" class="base-button" id="home-carousel-button">RESERVE NOW</button>
             </a>
         </div>
     </section>

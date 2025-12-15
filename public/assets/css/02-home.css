@@ -77,6 +77,14 @@
     }
 }
 
+#home-carousel-button {
+    position: relative;
+    left: 80vw;
+    bottom: 10rem;
+
+
+}
+
 .home-page-main-activities-wrapper {
     display: flex;
     flex-flow: row nowrap;

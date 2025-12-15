@@ -172,6 +172,20 @@ nav > ul {
     transform: translateY(0) scaleY(1);
 }
 
+#dashboard-client-header-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#dashboard-client-header-wrapper > a {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
 /*!* Responsive Design *!*/
 /*@media (max-width: 1024px) {*/
 /*    !* Show mobile nav, hide desktop nav on mobile *!*/

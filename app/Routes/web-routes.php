@@ -7,6 +7,7 @@ declare(strict_types=1);
  */
 
 use App\Controllers\PagesController;
+use App\Controllers\BlogController;
 use App\Controllers\AdminController;
 use App\Controllers\UserController;
 use App\Middleware\AuthMiddleware;
@@ -25,7 +26,7 @@ return static function (Slim\App $app): void {
     $app->get('/archery', [PagesController::class, 'archery'])->setName('pages.archery');
     $app->get('/big-groups', [PagesController::class, 'bigGroups'])->setName('pages.big-groups');
     $app->get('/birthdays', [PagesController::class, 'birthdays'])->setName('pages.birthdays');
-    $app->get('/blog', [PagesController::class, 'blog'])->setName('pages.blog');
+    $app->get('/blog', [BlogController::class, 'index'])->setName('pages.blog');
     $app->get('/competitions', [PagesController::class, 'competition'])->setName('pages.competition');
     $app->get('/contact', [PagesController::class, 'contact'])->setName('pages.contact');
     $app->get('/corporate', [PagesController::class, 'corporate'])->setName('pages.corporate');

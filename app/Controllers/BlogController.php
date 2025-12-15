@@ -1,89 +1,33 @@
 <?php
-
+// app/Controllers/BlogController.php
 namespace App\Controllers;
 
-use App\Models\BlogM;
+use App\Helpers\FlashMessage;
+use App\Domain\Services\InstagramService;
+use DI\Container;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-class BlogController {
-    private $instagramService;
-    private $view;
-
-    public function __construct ($container) {
-        // Initialize Instagram service
-        $this -> blog = new BlogM();
-
-        // Get view from container (Slim MVC structure)
-        $this -> view = $container -> get('view');
+class BlogController extends BaseController {
+    public function __construct (Container $container, private InstagramService $instagram_service) {
+        parent ::__construct($container);
     }
 
-    public function index (Request $request, Response $response, array $args) {
+    public function index (Request $request, Response $response): Response {
         try {
-            // Get posts from Instagram service
-            $posts = $this -> instagramService -> getPosts(12);
+            $posts = $this -> instagram_service -> getPosts('sportsdecombats', 40);
 
-            // Prepare data for view
-            $blogData = [
+            return $this -> render($response, 'pages/blog.php', [
                 'posts' => $posts,
-                'total_posts' => count($posts),
-                'last_updated' => date('F j, Y g:i a'),
-                'page_title' => 'My Instagram Blog'
-            ];
-
-            // Render the view
-            return $this -> view -> render($response, 'blog/index.twig', $blogData);
-
+                'title' => 'Instagram Blog'
+            ]);
         } catch (\Exception $e) {
-            // Log error
-            error_log('Instagram feed error: ' . $e -> getMessage());
-
-            // Show error page or fallback content
-            return $this -> view -> render($response, 'blog/error.twig', [
-                'error' => 'Unable to load blog posts at the moment.',
-                'posts' => [] // Empty array so template doesn't break
+            // Log error and show friendly message
+            error_log($e -> getMessage());
+            return $this -> render($response, 'pages/blog.php', [
+                'posts' => $posts,
+                'title' => 'Instagram Blog'
             ]);
         }
-    }
-
-    public function singlePost (Request $request, Response $response, array $args) {
-        $postId = $args['id'] ?? null;
-        $allPosts = $this -> instagramService -> getPosts(50); // Get more for single view
-
-        $currentPost = null;
-        foreach ($allPosts as $post) {
-            if ($post['feed_id'] === $postId) {
-                $currentPost = $post;
-                break;
-            }
-        }
-
-        if (!$currentPost) {
-            return $response -> withStatus(404);
-        }
-
-        return $this -> view -> render($response, 'blog/single.twig', [
-            'post' => $currentPost,
-            'related_posts' => array_slice($allPosts, 0, 3)
-        ]);
-    }
-
-    public function apiFeed (Request $request, Response $response, array $args) {
-        $format = $request -> getQueryParam('format', 'json');
-        $limit = $request -> getQueryParam('limit', 12);
-
-        $posts = $this -> instagramService -> getPosts((int)$limit);
-
-        if ($format === 'json') {
-            $response -> getBody() -> write(json_encode([
-                'success' => true,
-                'data' => $posts,
-                'count' => count($posts)
-            ]));
-            return $response -> withHeader('Content-Type', 'application/json');
-        }
-
-        // You could add XML or other formats here
-        return $response -> withStatus(400);
     }
 }

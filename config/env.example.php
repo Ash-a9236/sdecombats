@@ -25,7 +25,7 @@ declare(strict_types=1);
 
 return function (array $settings): array {
     // Database credentials
-    $settings['db']['host'] = 'localhost'; //shouldnt this be localhost:8083????
+    $settings['db']['host'] = 'localhost';
     $settings['db']['port'] = 3306;
     $settings['db']['username'] = 'root';
     $settings['db']['database'] = 'sdc_db';
