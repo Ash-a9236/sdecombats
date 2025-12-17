@@ -10,44 +10,60 @@ use App\Controllers\HomeController;
 use App\Controllers\AdminController;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\App;
+use Slim\Routing\RouteCollectorProxy; // Useful type hint for the group
+
+return static function (App $app): void {
 
 
-return static function (Slim\App $app): void {
-
-
-    //* NOTE: Route naming pattern: [controller_name].[method_name]
     $app->get('/', [HomeController::class, 'index'])
         ->setName('home.index');
 
     $app->get('/home', [HomeController::class, 'index'])
-        ->setName('home.index');
+        ->setName('home.home');
 
-    $app->group('/admin', function ($group) {
-    $group->get('/dashboard', [\App\Controllers\AdminController::class, 'index'])
-          ->setName('admin.dashboard');
+    //Admin Routes
 
-    // Example: other admin sections
-    $group->get('/reservations', [\App\Controllers\AdminController::class, 'manageReservations'])
-          ->setName('admin.reservations');
+    $app->group('/admin', function (RouteCollectorProxy $group) {
 
-    $group->get('/memberships', [\App\Controllers\AdminController::class, 'manageMemberships'])
-          ->setName('admin.memberships');
+        $group->get('/dashboard', [AdminController::class, 'index'])
+            ->setName('admin.dashboard');
 
-    $group->get('/employees', [\App\Controllers\AdminController::class, 'manageEmployees'])
-          ->setName('admin.employees');
+        $group->get('/reservations', [AdminController::class, 'manageReservations'])
+            ->setName('admin.reservations');
 
-    $group->get('/activities', [\App\Controllers\AdminController::class, 'manageActivities'])
-          ->setName('admin.activities');
+        $group->get('/reservations/edit/{id}', [\App\Controllers\AdminController::class, 'editReservation'])
+            ->setName('admin.reservations.edit');
 
-    $group->get('/events', [\App\Controllers\AdminController::class, 'manageEvents'])
-          ->setName('admin.events');
+        $group->post('/reservations/edit/{id}', [\App\Controllers\AdminController::class, 'saveReservation'])
+            ->setName('admin.reservations.save');
 
-    $group->get('/users', [\App\Controllers\AdminController::class, 'updateUsers'])
-          ->setName('admin.users');
-});
+        $group->post('/reservations/delete/{id}', [\App\Controllers\AdminController::class, 'deleteReservation'])
+            ->setName('admin.reservations.delete');
+
+        $group->get('/memberships', [AdminController::class, 'manageMemberships'])
+            ->setName('admin.memberships');
+
+        $group->get('/employees', [AdminController::class, 'manageEmployees'])
+            ->setName('admin.employees');
+
+        $group->get('/employees/add', [AdminController::class, 'addEmployee'])
+            ->setName('admin.employees.add');
+
+        $group->post('/employees/add', [AdminController::class, 'saveEmployee'])
+            ->setName('admin.employees.save');
+
+        $group->get('/activities', [AdminController::class, 'manageActivities'])
+            ->setName('admin.activities');
+
+        $group->get('/events', [AdminController::class, 'manageEvents'])
+            ->setName('admin.events');
+
+        $group->get('/users', [AdminController::class, 'updateUsers'])
+            ->setName('admin.users');
+    });
 
 
-    // A route to test runtime error handling and custom exceptions.
     $app->get('/error', function (Request $request, Response $response, $args) {
         throw new \Slim\Exception\HttpNotFoundException($request, "Something went wrong");
     });

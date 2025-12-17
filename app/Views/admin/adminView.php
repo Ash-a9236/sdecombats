@@ -4,45 +4,37 @@ use App\Helpers\ViewHelper;
 
 $basePath = '/sdecombats';
 $page_title = $data['title'];
+
 ViewHelper::loadAdminHeader($page_title);
 ?>
 
 <div class="container-fluid">
     <div class="row">
 
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-            <div class="position-sticky pt-3">
-                <h5 class="px-3 mb-3">Admin Panel</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $basePath ?>/admin/reservations">Manage Reservations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $basePath ?>/admin/memberships">Create Membership</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $basePath ?>/admin/employees">Manage Employees</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $basePath ?>/admin/activities">Manage Activities</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $basePath ?>/admin/events">Manage Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $basePath ?>/admin/users">Update User Information</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <?php include 'sidebar.php'; ?>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2"><?= $data['title'] ?></h1>
             </div>
 
             <div class="content">
-                <p><?= $data['message'] ?? 'Select an option from the menu to get started.' ?></p>
+                <div class="alert alert-info" role="alert">
+                    <?= $data['message'] ?? 'Welcome to the dashboard.' ?>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card text-white bg-primary mb-3">
+                            <div class="card-header">Reservations</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Check Today's Schedule</h5>
+                                <p class="card-text">View upcoming bookings.</p>
+                                <a href="<?= $basePath ?>/admin/reservations" class="btn btn-light btn-sm">Go</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
