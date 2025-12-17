@@ -11,7 +11,7 @@ use App\Helpers\SessionManager;
 <div>
     <?= App\Helpers\FlashMessage::render() ?></div>
 
-<div class="auth-form-wrapper">
+<div class="form-section-medium">
     <form method="POST" action="./update-user-info">
         <div class="auth-form-row">
             <div class="auth-form-row-sub-column">

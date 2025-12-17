@@ -4,6 +4,7 @@ namespace App\Domain\Models;
 
 use App\Helpers\Core\PDOService;
 use App\Domain\Models\LockerModel;
+use DateTime;
 
 class MembershipM extends BaseModel
 {
@@ -19,9 +20,13 @@ class MembershipM extends BaseModel
      * @param string $name The name of the user
      * @return int Returns 200 if the membership has successfully been created and 500 if not
      */
-    public function createMembership(array $data, int $user_id, string $name, bool $locker)
+    public function createMembership(array $data, int $user_id, string $name)
     {
-        if ($locker) {
+        $date = new DateTime('now');
+        $date->modify("+{$data['duration']} month");
+        $date = $date->format('Y-m-d');
+
+        if (isset($data['type'])) {
             $locker_id = $this->searchAvailableLocker($data['type']);
 
             if ($locker_id == 303) {
@@ -35,18 +40,18 @@ class MembershipM extends BaseModel
             $this->execute($sql, [
                 $locker_id,
                 $data['bow_rental'],
-                "DATE_ADD(CURRENT_DATE(), INTERVAL {$data['duration']} MONTH)"
+                $date
             ]);
         } else {
             $sql = "INSERT INTO membership (bow_rental, end) VALUES (?, ?)";
 
             $this->execute($sql, [
                 $data['bow_rental'],
-                "DATE_ADD(CURRENT_DATE(), INTERVAL {$data['duration']} MONTH)"
+                $date
             ]);
         }
 
-        $membership_id = $this->lastInsertMembershipId();
+        $membership_id = intval($this->lastInsertId());
 
         $sql = "UPDATE users SET membership_id = ? WHERE user_id = ?";
 
@@ -63,6 +68,11 @@ class MembershipM extends BaseModel
         } else {
             return $membership_id;
         }
+    }
+
+    public function getMembershipInfo(int $membership_id) {
+        $sql = "SELECT * FROM membership WHERE membership_id = ?";
+        return $this->selectOne($sql, [$membership_id]);
     }
 
     /**
