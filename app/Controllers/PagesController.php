@@ -9,12 +9,13 @@ use App\Domain\Models\StaffM;
 use App\Domain\Models\UserM;
 use App\Helpers\FlashMessage;
 use App\Helpers\SessionManager;
+use App\Domain\Services\InstagramService;
 use DI\Container;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class PagesController extends BaseController {
-    public function __construct (Container $container, private PagesM $pagesM, private UserM $userM, private StaffM $staffM) {
+    public function __construct (Container $container, private PagesM $pagesM, private UserM $userM, private StaffM $staffM, private InstagramService $instagram_service) {
         parent ::__construct($container);
     }
 
@@ -36,23 +37,24 @@ class PagesController extends BaseController {
     }
 
     public function giftCards (Request $request, Response $response, array $args): Response {
+        $images = $this -> pagesM -> getGiftCartData();
         $data['data'] = [
             'title' => 'Gift Card',
+            'images' => $images,
         ];
+
         return $this -> render($response, 'pages/gift-cards.php', $data);
     }
 
-    public function contact(Request $request, Response $response, array $args): Response
-    {
+    public function contact (Request $request, Response $response, array $args): Response {
         $data['data'] = [
             'title' => 'Contact Us',
         ];
-        return $this->render($response, 'pages/contact.php', $data);
+        return $this -> render($response, 'pages/contact.php', $data);
     }
 
-    public function error(Request $request, Response $response, array $args): Response
-    {
-        return $this->render($response, 'errorView.php');
+    public function error (Request $request, Response $response, array $args): Response {
+        return $this -> render($response, 'errorView.php');
     }
 
     public function displayActivities (Request $request, Response $response): Response {
@@ -65,43 +67,73 @@ class PagesController extends BaseController {
     }
 
     public function archery (Request $request, Response $response): Response {
+        $page_data = $this -> $pagesM -> getSpecificActivitiesData('AR');
         $data['data'] = [
             'title' => 'Archery',
+            'page_data' => page_data,
         ];
         return $this -> render($response, 'pages/archery.php', $data);
     }
 
     public function bigGroups (Request $request, Response $response): Response {
+        $page_data = $this -> $pagesM -> getBigGroupData();
         $data['data'] = [
             'title' => 'Big Groups',
+            'page_data' => $page_data,
         ];
         return $this -> render($response, 'pages/big-groups.php', $data);
     }
 
     public function birthdays (Request $request, Response $response): Response {
+        $page_data = $this -> $pagesM -> getAllBirthdaysData();
         $data['data'] = [
             'title' => 'Birthdays',
+            'page_data' => $page_data,
         ];
         return $this -> render($response, 'pages/birthdays.php', $data);
     }
 
     public function blog (Request $request, Response $response): Response {
-        $data['data'] = [
-            'title' => 'Blog',
-        ];
-        return $this -> render($response, 'pages/blog.php', $data);
+        try {
+            $posts = $this -> instagram_service -> getPosts('sportsdecombats', 40);
+
+            return $this -> render($response, 'pages/blog.php', [
+                'posts' => $posts,
+                'title' => 'Instagram Blog'
+            ]);
+        } catch (\Exception $e) {
+            // Log error and show friendly message
+            error_log($e -> getMessage());
+            return $this -> render($response, 'pages/blog.php', [
+                'posts' => $posts,
+                'title' => 'Instagram Blog'
+            ]);
+        }
     }
 
     public function outsideEvents (Request $request, Response $response): Response {
+        $page_data = $this -> $pagesM -> getOusideEventsData();
         $data['data'] = [
             'title' => 'Outside Events',
+            'page_data' => $page_data,
+        ];
+        return $this -> render($response, 'pages/outside-events.php', $data);
+    }
+
+    public function corporate (Request $request, Response $response): Response {
+        $page_data = $this -> $pagesM -> getCorporateEventsData();
+        $data['data'] = [
+            'title' => 'Outside Events',
+            'page_data' => $page_data,
         ];
         return $this -> render($response, 'pages/outside-events.php', $data);
     }
 
     public function smallGroups (Request $request, Response $response): Response {
+        $page_data = $this -> $pagesM -> getSmallGroupData();
         $data['data'] = [
             'title' => 'Small Groups',
+            'page_data' => $page_data,
         ];
         return $this -> render($response, 'pages/small-groups.php', $data);
     }
@@ -113,8 +145,7 @@ class PagesController extends BaseController {
         return $this -> render($response, 'pages/signup.php', $data);
     }
 
-    public function processSignup(Request $request, Response $response): Response
-    {
+    public function processSignup (Request $request, Response $response): Response {
         $userRegistrationInfo = $request -> getParsedBody();
         $language_id = $userRegistrationInfo['language_id'] ?? 'ENGLISH';
         $fname = trim($userRegistrationInfo['first_name'] ?? '');
@@ -177,7 +208,7 @@ class PagesController extends BaseController {
 
         if ($modelResponse == 201) {
             FlashMessage ::success('Registration successful. Please log in.');
-            return $response->withHeader('Location', './login')->withStatus(302);
+            return $response -> withHeader('Location', './login') -> withStatus(302);
         } elseif ($modelResponse == 500) {
             FlashMessage ::error("Registration Failed. Please try again.");
             return $this -> redirect($request, $response, '/register');
@@ -194,8 +225,7 @@ class PagesController extends BaseController {
         return $this -> render($response, 'pages/login.php', $data);
     }
 
-    public function processSignin(Request $request, Response $response): Response
-    {
+    public function processSignin (Request $request, Response $response): Response {
         $inputData = $request -> getParsedBody();
 
         $email = $inputData['email'] ?? '';
@@ -249,7 +279,7 @@ class PagesController extends BaseController {
                 SessionManager ::set('is_authenticated', true);
 
                 FlashMessage ::success("Welcome back, {$user['fname']} {$user['lname']}!");
-                return $response->withHeader('Location', './dashboard/user')->withStatus(302);
+                return $response -> withHeader('Location', './dashboard/user') -> withStatus(302);
             } else {
                 FlashMessage ::error("User not found or password does not match, please try again");
                 return $this -> redirect($request, $response, 'pages.signin.form');
@@ -273,11 +303,10 @@ class PagesController extends BaseController {
         }
     }
 
-    public function logout(Request $request, Response $response): Response
-    {
+    public function logout (Request $request, Response $response): Response {
         SessionManager ::destroy();
         SessionManager ::start();
         FlashMessage ::success("You have been successfully logged out");
-        return $response->withHeader('Location', './')->withStatus(302);
+        return $response -> withHeader('Location', './') -> withStatus(302);
     }
 }
