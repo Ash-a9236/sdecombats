@@ -40,6 +40,12 @@ $title = $data['title'] ?? 'Dashboard';
                         <span class="nav-text">Update Info</span>
                     </button>
                 </a>
+                <a href="/sdecombats/dashboard/user/membership">
+                    <button class="nav-btn <?php echo $section === 'membership' ? 'active' : ''; ?>">
+                        <span class="nav-icon">📆</span>
+                        <span class="nav-text">Membership</span>
+                    </button>
+                </a>
                 <a href="/sdecombats/dashboard/user/update-user-info">
                     <button class="nav-btn <?php echo $section === 'update-user-info' ? 'active' : ''; ?>">
                         <span class="nav-icon">👤</span>
@@ -74,6 +80,9 @@ $title = $data['title'] ?? 'Dashboard';
                     break;
                 case 'update-info':
                     include __DIR__ . '/../components/dashboard-update-info.php';
+                    break;
+                case 'membership':
+                    include __DIR__ . '/../components/dashboard-membership.php';
                     break;
                 case 'update-user-info':
                     include __DIR__ . '/../components/dashboard-update-user-info.php';

@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Controllers;
 
+use App\Domain\Models\MembershipM;
 use App\Domain\Models\UserM;
 use App\Helpers\FlashMessage;
 use App\Helpers\SessionManager;
@@ -13,7 +14,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 
 class UserController extends BaseController {
-    public function __construct(Container $container, private UserM $userM) {
+    public function __construct(Container $container, private UserM $userM, private MembershipM $membershipM) {
         parent::__construct($container);
     }
 
@@ -46,7 +47,43 @@ class UserController extends BaseController {
             'title' => 'Membership',
             'section' => 'membership',
         ];
+        if (SessionManager::get('membership_id') != null) {
+            $data['data']['membership_info'] = $this->membershipM->getMembershipInfo(SessionManager::get("membership_id"));
+        }
         return $this->render($response, 'login-protected/customer-dashboard.php', $data);
+    }
+
+    public function createMembership(Request $request, Response $response, array $args): Response {
+        $membership_info = $request->getParsedBody();
+        $data = [];
+
+        if ($membership_info['duration'] == "") {
+            FlashMessage::error("Please select a duration");
+            return $this->redirect($request, $response, 'dashboard.membership');
+        }
+
+        $data['duration'] = intval($membership_info['duration']);
+        if (isset($membership_info['bow_rental'])) {
+            $data['bow_rental'] = 1;
+        } else {
+            $data['bow_rental'] = 0;
+        }
+        $locker = $membership_info['locker_type'];
+        if ($locker != "") {
+            $data['type'] = $membership_info['locker_type'];
+        }
+        $user_id = SessionManager::get('user_id');
+        $name = SessionManager::get('fname') . " " . SessionManager::get('lname');
+
+        $result = $this->membershipM->createMembership($data, $user_id, $name);
+        if ($result == 500) {
+            FlashMessage::error("There was an error when processing your request. Please try again.");
+            return $this->redirect($request, $response, 'dashboard.membership');
+        } else {
+            SessionManager::set("membership_id", $result);
+            FlashMessage::success("You have successfully subscribed to a membership.");
+            return $this->redirect($request, $response, 'dashboard.membership');
+        }
     }
 
     public function updateInfo(Request $request, Response $response, array $args): Response {

@@ -954,6 +954,13 @@ body {
     padding-bottom: 0;
 }
 
+.form-section-medium {
+    display: flex;
+    flex-flow: column wrap;
+    width: 40%;
+    margin-top: 3rem;
+}
+
 .section-title {
     font-size: 1.25rem;
     color: var(--primary-orange);
@@ -3570,6 +3577,19 @@ body {
     font-size: 0.65rem;
     cursor: pointer;
     color: #fff4e2;
+}
+
+.check-medium {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: #3f3f3fff;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #fff4e2;
+    margin-bottom: 3rem;
 }
 
 .eq-check {
