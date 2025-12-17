@@ -7,6 +7,7 @@ declare(strict_types=1);
  */
 
 use App\Controllers\PagesController;
+use App\Controllers\BlogController;
 use App\Controllers\AdminController;
 use App\Controllers\UserController;
 use App\Middleware\AuthMiddleware;
