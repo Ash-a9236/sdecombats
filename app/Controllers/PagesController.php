@@ -70,7 +70,7 @@ class PagesController extends BaseController {
         $page_data = $this -> $pagesM -> getSpecificActivitiesData('AR');
         $data['data'] = [
             'title' => 'Archery',
-            'page_data' => page_data,
+            'page_data' => $page_data,
         ];
         return $this -> render($response, 'pages/archery.php', $data);
     }
