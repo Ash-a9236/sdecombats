@@ -11,23 +11,18 @@ class InstagramService {
             "d013a2195cmsh6a1d9dd567e72e2p1f1a31jsn5d05f36901d7";
     }
 
-    public function getPosts (string $username = 'sportsdecombats', int $count = 40): array {
-        $postData = http_build_query([
-            'url' => "https://instagram-scraper-stable-api.p.rapidapi.com/get_ig_user_posts.php/",
-            'count' => $count
-        ]);
+    public function getPosts (string $username = 'https://www.instagram.com/sportsdecombats/', int $count = 12): array {
+        $url = 'https://instagram-scraper-stable-api.p.rapidapi.com/get_ig_user_posts.php/' . urlencode($username);
 
         $headers = [
-            'x-rapidapi-host' => 'instagram-scraper-stable-api.p.rapidapi.com',
-            "x-rapidapi-key: {$this->api_key}",
-            "Content-Type' => 'application/x-www-form-urlencoded",
+            'x-rapidapi-host: instagram-scraper-stable-api.p.rapidapi.com',
+            'x-rapidapi-key: ' . $this->api_key,
         ];
 
         $context = stream_context_create([
             'http' => [
-                'method' => 'POST',
+                'method' => 'GET',
                 'header' => implode("\r\n", $headers),
-                'content' => $postData,
                 'timeout' => 30,
                 'ignore_errors' => true
             ],
@@ -37,22 +32,15 @@ class InstagramService {
             ]
         ]);
 
-        $response = @file_get_contents(
-            'https://instagram-scraper-stable-api.p.rapidapi.com/get_ig_user_posts.php',
-            false,
-//            http_negotiate_content_type("application/x-www-form-urlencoded"),
-            $context
-        );
+        $response = @file_get_contents($url, false, $context);
 
         if ($response === false) {
-            // Check if allow_url_fopen is enabled
-            if (!ini_get('allow_url_fopen')) {
-                throw new \Exception('allow_url_fopen is disabled. Enable it or install an HTTP Client.');
-            }
-            throw new \Exception('Failed to fetch Instagram data try again :(((((');
+            $error = error_get_last();
+            throw new \Exception('Failed to fetch Instagram data: ' . ($error['message'] ?? 'Unknown error'));
         }
 
         $data = json_decode($response, true);
+
         return $this -> processPosts($data);
     }
 

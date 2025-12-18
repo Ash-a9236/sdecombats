@@ -37,7 +37,7 @@ $user = UserContext::getCurrentUser();
             <!-- Kids Birthday Package -->
             <article class="package-card-bg" data-package="kids-birthday">
                 <div class="package-image-bg">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Kids Birthday Party">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Kids Birthday Party">
                 </div>
                 <div class="package-content-bg">
                     <h3 class="package-title-bg">KIDS NERF PARTY</h3>
@@ -45,11 +45,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="package-details-bg">
                         <div class="detail-item-bg">
-                            <img src="/sdecombats/public/assets/icons/white/user.svg" alt="Age">
+                            <img src="/assets/icons/white/user.svg" alt="Age">
                             <span>Ages 6+</span>
                         </div>
                         <div class="detail-item-bg">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>2 hours</span>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ $user = UserContext::getCurrentUser();
             <!-- Teens Birthday Package -->
             <article class="package-card-bg" data-package="teens-birthday">
                 <div class="package-image-bg">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Teens Birthday Party">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Teens Birthday Party">
                 </div>
                 <div class="package-content-bg">
                     <h3 class="package-title-bg">TEENS ADVENTURE PARTY</h3>
@@ -85,11 +85,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="package-details-bg">
                         <div class="detail-item-bg">
-                            <img src="/sdecombats/public/assets/icons/white/user.svg" alt="Age">
+                            <img src="/assets/icons/white/user.svg" alt="Age">
                             <span>Ages 12+</span>
                         </div>
                         <div class="detail-item-bg">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>2 hours</span>
                         </div>
                     </div>
@@ -127,7 +127,7 @@ $user = UserContext::getCurrentUser();
             <!-- Special Occasions Package -->
             <article class="package-card-bg" data-package="special-occasions">
                 <div class="package-image-bg">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Special Occasions">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Special Occasions">
                 </div>
                 <div class="package-content-bg">
                     <h3 class="package-title-bg">SPECIAL OCCASIONS</h3>
@@ -135,11 +135,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="package-details-bg">
                         <div class="detail-item-bg">
-                            <img src="/sdecombats/public/assets/icons/white/user.svg" alt="Age">
+                            <img src="/assets/icons/white/user.svg" alt="Age">
                             <span>Ages 18+</span>
                         </div>
                         <div class="detail-item-bg">
-                            <img src="/sdecombats/public/assets/icons/white/big-group.svg" alt="Group">
+                            <img src="/assets/icons/white/big-group.svg" alt="Group">
                             <span>9+ people</span>
                         </div>
                     </div>
@@ -167,7 +167,7 @@ $user = UserContext::getCurrentUser();
             <!-- Corporate Events Package -->
             <article class="package-card-bg" data-package="corporate-events">
                 <div class="package-image-bg">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Corporate Events">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Corporate Events">
                 </div>
                 <div class="package-content-bg">
                     <h3 class="package-title-bg">CORPORATE TEAM BUILDING</h3>
@@ -175,11 +175,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="package-details-bg">
                         <div class="detail-item-bg">
-                            <img src="/sdecombats/public/assets/icons/white/user.svg" alt="Age">
+                            <img src="/assets/icons/white/user.svg" alt="Age">
                             <span>Ages 18+</span>
                         </div>
                         <div class="detail-item-bg">
-                            <img src="/sdecombats/public/assets/icons/white/big-group.svg" alt="Group">
+                            <img src="/assets/icons/white/big-group.svg" alt="Group">
                             <span>6-100 people</span>
                         </div>
                     </div>

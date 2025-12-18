@@ -6,8 +6,6 @@ ViewHelper::loadHeader('Blog !');
 
 $user = UserContext::getCurrentUser();
 
-// The $posts variable should be passed from your BlogController
-// Make sure it's available in the template
 if (!isset($posts) || !is_array($posts)) {
     $posts = [];
 }

@@ -4,6 +4,7 @@ namespace App\Domain\Models;
 
 use App\Domain\Models\BaseModel;
 use App\Helpers\Core\PDOService;
+use DateInterval;
 use DateTime;
 
 class ReservationM extends BaseModel {
@@ -44,73 +45,45 @@ class ReservationM extends BaseModel {
         return $this -> selectAll($sql, [$activity_id, $start, $end]);
     }
 
+    public function makeReservationForActivity (int $user_id, string $first_activity_id, string $second_activity_id = '', int $num_of_users, string $package_id = '000-000', string $date) {
+        $reservation_day = new DateTime(strtotime($date));
+        $reservation_day -> format('Y-m-d-H:i:s');
 
-    /**
-     * adds a new staff member to the database through the STAFF table
-     * @param $user_id the user performing the action
-     * @param $new_staff_name the new staff member's name
-     * @param $new_staff_level the new staff member's level {1 = EMPLOYEE, 2 = MANAGER, 3 = ADMIN}
-     * @return mixed returns the newly added staff member or the error string if something goes wrong
-     */
-    public function addStaff ($user_id, $new_staff_name, $new_staff_level): mixed {
+        $last_inserted_reservation_id = $this -> lastInsertId('reservation');
+        (int) $last_reservation_num = substr($last_inserted_reservation_id, 22);
+        (int) $new_reservation_id = $last_reservation_num++;
 
-        $last_staff = $this -> selectLastAddedStaff($new_staff_level);
+        if ($second_activity_id == '' || $second_activity_id == null || empty($second_activity_id)) {
+            $reservation_id = "000-000-$first_activity_id-000-00-" . strval($new_reservation_id);
 
-        if ($last_staff == false || empty($last_staff) || ($last_staff == null) || !$last_staff) {
-            return "ERROR READING LAST INSERTED ID : IMPOSSIBLE TO ADD NEW STAFF AT THE MOMENT";
-        } else {
-            $new_staff_id = $last_staff[0] + 1;
-            $sql = "INSERT INTO staff (staff_id, name, level) VALUES (?, ?, ?)";
-            $this -> execute($sql, [$new_staff_id, $new_staff_name, $new_staff_level]);
+            $activity_length_sql = "SELECT duration FROM activity WHERE id = ?";
+            $activity_length = $this -> selectOne($activity_length_sql, [$first_activity_id]);
 
-            $new_staff = $this -> lastInsertStaff();
+            $end_date = new DateTime(strtotime($reservation_day));
+            $end_date -> add(new DateInterval('PT' . $activity_length . 'M'));
+            $end_date -> format('Y-m-d-H:i:s');
 
-            if ($new_staff == false || empty($new_staff) || ($new_staff == null) || !$new_staff) {
-                return "ERROR READING LAST INSERTED ID : CHECK MANUALLY SINCE NEW STAFF MIGHT NOT HAVE BEEN ADDED";
-            } else if ($new_staff[1] != $new_staff_id || $new_staff[2] != $new_staff_name) {
-                return "ERROR DURING THE INSERTION : TRY AGAIN";
-            } else {
-                $operation = "[$user_id] ADDED NEW STAFF [{$new_staff[1]} : {$new_staff[2]}]";
-                log($user_id, $operation);
-                array_push($new_staff, $operation);
-                return $new_staff;
-            }
+            $room_capacity_sql = "SELECT a.activity_id, a.room_id, r.available_places FROM activity a INNER JOIN room r ON a.room_id = r.room_id WHERE a.activity_id = ?";
+            $room_capacity_array = $this -> selectOne($room_capacity_sql, [$first_activity_id]);
+            (int) $room_capacity = $room_capacity_array[3];
+
+            $sql = "INSERT INTO reservation VALUES ?, ?, 0, ?, '000-000', ?, ?, ?";
+            $this -> execute($sql, [$reservation_id, $user_id, $first_activity_id, $reservation_day, $end_date, $num_of_users]);
         }
+
+        /*
+         * 1. if second reservation is empyt = no second reservation, package_id = 000-000 else package = package
+         * 2. if second reservation is empyt = date of teh second reservation = null = only make one reservation
+         * 3. check num of users <= room capacity
+         * 4. transaction id = 0
+         * 5. if second reservation
+         */
+
+        $sql = "";
+
     }
 
-    public function updateStaffName ($user_id, $staff_id, $staff_name): mixed {
-        $sql = "UPDATE staff SET name = ? WHERE id = ?";
-        $this -> execute($sql, [$staff_name, $staff_id]);
 
-        $sql_verification = "SELECT * FROM staff WHERE id = ?";
-        $updated_staff = $this -> selectOne($sql_verification, [$staff_id]);
-
-        if ($updated_staff == false || empty($updated_staff) || $updated_staff == null || !$updated_staff) {
-            return "ERROR DURING THE UPDATE : IMPOSSIBLE TO CHECK RECORD WITH ID $staff_id";
-        } else {
-            $operation = "[$user_id] UPDATED STAFF NAME [{$updated_staff[1]} : {$updated_staff[2]}]";
-            log($user_id, $operation);
-            array_push($updated_staff, $operation);
-            return $updated_staff;
-        }
-    }
-
-    public function updateStaffPassword ($user_id, $staff_id, $staff_password): mixed {
-        $sql = "UPDATE staff SET password = ? WHERE id = ?";
-        $this -> execute($sql, [$staff_password, $staff_id]);
-
-        $sql_verification = "SELECT * FROM staff WHERE id = ?";
-        $updated_staff = $this -> selectOne($sql_verification, [$staff_id]);
-
-        if ($updated_staff == false || empty($updated_staff) || $updated_staff == null) {
-            return "ERROR DURING THE UPDATE : IMPOSSIBLE TO CHECK RECORD WITH ID $staff_id";
-        } else {
-            $operation = "[$user_id] UPDATED STAFF PASSWORD [{$updated_staff[1]} : {$updated_staff[4]}]";
-            log($user_id, $operation);
-            array_push($updated_staff, $operation);
-            return $updated_staff;
-        }
-    }
 
 }
 

@@ -10,9 +10,11 @@ define('APP_BASE_DIR_PATH', realpath(dirname(__DIR__, 1)));
 //
 define('APP_ROOT_DIR_NAME', '');
 
+
 // Define the path of the application's views directory.
 define('APP_VIEWS_PATH', realpath(APP_BASE_DIR_PATH . '/app/Views'));
-
+// echo (APP_VIEWS_PATH);
+// exit;
 
 
 //* HTTP response status code.

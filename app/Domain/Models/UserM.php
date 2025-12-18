@@ -234,4 +234,8 @@ class UserM extends BaseModel {
             return $reservations;
         }
     }
+
+    public function getAllReservationsSlotsForActivity (String $activity_id) {
+
+    }
 }

@@ -23,23 +23,23 @@ $user = UserContext::getCurrentUser();
     <section class="quick-nav-section">
         <div class="quick-nav-container">
             <a href="#location" class="quick-nav-btn">
-                <img src="/sdecombats/public/assets/icons/white/map-location-pin.svg" alt="Location">
+                <img src="/assets/icons/white/map-location-pin.svg" alt="Location">
                 <span>Location</span>
             </a>
             <a href="#street-parking" class="quick-nav-btn">
-                <img src="/sdecombats/public/assets/icons/white/info.svg" alt="Street Parking">
+                <img src="/assets/icons/white/info.svg" alt="Street Parking">
                 <span>Street Parking</span>
             </a>
             <a href="#underground-parking" class="quick-nav-btn">
-                <img src="/sdecombats/public/assets/icons/white/info.svg" alt="Underground">
+                <img src="/assets/icons/white/info.svg" alt="Underground">
                 <span>Underground</span>
             </a>
             <a href="#transit" class="quick-nav-btn">
-                <img src="/sdecombats/public/assets/icons/white/info.svg" alt="Transit">
+                <img src="/assets/icons/white/info.svg" alt="Transit">
                 <span>Transit</span>
             </a>
             <a href="#contact-form" class="quick-nav-btn">
-                <img src="/sdecombats/public/assets/icons/white/phone.svg" alt="Contact">
+                <img src="/assets/icons/white/phone.svg" alt="Contact">
                 <span>Contact</span>
             </a>
         </div>
@@ -54,7 +54,7 @@ $user = UserContext::getCurrentUser();
                 <!-- Address Card -->
                 <div class="info-card-contact">
                     <div class="card-icon">
-                        <img src="/sdecombats/public/assets/icons/white/map-location-pin.svg" alt="Address">
+                        <img src="/assets/icons/white/map-location-pin.svg" alt="Address">
                     </div>
                     <h3>ADDRESS</h3>
                     <p>5335 Ave Casgrain<br>Montreal, Quebec<br>Canada, H2T 1X4</p>
@@ -63,7 +63,7 @@ $user = UserContext::getCurrentUser();
                 <!-- Phone Card -->
                 <div class="info-card-contact">
                     <div class="card-icon">
-                        <img src="/sdecombats/public/assets/icons/white/phone.svg" alt="Phone">
+                        <img src="/assets/icons/white/phone.svg" alt="Phone">
                     </div>
                     <h3>PHONE</h3>
                     <p>Toll Free: +1 855-204-2017<br>Local: +1 514-613-3894</p>
@@ -72,7 +72,7 @@ $user = UserContext::getCurrentUser();
                 <!-- Email Card -->
                 <div class="info-card-contact">
                     <div class="card-icon">
-                        <img src="/sdecombats/public/assets/icons/white/phone.svg" alt="Email">
+                        <img src="/assets/icons/white/phone.svg" alt="Email">
                     </div>
                     <h3>EMAIL</h3>
                     <p><a href="mailto:info@sportsdecombats.com">info@sportsdecombats.com</a></p>
@@ -81,7 +81,7 @@ $user = UserContext::getCurrentUser();
                 <!-- Hours Card -->
                 <div class="info-card-contact">
                     <div class="card-icon">
-                        <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Hours">
+                        <img src="/assets/icons/white/calendar.svg" alt="Hours">
                     </div>
                     <h3>HOURS</h3>
                     <p>
@@ -95,7 +95,7 @@ $user = UserContext::getCurrentUser();
 
             <!-- Map Placeholder -->
             <div class="map-container">
-                <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Map">
+                <img src="/assets/images/placeholders/image_placeholder01.png" alt="Map">
                 <div class="map-overlay">
                     <p>Interactive Map Coming Soon</p>
                 </div>
@@ -110,7 +110,7 @@ $user = UserContext::getCurrentUser();
 
             <div class="parking-info">
                 <div class="parking-notice">
-                    <img src="/sdecombats/public/assets/icons/white/info.svg" alt="Notice">
+                    <img src="/assets/icons/white/info.svg" alt="Notice">
                     <p><strong>Please pay attention to permit-only parking signs.</strong> Usually the easiest way is to see if there is a pay parking pole next to your spot.</p>
                 </div>
 
@@ -130,7 +130,7 @@ $user = UserContext::getCurrentUser();
                     <div class="parking-column">
                         <h3>PUBLIC LOT:</h3>
                         <div class="lot-info">
-                            <img src="/sdecombats/public/assets/icons/white/info.svg" alt="Lot">
+                            <img src="/assets/icons/white/info.svg" alt="Lot">
                             <p>5623 Ave Casgrain<br><span class="parking-note">(Availability not guaranteed)</span></p>
                         </div>
                     </div>
@@ -138,7 +138,7 @@ $user = UserContext::getCurrentUser();
 
                 <!-- Parking Map -->
                 <div class="parking-map">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Parking Map">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Parking Map">
                 </div>
             </div>
         </div>
@@ -150,7 +150,7 @@ $user = UserContext::getCurrentUser();
             <h2 class="section-title-contact">UNDERGROUND PARKING</h2>
 
             <div class="underground-notice">
-                <img src="/sdecombats/public/assets/icons/white/info.svg" alt="Important">
+                <img src="/assets/icons/white/info.svg" alt="Important">
                 <div>
                     <h3>IMPORTANT INFORMATION</h3>
                     <ul>
@@ -207,7 +207,7 @@ $user = UserContext::getCurrentUser();
                 <!-- Metro -->
                 <div class="transit-card">
                     <div class="transit-icon">
-                        <img src="/sdecombats/public/assets/icons/white/info.svg" alt="Metro">
+                        <img src="/assets/icons/white/info.svg" alt="Metro">
                     </div>
                     <h3>VIA SUBWAY</h3>
                     <ol class="transit-steps">
@@ -222,7 +222,7 @@ $user = UserContext::getCurrentUser();
                 <!-- Bus South -->
                 <div class="transit-card">
                     <div class="transit-icon">
-                        <img src="/sdecombats/public/assets/icons/white/info.svg" alt="Bus">
+                        <img src="/assets/icons/white/info.svg" alt="Bus">
                     </div>
                     <h3>VIA BUS 55 OR 363 SOUTH</h3>
                     <ol class="transit-steps">
@@ -236,7 +236,7 @@ $user = UserContext::getCurrentUser();
                 <!-- Bus North -->
                 <div class="transit-card">
                     <div class="transit-icon">
-                        <img src="/sdecombats/public/assets/icons/white/info.svg" alt="Bus">
+                        <img src="/assets/icons/white/info.svg" alt="Bus">
                     </div>
                     <h3>VIA BUS 55 OR 363 NORTH</h3>
                     <ol class="transit-steps">
