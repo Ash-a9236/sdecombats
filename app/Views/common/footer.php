@@ -28,7 +28,7 @@
             </ul>
         </div>
 
-        <img src="./assets/images/website-images/tripdvisor-2025-640w-400x400.webp" alt="tripadvisor award 2025"
+        <img src="/assets/images/website-images/tripdvisor-2025-640w-400x400.webp" alt="tripadvisor award 2025"
              width="400" height="400">
     </div>
     <div class="footer-section footer-section-copyright">
@@ -37,24 +37,24 @@
         <div class="footer-section footer-section-social">
             <div class="footer-social">
                 <a href="#" class="footer-social-icon" aria-label="X (Twitter)">
-                    <img src="./././assets/images/placeholders/icon_placeholder.png" alt="X">
+                    <img src="/assets/images/placeholders/icon_placeholder.png" alt="X">
                 </a>
                 <a href="#" class="footer-social-icon" aria-label="YouTube">
-                    <img src="./././assets/images/placeholders/icon_placeholder.png" alt="YouTube">
+                    <img src="/assets/images/placeholders/icon_placeholder.png" alt="YouTube">
                 </a>
                 <a href="#" class="footer-social-icon" aria-label="Facebook">
-                    <img src="./././assets/images/placeholders/icon_placeholder.png" alt="Facebook">
+                    <img src="/assets/images/placeholders/icon_placeholder.png" alt="Facebook">
                 </a>
                 <a href="#" class="footer-social-icon" aria-label="Instagram">
-                    <img src="./././assets/images/placeholders/icon_placeholder.png" alt="Instagram">
+                    <img src="/assets/images/placeholders/icon_placeholder.png" alt="Instagram">
                 </a>
             </div>
         </div>
     </div>
 </footer>
 
-<script src="/sdecombats/assets/js/nav.js"></script>
-<script src="/sdecombats/assets/js/activity-popup.js"></script>
-<script src="/sdecombats/assets/js/gift-cards.js"></script>
+<script src="/assets/js/nav.js"></script>
+<script src="/assets/js/activity-popup.js"></script>
+<script src="/assets/js/gift-cards.js"></script>
 
 </html>

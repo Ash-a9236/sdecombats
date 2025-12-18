@@ -9,6 +9,8 @@ declare(strict_types=1);
 use App\Controllers\PagesController;
 use App\Controllers\BlogController;
 use App\Controllers\AdminController;
+use App\Controllers\EmployeeController;
+use App\Controllers\ManagerController;
 use App\Controllers\UserController;
 use App\Middleware\AuthMiddleware;
 use Psr\Http\Message\ResponseInterface as Response;

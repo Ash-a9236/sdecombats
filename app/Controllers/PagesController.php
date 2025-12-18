@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -14,157 +14,176 @@ use DI\Container;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-class PagesController extends BaseController {
-    public function __construct (Container $container, private PagesM $pagesM, private UserM $userM, private StaffM $staffM, private InstagramService $instagram_service) {
-        parent ::__construct($container);
+class PagesController extends BaseController
+{
+    public function __construct(Container $container, private PagesM $pagesM, private UserM $userM, private StaffM $staffM, private InstagramService $instagram_service)
+    {
+        parent::__construct($container);
     }
 
-    public function index (Request $request, Response $response, array $args): Response {
-        $images = $this -> pagesM -> getHomeData();
+    public function index(Request $request, Response $response, array $args): Response
+    {
+        $images = $this->pagesM->getHomeData();
         $data['data'] = [
             'title' => 'Home',
             'message' => 'Welcome to the home page',
             'carousel-images' => $images,
         ];
-        return $this -> render($response, 'pages/home.php', $data);
+        return $this->render($response, 'pages/home.php', $data);
     }
 
-    public function menu (Request $request, Response $response, array $args): Response {
+    public function menu(Request $request, Response $response, array $args): Response
+    {
         $data['data'] = [
             'title' => 'Navigation',
         ];
-        return $this -> render($response, 'pages/menu.php', $data);
+        return $this->render($response, 'pages/menu.php', $data);
     }
 
-    public function giftCards (Request $request, Response $response, array $args): Response {
-        $images = $this -> pagesM -> getGiftCartData();
+    public function giftCards(Request $request, Response $response, array $args): Response
+    {
+        $images = $this->pagesM->getGiftCartData();
         $data['data'] = [
             'title' => 'Gift Card',
             'images' => $images,
         ];
 
-        return $this -> render($response, 'pages/gift-cards.php', $data);
+        return $this->render($response, 'pages/gift-cards.php', $data);
     }
 
-    public function contact (Request $request, Response $response, array $args): Response {
+    public function contact(Request $request, Response $response, array $args): Response
+    {
         $data['data'] = [
             'title' => 'Contact Us',
         ];
-        return $this -> render($response, 'pages/contact.php', $data);
+        return $this->render($response, 'pages/contact.php', $data);
     }
 
-    public function competition (Request $request, Response $response): Response {
-        $page_data = $this -> pagesM -> getSpecificActivitiesData('COMP');
+    public function competition(Request $request, Response $response): Response
+    {
+        $page_data = $this->pagesM->getSpecificActivitiesData('COMP');
         $data['data'] = [
             'title' => 'Competitions',
             'page_data' => $page_data,
         ];
-        return $this -> render($response, 'pages/competitions.php', $data);
+        return $this->render($response, 'pages/competitions.php', $data);
     }
 
-    public function error (Request $request, Response $response, array $args): Response {
-        return $this -> render($response, 'errorView.php');
+    public function error(Request $request, Response $response, array $args): Response
+    {
+        return $this->render($response, 'errorView.php');
     }
 
-    public function displayActivities (Request $request, Response $response): Response {
-        $images = $this -> pagesM -> getAllActivitiesData();
+    public function displayActivities(Request $request, Response $response): Response
+    {
+        $images = $this->pagesM->getAllActivitiesData();
         $data['data'] = [
             'title' => 'Activities',
             'activities_logo' => $images,
         ];
-        return $this -> render($response, 'pages/activities.php', $data);
+        return $this->render($response, 'pages/activities.php', $data);
     }
 
-    public function archery (Request $request, Response $response): Response {
-        $page_data = $this -> pagesM -> getSpecificActivitiesData('AR');
+    public function archery(Request $request, Response $response): Response
+    {
+        $page_data = $this->pagesM->getSpecificActivitiesData('AR');
         $data['data'] = [
             'title' => 'Archery',
             'page_data' => $page_data,
         ];
-        return $this -> render($response, 'pages/archery.php', $data);
+        return $this->render($response, 'pages/archery.php', $data);
     }
 
 
-    public function dateNight (Request $request, Response $response): Response {
-        $page_data = $this -> pagesM -> getDateNightData();
+    public function dateNight(Request $request, Response $response): Response
+    {
+        $page_data = $this->pagesM->getDateNightData();
         $data['data'] = [
             'title' => 'Activities',
             'page_data' => $page_data,
         ];
-        return $this -> render($response, 'pages/date-night.php', $data);
+        return $this->render($response, 'pages/date-night.php', $data);
     }
 
-    public function bigGroups (Request $request, Response $response): Response {
-        $page_data = $this -> pagesM -> getBigGroupData();
+    public function bigGroups(Request $request, Response $response): Response
+    {
+        $page_data = $this->pagesM->getBigGroupData();
         $data['data'] = [
             'title' => 'Big Groups',
             'page_data' => $page_data,
         ];
-        return $this -> render($response, 'pages/big-groups.php', $data);
+        return $this->render($response, 'pages/big-groups.php', $data);
     }
 
-    public function birthdays (Request $request, Response $response): Response {
-        $page_data = $this -> pagesM -> getAllBirthdaysData();
+    public function birthdays(Request $request, Response $response): Response
+    {
+        $page_data = $this->pagesM->getAllBirthdaysData();
         $data['data'] = [
             'title' => 'Birthdays',
             'page_data' => $page_data,
         ];
-        return $this -> render($response, 'pages/birthdays.php', $data);
+        return $this->render($response, 'pages/birthdays.php', $data);
     }
 
-    public function blog (Request $request, Response $response): Response {
+    public function blog(Request $request, Response $response): Response
+    {
         try {
-            $posts = $this -> instagram_service -> getPosts('sportsdecombats', 40);
+            $posts = $this->instagram_service->getPosts('sportsdecombats', 40);
 
-            return $this -> render($response, 'pages/blog.php', [
+            return $this->render($response, 'pages/blog.php', [
                 'posts' => $posts,
                 'title' => 'Instagram Blog'
             ]);
         } catch (\Exception $e) {
-            error_log($e -> getMessage());
-            return $this -> render($response, 'pages/blog.php', [
+            error_log($e->getMessage());
+            return $this->render($response, 'pages/blog.php', [
                 'posts' => $posts,
                 'title' => 'Instagram Blog'
             ]);
         }
     }
 
-    public function outsideEvents (Request $request, Response $response): Response {
-        $page_data = $this -> pagesM -> getOutsideEventsData();
+    public function outsideEvents(Request $request, Response $response): Response
+    {
+        $page_data = $this->pagesM->getOutsideEventsData();
         $data['data'] = [
             'title' => 'Outside Events',
             'page_data' => $page_data,
         ];
-        return $this -> render($response, 'pages/outside-events.php', $data);
+        return $this->render($response, 'pages/outside-events.php', $data);
     }
 
-    public function corporate (Request $request, Response $response): Response {
-        $page_data = $this -> pagesM -> getCorporateEventsData();
+    public function corporate(Request $request, Response $response): Response
+    {
+        $page_data = $this->pagesM->getCorporateEventsData();
         $data['data'] = [
             'title' => 'Outside Events',
             'page_data' => $page_data,
         ];
-        return $this -> render($response, 'pages/outside-events.php', $data);
+        return $this->render($response, 'pages/outside-events.php', $data);
     }
 
-    public function smallGroups (Request $request, Response $response): Response {
-        $page_data = $this -> pagesM -> getSmallGroupData();
+    public function smallGroups(Request $request, Response $response): Response
+    {
+        $page_data = $this->pagesM->getSmallGroupData();
         $data['data'] = [
             'title' => 'Small Groups',
             'page_data' => $page_data,
         ];
-        return $this -> render($response, 'pages/small-groups.php', $data);
+        return $this->render($response, 'pages/small-groups.php', $data);
     }
 
-    public function showLoginForm (Request $request, Response $response): Response {
+    public function showLoginForm(Request $request, Response $response): Response
+    {
         $data['data'] = [
             'title' => 'Sign Up',
         ];
-        return $this -> render($response, 'pages/signup.php', $data);
+        return $this->render($response, 'pages/signup.php', $data);
     }
 
-    public function processSignup (Request $request, Response $response): Response {
-        $userRegistrationInfo = $request -> getParsedBody();
+    public function processSignup(Request $request, Response $response): Response
+    {
+        $userRegistrationInfo = $request->getParsedBody();
         $language_id = $userRegistrationInfo['language_id'] ?? 'ENGLISH';
         $fname = trim($userRegistrationInfo['first_name'] ?? '');
         $lname = trim($userRegistrationInfo['last_name'] ?? '');
@@ -186,7 +205,7 @@ class PagesController extends BaseController {
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "Please input a valid email example@gmail.com";
-        } else if ($this -> userM -> emailExists($email)) {
+        } else if ($this->userM->emailExists($email)) {
             $errors[] = "Email already assigned to a registered user";
         }
 
@@ -208,9 +227,9 @@ class PagesController extends BaseController {
 
         if (!empty($errors)) {
             foreach ($errors as $key => $error) {
-                FlashMessage ::error($error);
+                FlashMessage::error($error);
             }
-            return $this -> showLoginForm($request, $response);
+            return $this->showLoginForm($request, $response);
         }
 
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
@@ -222,29 +241,31 @@ class PagesController extends BaseController {
             'phone' => $phone,
             'password' => $hashedPassword
         ];
-        $modelResponse = $this -> userM -> createUser($userData);
+        $modelResponse = $this->userM->createUser($userData);
 
         if ($modelResponse == 201) {
-            FlashMessage ::success('Registration successful. Please log in.');
-            return $response -> withHeader('Location', './login') -> withStatus(302);
+            FlashMessage::success('Registration successful. Please log in.');
+            return $response->withHeader('Location', './login')->withStatus(302);
         } elseif ($modelResponse == 500) {
-            FlashMessage ::error("Registration Failed. Please try again.");
-            return $this -> redirect($request, $response, '/register');
+            FlashMessage::error("Registration Failed. Please try again.");
+            return $this->redirect($request, $response, '/register');
         } else {
-            FlashMessage ::error("Try to login. If it doesn't work, try registration again.");
-            return $this -> redirect($request, $response, "/register");
+            FlashMessage::error("Try to login. If it doesn't work, try registration again.");
+            return $this->redirect($request, $response, "/register");
         }
     }
 
-    public function showSigninForm (Request $request, Response $response): Response {
+    public function showSigninForm(Request $request, Response $response): Response
+    {
         $data['data'] = [
             'title' => 'Login',
         ];
-        return $this -> render($response, 'pages/login.php', $data);
+        return $this->render($response, 'pages/login.php', $data);
     }
 
-    public function processSignin (Request $request, Response $response): Response {
-        $inputData = $request -> getParsedBody();
+    public function processSignin(Request $request, Response $response): Response
+    {
+        $inputData = $request->getParsedBody();
 
         $email = $inputData['email'] ?? '';
         $password = $inputData['Password'] ?? '';
@@ -258,58 +279,57 @@ class PagesController extends BaseController {
 
         if (!empty($errors)) {
             foreach ($errors as $key => $error) {
-                FlashMessage ::error($error);
+                FlashMessage::error($error);
             }
-            return $this -> redirect($request, $response, 'pages.signin.form');
+            return $this->redirect($request, $response, 'pages.signin.form');
         }
 
         $email = trim($email ?? '');
         if (is_numeric($email)) {
-            $user = $this -> staffM -> verifyCredentials($email, $password);
+            $user = $this->staffM->verifyCredentials($email, $password);
 
             if ($user != 500) {
-                SessionManager ::set('user_id', $user['user_id']);
-                SessionManager ::set('name', $user['name']);
-                SessionManager ::set('level', $user['level']);
-                SessionManager ::set('is_authenticated', true);
+                SessionManager::set('user_id', $user['user_id']);
+                SessionManager::set('name', $user['name']);
+                SessionManager::set('level', $user['level']);
+                SessionManager::set('is_authenticated', true);
 
-                FlashMessage ::success("Welcome back, {$user['name']}!");
+                FlashMessage::success("Welcome back, {$user['name']}!");
 
                 $id = (int)$email;
-                $dashboard = $this -> getDashboardById($id);
+                $dashboard = $this->getDashboardById($id);
 
-                return $this -> render($response, "login-protected/{$dashboard}", $user);
+                return $this->render($response, "login-protected/{$dashboard}", $user);
             } else {
-                FlashMessage ::error("User not found or password does not match, please try again");
-                return $this -> redirect($request, $response, 'pages.signin.form');
+                FlashMessage::error("User not found or password does not match, please try again");
+                return $this->redirect($request, $response, 'pages.signin.form');
             }
-
         } else if (str_contains($email, '@') && !is_numeric($email)) {
-            $user = $this -> userM -> verifyCredentials($email, $password);
+            $user = $this->userM->verifyCredentials($email, $password);
             if ($user != 500) {
-                SessionManager ::set('language_id', $user['language_id']);
-                SessionManager ::set('user_id', $user['user_id']);
-                SessionManager ::set('fname', $user['fname']);
-                SessionManager ::set('lname', $user['lname']);
-                SessionManager ::set('email', $user['email']);
-                SessionManager ::set('phone', $user['phone']);
-                SessionManager ::set('membership_id', $user['membership_id']);
-                SessionManager ::set('is_authenticated', true);
+                SessionManager::set('language_id', $user['language_id']);
+                SessionManager::set('user_id', $user['user_id']);
+                SessionManager::set('fname', $user['fname']);
+                SessionManager::set('lname', $user['lname']);
+                SessionManager::set('email', $user['email']);
+                SessionManager::set('phone', $user['phone']);
+                SessionManager::set('membership_id', $user['membership_id']);
+                SessionManager::set('is_authenticated', true);
 
-                FlashMessage ::success("Welcome back, {$user['fname']} {$user['lname']}!");
-                return $response -> withHeader('Location', './dashboard/user') -> withStatus(302);
+                FlashMessage::success("Welcome back, {$user['fname']} {$user['lname']}!");
+                return $response->withHeader('Location', './dashboard/user')->withStatus(302);
             } else {
-                FlashMessage ::error("User not found or password does not match, please try again");
-                return $this -> redirect($request, $response, 'pages.signin.form');
+                FlashMessage::error("User not found or password does not match, please try again");
+                return $this->redirect($request, $response, 'pages.signin.form');
             }
-
         } else {
-            FlashMessage ::error("Invalid email or id");
-            return $this -> redirect($request, $response, 'pages.signin.form');
+            FlashMessage::error("Invalid email or id");
+            return $this->redirect($request, $response, 'pages.signin.form');
         }
     }
 
-    public function getDashboardById (int $id): string {
+    public function getDashboardById(int $id): string
+    {
         if ($id <= 1999) {
             return 'employee-dashboard';
         } elseif ($id >= 2000 && $id <= 2999) {
@@ -321,10 +341,11 @@ class PagesController extends BaseController {
         }
     }
 
-    public function logout (Request $request, Response $response): Response {
-        SessionManager ::destroy();
-        SessionManager ::start();
-        FlashMessage ::success("You have been successfully logged out");
-        return $response -> withHeader('Location', './') -> withStatus(302);
+    public function logout(Request $request, Response $response): Response
+    {
+        SessionManager::destroy();
+        SessionManager::start();
+        FlashMessage::success("You have been successfully logged out");
+        return $response->withHeader('Location', './')->withStatus(302);
     }
 }

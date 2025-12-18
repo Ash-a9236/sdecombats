@@ -52,7 +52,7 @@ $user = UserContext::getCurrentUser();
             <!-- Activity Card 1 - Weapon Throwing -->
             <article class="activity-card" data-category="throwing">
                 <div class="activity-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Weapon Throwing">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Weapon Throwing">
                 </div>
                 <div class="activity-content">
                     <h3 class="activity-title">WEAPON THROWING</h3>
@@ -60,11 +60,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="activity-details">
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/user.svg" alt="Participants">
+                            <img src="/assets/icons/white/user.svg" alt="Participants">
                             <span>1-20 people</span>
                         </div>
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>60-90 min</span>
                         </div>
                     </div>
@@ -82,7 +82,7 @@ $user = UserContext::getCurrentUser();
             <!-- Activity Card 2 - ArcheryTime -->
             <article class="activity-card" data-category="archery">
                 <div class="activity-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="ArcheryTime">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="ArcheryTime">
                 </div>
                 <div class="activity-content">
                     <h3 class="activity-title">ARCHERYTIME</h3>
@@ -90,11 +90,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="activity-details">
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/user.svg" alt="Participants">
+                            <img src="/assets/icons/white/user.svg" alt="Participants">
                             <span>1-12 people</span>
                         </div>
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>45-60 min</span>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ $user = UserContext::getCurrentUser();
             <!-- Activity Card 3 - Rage Cage -->
             <article class="activity-card" data-category="rage">
                 <div class="activity-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Rage Cage">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Rage Cage">
                 </div>
                 <div class="activity-content">
                     <h3 class="activity-title">RAGE CAGE</h3>
@@ -120,11 +120,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="activity-details">
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/user.svg" alt="Participants">
+                            <img src="/assets/icons/white/user.svg" alt="Participants">
                             <span>1-6 people</span>
                         </div>
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>30-45 min</span>
                         </div>
                     </div>
@@ -142,7 +142,7 @@ $user = UserContext::getCurrentUser();
             <!-- Activity Card 4 - Combat Archery -->
             <article class="activity-card" data-category="archery combat">
                 <div class="activity-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Combat Archery">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Combat Archery">
                 </div>
                 <div class="activity-content">
                     <h3 class="activity-title">COMBAT ARCHERY</h3>
@@ -150,11 +150,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="activity-details">
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/big-group.svg" alt="Participants">
+                            <img src="/assets/icons/white/big-group.svg" alt="Participants">
                             <span>8-20 people</span>
                         </div>
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>90 min</span>
                         </div>
                     </div>
@@ -172,7 +172,7 @@ $user = UserContext::getCurrentUser();
             <!-- Activity Card 5 - Nerf Battle -->
             <article class="activity-card" data-category="combat">
                 <div class="activity-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Nerf Battle">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Nerf Battle">
                 </div>
                 <div class="activity-content">
                     <h3 class="activity-title">NERF BATTLE</h3>
@@ -180,11 +180,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="activity-details">
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/big-group.svg" alt="Participants">
+                            <img src="/assets/icons/white/big-group.svg" alt="Participants">
                             <span>8-30 people</span>
                         </div>
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>60-120 min</span>
                         </div>
                     </div>
@@ -202,7 +202,7 @@ $user = UserContext::getCurrentUser();
             <!-- Activity Card 6 - Archery Classes -->
             <article class="activity-card" data-category="archery">
                 <div class="activity-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Archery Classes">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Archery Classes">
                 </div>
                 <div class="activity-content">
                     <h3 class="activity-title">ARCHERY CLASSES</h3>
@@ -210,11 +210,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="activity-details">
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/user.svg" alt="Participants">
+                            <img src="/assets/icons/white/user.svg" alt="Participants">
                             <span>1-8 people</span>
                         </div>
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>60 min</span>
                         </div>
                     </div>
@@ -232,7 +232,7 @@ $user = UserContext::getCurrentUser();
             <!-- Activity Card 7 - Archery Practice -->
             <article class="activity-card" data-category="archery">
                 <div class="activity-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Archery Practice">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Archery Practice">
                 </div>
                 <div class="activity-content">
                     <h3 class="activity-title">ARCHERY PRACTICE</h3>
@@ -240,11 +240,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="activity-details">
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/user.svg" alt="Participants">
+                            <img src="/assets/icons/white/user.svg" alt="Participants">
                             <span>1-4 people</span>
                         </div>
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>Flexible</span>
                         </div>
                     </div>
@@ -262,7 +262,7 @@ $user = UserContext::getCurrentUser();
             <!-- Activity Card 8 - Archery Pursuit -->
             <article class="activity-card" data-category="archery">
                 <div class="activity-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Archery Pursuit">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Archery Pursuit">
                 </div>
                 <div class="activity-content">
                     <h3 class="activity-title">ARCHERY PURSUIT</h3>
@@ -270,11 +270,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="activity-details">
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/trophy.svg" alt="Level">
+                            <img src="/assets/icons/white/trophy.svg" alt="Level">
                             <span>Advanced</span>
                         </div>
                         <div class="detail-item">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>Custom</span>
                         </div>
                     </div>
@@ -293,7 +293,7 @@ $user = UserContext::getCurrentUser();
 
         <!-- No Results Message -->
         <div class="no-results" id="noResults" style="display: none;">
-            <img src="/sdecombats/public/assets/icons/white/question.svg" alt="No results" style="width: 4rem; height: 4rem; margin-bottom: 1rem; opacity: 0.5;">
+            <img src="/assets/icons/white/question.svg" alt="No results" style="width: 4rem; height: 4rem; margin-bottom: 1rem; opacity: 0.5;">
             <p class="no-results-text">No activities found matching your search.</p>
             <button class="clear-search-btn" id="clearSearch">Clear Search</button>
         </div>

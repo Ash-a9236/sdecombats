@@ -36,7 +36,7 @@ $user = UserContext::getCurrentUser();
             <!-- Package 1 - Axe-Citing Arrow Time -->
             <article class="package-card" data-package="axe-citing-arrow">
                 <div class="package-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Axe-Citing Arrow Time">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Axe-Citing Arrow Time">
                 </div>
                 <div class="package-content">
                     <h3 class="package-title">AXE-CITING ARROW TIME</h3>
@@ -44,11 +44,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="package-details">
                         <div class="detail-item-sg">
-                            <img src="/sdecombats/public/assets/icons/white/user.svg" alt="Group Size">
+                            <img src="/assets/icons/white/user.svg" alt="Group Size">
                             <span>1-8 people</span>
                         </div>
                         <div class="detail-item-sg">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>120 min</span>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ $user = UserContext::getCurrentUser();
             <!-- Package 2 - Hit & Throw Hilarity -->
             <article class="package-card" data-package="hit-throw-hilarity">
                 <div class="package-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Hit & Throw Hilarity">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Hit & Throw Hilarity">
                 </div>
                 <div class="package-content">
                     <h3 class="package-title">HIT & THROW HILARITY</h3>
@@ -85,11 +85,11 @@ $user = UserContext::getCurrentUser();
 
                     <div class="package-details">
                         <div class="detail-item-sg">
-                            <img src="/sdecombats/public/assets/icons/white/user.svg" alt="Group Size">
+                            <img src="/assets/icons/white/user.svg" alt="Group Size">
                             <span>1-8 people</span>
                         </div>
                         <div class="detail-item-sg">
-                            <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Duration">
+                            <img src="/assets/icons/white/calendar.svg" alt="Duration">
                             <span>120 min</span>
                         </div>
                     </div>
@@ -128,7 +128,7 @@ $user = UserContext::getCurrentUser();
             <!-- Date Package 1 - Bulls-eye Bonanza -->
             <article class="date-card" data-date="bullseye-bonanza">
                 <div class="date-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Bulls-eye Bonanza">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Bulls-eye Bonanza">
                     <div class="date-overlay">
                         <button class="learn-more-btn">LEARN MORE</button>
                     </div>
@@ -146,7 +146,7 @@ $user = UserContext::getCurrentUser();
             <!-- Date Package 2 - Axe Out & Break Out -->
             <article class="date-card" data-date="axe-break-out">
                 <div class="date-image">
-                    <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Axe Out & Break Out">
+                    <img src="/assets/images/placeholders/image_placeholder01.png" alt="Axe Out & Break Out">
                     <div class="date-overlay">
                         <button class="learn-more-btn">LEARN MORE</button>
                     </div>
