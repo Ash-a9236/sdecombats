@@ -53,12 +53,21 @@ class PagesController extends BaseController {
         return $this -> render($response, 'pages/contact.php', $data);
     }
 
+    public function competition (Request $request, Response $response): Response {
+        $page_data = $this -> pagesM -> getSpecificActivitiesData('COMP');
+        $data['data'] = [
+            'title' => 'Competitions',
+            'page_data' => $page_data,
+        ];
+        return $this -> render($response, 'pages/competitions.php', $data);
+    }
+
     public function error (Request $request, Response $response, array $args): Response {
         return $this -> render($response, 'errorView.php');
     }
 
     public function displayActivities (Request $request, Response $response): Response {
-        $images = $this -> $pagesM -> getAllActivitiesData();
+        $images = $this -> pagesM -> getAllActivitiesData();
         $data['data'] = [
             'title' => 'Activities',
             'activities_logo' => $images,
@@ -67,7 +76,7 @@ class PagesController extends BaseController {
     }
 
     public function archery (Request $request, Response $response): Response {
-        $page_data = $this -> $pagesM -> getSpecificActivitiesData('AR');
+        $page_data = $this -> pagesM -> getSpecificActivitiesData('AR');
         $data['data'] = [
             'title' => 'Archery',
             'page_data' => $page_data,
@@ -75,8 +84,18 @@ class PagesController extends BaseController {
         return $this -> render($response, 'pages/archery.php', $data);
     }
 
+
+    public function dateNight (Request $request, Response $response): Response {
+        $page_data = $this -> pagesM -> getDateNightData();
+        $data['data'] = [
+            'title' => 'Activities',
+            'page_data' => $page_data,
+        ];
+        return $this -> render($response, 'pages/date-night.php', $data);
+    }
+
     public function bigGroups (Request $request, Response $response): Response {
-        $page_data = $this -> $pagesM -> getBigGroupData();
+        $page_data = $this -> pagesM -> getBigGroupData();
         $data['data'] = [
             'title' => 'Big Groups',
             'page_data' => $page_data,
@@ -85,7 +104,7 @@ class PagesController extends BaseController {
     }
 
     public function birthdays (Request $request, Response $response): Response {
-        $page_data = $this -> $pagesM -> getAllBirthdaysData();
+        $page_data = $this -> pagesM -> getAllBirthdaysData();
         $data['data'] = [
             'title' => 'Birthdays',
             'page_data' => $page_data,
@@ -102,7 +121,6 @@ class PagesController extends BaseController {
                 'title' => 'Instagram Blog'
             ]);
         } catch (\Exception $e) {
-            // Log error and show friendly message
             error_log($e -> getMessage());
             return $this -> render($response, 'pages/blog.php', [
                 'posts' => $posts,
@@ -112,7 +130,7 @@ class PagesController extends BaseController {
     }
 
     public function outsideEvents (Request $request, Response $response): Response {
-        $page_data = $this -> $pagesM -> getOusideEventsData();
+        $page_data = $this -> pagesM -> getOutsideEventsData();
         $data['data'] = [
             'title' => 'Outside Events',
             'page_data' => $page_data,
@@ -121,7 +139,7 @@ class PagesController extends BaseController {
     }
 
     public function corporate (Request $request, Response $response): Response {
-        $page_data = $this -> $pagesM -> getCorporateEventsData();
+        $page_data = $this -> pagesM -> getCorporateEventsData();
         $data['data'] = [
             'title' => 'Outside Events',
             'page_data' => $page_data,
@@ -130,7 +148,7 @@ class PagesController extends BaseController {
     }
 
     public function smallGroups (Request $request, Response $response): Response {
-        $page_data = $this -> $pagesM -> getSmallGroupData();
+        $page_data = $this -> pagesM -> getSmallGroupData();
         $data['data'] = [
             'title' => 'Small Groups',
             'page_data' => $page_data,

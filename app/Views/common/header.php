@@ -73,7 +73,7 @@
             </a>
             <ul>
                 <li>
-                    <a class="nav-bar-link" href="/activities">
+                    <a class="nav-bar-link" href="/archery">
                         <img class="nav-bar-link-icon" src="./assets/icons/white/archery.svg">
                         <span class="nav-text">ARCHERY</span>
                     </a>
@@ -120,7 +120,7 @@
                 </li>
 
                 <li>
-                    <a class="nav-bar-link" href="">
+                    <a class="nav-bar-link" href="/date-night">
                         <img class="nav-bar-link-icon" src="./assets/icons/white/bow-heart.svg">
                         <span class="nav-text">DATE NIGHT</span>
                     </a>

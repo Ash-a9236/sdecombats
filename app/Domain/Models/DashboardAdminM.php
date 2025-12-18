@@ -9,8 +9,8 @@ class DashboardM extends BaseModel {
         parent::__construct($pdo_service);
     }
 
-//    public function getMonthReservations () : mixed {
-//        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE 'PKGTB%'";
+//    public function updateHomeImages () : mixed {
+//        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE 'HOMEP_CRSL_%'";
 //        $page_data = $this -> selectAll($sql);
 //        return $page_data;
 //    }

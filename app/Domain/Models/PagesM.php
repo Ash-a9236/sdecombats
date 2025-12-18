@@ -17,7 +17,7 @@ class PagesM extends BaseModel {
     }
 
     public function getAllActivitiesData () : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images ORDER BY img_id";
+        $sql = "SELECT DISTINCT image_id, image_data FROM image ORDER BY image_id";
         $page_data = $this -> selectAll($sql);
 
 //        $sql2 = "
@@ -50,67 +50,68 @@ class PagesM extends BaseModel {
     }
 
     public function getAllActivitiesLogos () : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE '%_LOGO_%'";
+        $sql = "SELECT DISTINCT image_id, image_data FROM image WHERE image_id LIKE '%_LOGO_%'";
         $page_data = $this -> selectAll($sql);
         return $page_data;
     }
 
-    public function getSpecificActivitiesData (int $activity_id) : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE '?%'";
-        $page_data = $this -> selectAll($sql, [$activity_id]);
+    public function getSpecificActivitiesData (String $activity_id) : mixed {
+        $sql = "SELECT DISTINCT image_id, image_data FROM image WHERE image_id LIKE ?";
+        $search_param = $activity_id . '%'; //if not gives error with number of parameters
+        $page_data = $this->selectAll($sql, [$search_param]);
         return $page_data;
     }
 
     public function getSmallGroupData () : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE 'PKGSG%'";
+        $sql = "SELECT DISTINCT image_id, image_data FROM image WHERE image_id LIKE 'PKGSG%'";
         $page_data = $this -> selectAll($sql);
         return $page_data;
     }
 
     public function getDateNightData () : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE 'PKGSG%'";
+        $sql = "SELECT DISTINCT image_id, image_data FROM image WHERE image_id LIKE 'PKGSG%'";
         $page_data = $this -> selectAll($sql);
         return $page_data;
     }
 
     public function getAllBirthdaysData () : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE '%TB%'";
+        $sql = "SELECT DISTINCT image_id, image_data FROM image WHERE image_id LIKE '%TB%'";
         $page_data = $this -> selectAll($sql);
         return $page_data;
     }
 
     public function getTeenBirthdayData () : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE 'PKGTB%'";
+        $sql = "SELECT DISTINCT image_id, image_data FROM image WHERE image_id LIKE 'PKGTB%'";
         $page_data = $this -> selectAll($sql);
         return $page_data;
     }
 
     public function getKidsBirthdayData () : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE 'PKGKB%'";
+        $sql = "SELECT DISTINCT image_id, image_data FROM image WHERE image_id LIKE 'PKGKB%'";
         $page_data = $this -> selectAll($sql);
         return $page_data;
     }
 
     public function getCorporateEventsData () : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE 'PKGCE%'";
+        $sql = "SELECT DISTINCT image_id, image_data FROM image WHERE image_id LIKE 'PKGCE%'";
         $page_data = $this -> selectAll($sql);
         return $page_data;
     }
 
     public function getOutsideEventsData () : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE 'PKGOE%'";
+        $sql = "SELECT DISTINCT image_id, image_data FROM image WHERE image_id LIKE 'PKGOE%'";
         $page_data = $this -> selectAll($sql);
         return $page_data;
     }
 
     public function getBigGroupData () : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE 'PKGBG%'";
+        $sql = "SELECT DISTINCT image_id, image_data FROM image WHERE image_id LIKE 'PKGBG%'";
         $page_data = $this -> selectAll($sql);
         return $page_data;
     }
 
     public function getGiftCartData () : mixed {
-        $sql = "SELECT DISTINCT img_id, img, FROM images WHERE img_id LIKE 'GIFTCD%'";
+        $sql = "SELECT DISTINCT image_id, image_data FROM image WHERE image_id LIKE 'GIFTCD%'";
         $page_data = $this -> selectAll($sql);
         return $page_data;
     }
