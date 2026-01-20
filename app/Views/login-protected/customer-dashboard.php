@@ -9,9 +9,10 @@ $title = $data['title'] ?? 'Dashboard';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?> - Sports de Combats</title>
-    <link rel="stylesheet" href="/sdecombats/public/assets/css/00-root.css">
-    <link rel="stylesheet" href="/sdecombats/public/assets/css/10-components.css">
-    <link rel="stylesheet" href="/sdecombats/public/assets/css/09-dashboard.css">
+    <link rel="stylesheet" href="/assets/css/00-root.css">
+    <link rel="stylesheet" href="/assets/css/01-auth.css">
+    <link rel="stylesheet" href="/assets/css/10-components.css">
+    <link rel="stylesheet" href="/assets/css/09-dashboard.css">
 </head>
 
 <body>
@@ -21,25 +22,43 @@ $title = $data['title'] ?? 'Dashboard';
                 <p>Customer Panel</p>
             </div>
             <nav class="sidebar-nav">
-                <a href="/sdecombats/dashboard/user/make-reservation">
+                <a href="/dashboard/user/make-reservation">
                     <button class="nav-btn <?php echo $section === 'make-reservation' ? 'active' : ''; ?>">
                         <span class="nav-icon">+</span>
                         <span class="nav-text">Make Reservation</span>
                     </button>
                 </a>
-                <a href="/sdecombats/dashboard/user/reservations">
+                <a href="/dashboard/user/reservations">
                     <button class="nav-btn <?php echo $section === 'reservations' ? 'active' : ''; ?>">
                         <span class="nav-icon">👁</span>
                         <span class="nav-text">My Reservations</span>
                     </button>
                 </a>
-                <a href="/sdecombats/dashboard/user/update-info">
+                <a href="/dashboard/user/update-info">
                     <button class="nav-btn <?php echo $section === 'update-info' ? 'active' : ''; ?>">
                         <span class="nav-icon">⚙</span>
                         <span class="nav-text">Update Info</span>
                     </button>
                 </a>
-                <a href="/sdecombats/sign-out">
+                <a href="/dashboard/user/membership">
+                    <button class="nav-btn <?php echo $section === 'membership' ? 'active' : ''; ?>">
+                        <span class="nav-icon">📆</span>
+                        <span class="nav-text">Membership</span>
+                    </button>
+                </a>
+                <a href="/dashboard/user/update-user-info">
+                    <button class="nav-btn <?php echo $section === 'update-user-info' ? 'active' : ''; ?>">
+                        <span class="nav-icon">👤</span>
+                        <span class="nav-text">Update Account Info</span>
+                    </button>
+                </a>
+                <a href="/dashboard/user/update-password">
+                    <button class="nav-btn <?php echo $section === 'update-password' ? 'active' : ''; ?>">
+                        <span class="nav-icon">🔑</span>
+                        <span class="nav-text">Change Password</span>
+                    </button>
+                </a>
+                <a href="/sign-out">
                     <button class="nav-btn" style="margin-top: 2rem; border-color: #ff4444;">
                         <span class="nav-icon">🚪</span>
                         <span class="nav-text">Sign Out</span>
@@ -62,6 +81,15 @@ $title = $data['title'] ?? 'Dashboard';
                 case 'update-info':
                     include __DIR__ . '/../components/dashboard-update-info.php';
                     break;
+                case 'membership':
+                    include __DIR__ . '/../components/dashboard-membership.php';
+                    break;
+                case 'update-user-info':
+                    include __DIR__ . '/../components/dashboard-update-user-info.php';
+                    break;
+                case 'update-password':
+                    include __DIR__ . '/../components/dashboard-update-password.php';
+                    break;
                 default:
                     // Default dashboard view
             ?>
@@ -73,7 +101,7 @@ $title = $data['title'] ?? 'Dashboard';
                     <div class="dashboard-stats-compact">
                         <div class="stat-card-compact">
                             <div class="stat-icon-compact">
-                                <img src="/sdecombats/public/assets/icons/white/calendar.svg" alt="Calendar">
+                                <img src="/assets/icons/white/calendar.svg" alt="Calendar">
                             </div>
                             <div class="stat-info-compact">
                                 <p class="stat-label-compact">UPCOMING</p>
@@ -82,7 +110,7 @@ $title = $data['title'] ?? 'Dashboard';
                         </div>
                         <div class="stat-card-compact">
                             <div class="stat-icon-compact">
-                                <img src="/sdecombats/public/assets/icons/white/trophy.svg" alt="Trophy">
+                                <img src="/assets/icons/white/trophy.svg" alt="Trophy">
                             </div>
                             <div class="stat-info-compact">
                                 <p class="stat-label-compact">COMPLETED</p>
@@ -91,7 +119,7 @@ $title = $data['title'] ?? 'Dashboard';
                         </div>
                         <div class="stat-card-compact">
                             <div class="stat-icon-compact">
-                                <img src="/sdecombats/public/assets/icons/white/fire.svg" alt="Fire">
+                                <img src="/assets/icons/white/fire.svg" alt="Fire">
                             </div>
                             <div class="stat-info-compact">
                                 <p class="stat-label-compact">TOTAL HOURS</p>
@@ -104,21 +132,21 @@ $title = $data['title'] ?? 'Dashboard';
                     <div class="quick-actions-compact">
                         <p class="section-header-compact">QUICK ACTIONS</p>
                         <div class="actions-grid-compact">
-                            <a href="/sdecombats/dashboard/user/make-reservation" class="action-card-compact">
+                            <a href="/dashboard/user/make-reservation" class="action-card-compact">
                                 <div class="action-icon-compact">
-                                    <img src="/sdecombats/public/assets/icons/white/plus.svg" alt="Plus">
+                                    <img src="/assets/icons/white/plus.svg" alt="Plus">
                                 </div>
                                 <p class="action-title-compact">NEW RESERVATION</p>
                             </a>
-                            <a href="/sdecombats/dashboard/user/reservations" class="action-card-compact">
+                            <a href="/dashboard/user/reservations" class="action-card-compact">
                                 <div class="action-icon-compact">
-                                    <img src="/sdecombats/public/assets/icons/white/report.svg" alt="Report">
+                                    <img src="/assets/icons/white/report.svg" alt="Report">
                                 </div>
                                 <p class="action-title-compact">VIEW ALL</p>
                             </a>
-                            <a href="/sdecombats/dashboard/user/update-info" class="action-card-compact">
+                            <a href="/dashboard/user/update-info" class="action-card-compact">
                                 <div class="action-icon-compact">
-                                    <img src="/sdecombats/public/assets/icons/white/user.svg" alt="User">
+                                    <img src="/assets/icons/white/user.svg" alt="User">
                                 </div>
                                 <p class="action-title-compact">SETTINGS</p>
                             </a>
@@ -163,7 +191,7 @@ $title = $data['title'] ?? 'Dashboard';
                                 <div class="activity-status-compact completed">COMPLETED</div>
                             </div>
                         </div>
-                        <a href="/sdecombats/dashboard/user/reservations" class="view-all-link-compact">VIEW ALL RESERVATIONS →</a>
+                        <a href="/dashboard/user/reservations" class="view-all-link-compact">VIEW ALL RESERVATIONS →</a>
                     </div>
             <?php
                     break;
@@ -172,7 +200,7 @@ $title = $data['title'] ?? 'Dashboard';
         </main>
     </div>
 
-    <script src="/sdecombats/public/assets/js/dashboard.js"></script>
+    <script src="/assets/js/dashboard.js"></script>
 </body>
 
 </html>

@@ -117,7 +117,7 @@ nav > ul {
     background: var(--background);
     display: none;
     padding: 0.5rem 1rem;
-    box-shadow: 0 4px 20px rgba(251, 170, 86, 0.89);;
+    box-shadow: 0 4px 20px rgba(251, 170, 86, 0.89);
 }
 
 .mobile-nav {
@@ -170,6 +170,20 @@ nav > ul {
 .scrolled-desktop-nav:not(.hidden) {
     opacity: 1;
     transform: translateY(0) scaleY(1);
+}
+
+#dashboard-client-header-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#dashboard-client-header-wrapper > a {
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 /*!* Responsive Design *!*/

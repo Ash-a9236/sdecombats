@@ -113,7 +113,7 @@
                     <!-- Left Column -->
                     <div class="left-column">
                         <div class="reservation-image-placeholder">
-                            <img src="/sdecombats/public/assets/images/placeholders/image_placeholder01.png" alt="Activity">
+                            <img src="/assets/images/placeholders/image_placeholder01.png" alt="Activity">
                         </div>
 
                         <div class="activity-compact">

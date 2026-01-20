@@ -23,7 +23,7 @@ ViewHelper ::loadAuthHeader('Login');
                     <div class="form-button-section">
                         <button class="base-button" type="submit">SIGN IN</button>
                         <br> <br> <br>
-                        <a href="./register"><button class="secondary-base-button" type="button">I DON'T HAVE AN ACCOUNT !</button></a>
+                        <a href="./register"><button class="secondary-base-button" type="button"><span>I DON'T HAVE AN ACCOUNT !</span></button></a>
                         <a href="#">Forgot Password?</a>
 
                     </div>

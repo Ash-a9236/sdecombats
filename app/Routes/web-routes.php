@@ -7,7 +7,10 @@ declare(strict_types=1);
  */
 
 use App\Controllers\PagesController;
+use App\Controllers\BlogController;
 use App\Controllers\AdminController;
+use App\Controllers\EmployeeController;
+use App\Controllers\ManagerController;
 use App\Controllers\UserController;
 use App\Middleware\AuthMiddleware;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -65,7 +68,12 @@ return static function (Slim\App $app): void {
         $group->get('/make-reservation', [UserController::class, 'makeReservation'])->setName('dashboard.make-reservation');
         $group->get('/reservations', [UserController::class, 'displayReservations'])->setName('dashboard.reservations');
         $group->get('/membership', [UserController::class, 'membership'])->setName('dashboard.membership');
+        $group->post('/membership', [UserController::class, 'createMembership'])->setName('dashboard.create-membership');
         $group->get('/update-info', [UserController::class, 'updateInfo'])->setName('dashboard.update-info');
+        $group->get('/update-user-info', [UserController::class, 'updateUserInfo'])->setName('dashboard.update-user-info');
+        $group->post('/update-user-info', [UserController::class, 'submitUpdateUserInfo'])->setName('dashboard.submit-update-user-info');
+        $group->get('/update-password', [UserController::class, 'updatePassword'])->setName('dashboard.update-password');
+        $group->post('/update-password', [UserController::class, 'submitUpdatePassword'])->setName('dashboard.submit-update-password');
     })->add(AuthMiddleware::class);
 
     $app->group('/dashboard/employee', function ($group) {

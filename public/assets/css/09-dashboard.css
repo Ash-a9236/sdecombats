@@ -605,7 +605,7 @@ body {
 
 .reserve-btn,
 .save-btn,
-.base-button {
+.dashboard-base-button {
     flex: 1;
     padding: 1rem 2rem;
     background-image: linear-gradient(
@@ -626,13 +626,13 @@ body {
 
 .reserve-btn:hover,
 .save-btn:hover,
-.base-button:hover {
+.dashboard-base-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 20px rgba(251, 170, 86, 0.4);
 }
 
 .cancel-btn,
-.secondary-base-button {
+.secondary-dashboard-base-button {
     flex: 1;
     padding: 1rem 2rem;
     background-color: var(--background-accent, #424769);
@@ -646,7 +646,7 @@ body {
 }
 
 .cancel-btn:hover,
-.secondary-base-button:hover {
+.secondary-dashboard-base-button:hover {
     background-color: var(--extra-third-colour, #3f4259);
     color: var(--background, #2f2f2f);
 }
@@ -952,6 +952,13 @@ body {
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
+}
+
+.form-section-medium {
+    display: flex;
+    flex-flow: column wrap;
+    width: 40%;
+    margin-top: 3rem;
 }
 
 .section-title {
@@ -3570,6 +3577,19 @@ body {
     font-size: 0.65rem;
     cursor: pointer;
     color: #fff4e2;
+}
+
+.check-medium {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: #3f3f3fff;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #fff4e2;
+    margin-bottom: 3rem;
 }
 
 .eq-check {

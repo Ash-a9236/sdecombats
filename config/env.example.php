@@ -28,7 +28,7 @@ return function (array $settings): array {
     $settings['db']['host'] = 'localhost';
     $settings['db']['port'] = 3306;
     $settings['db']['username'] = 'root';
-    $settings['db']['database'] = 'sdecombats_db';
+    $settings['db']['database'] = 'sdc_db';
     $settings['db']['password'] = 'password';
     $settings['db']['charset'] = 'utf8mb4';
     $settings['db']['collation'] = 'utf8mb4_unicode_ci';

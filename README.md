@@ -25,6 +25,44 @@ This starter template follows best practices and adheres to industry standards:
 - PHP 8.2 or higher
 - Composer (for dependency management)
 - A web server (Apache, Nginx)
+- Docker & Docker Compose (optional, for containerized development)
+
+## Docker Setup (Recommended for Linux/Cross-Platform Development)
+
+The project includes Docker configuration for easy setup on any platform.
+
+### Quick Start
+
+1. **Build and start the containers:**
+   ```bash
+   docker-compose up -d --build
+   ```
+
+2. **Access the application:**
+   - Web: http://localhost:8082
+   - MySQL: localhost:3307 (root/rootpassword)
+
+3. **Stop the containers:**
+   ```bash
+   docker-compose down
+   ```
+
+### Docker Services
+
+| Service    | Container Name        | Port            | URL                   |
+| ---------- | --------------------- | --------------- | --------------------- |
+| Nginx      | sdecombats-nginx      | 8082            | http://localhost:8082 |
+| PHP-FPM    | sdecombats-php        | 9000 (internal) | -                     |
+| MySQL      | sdecombats-mysql      | 3307            | -                     |
+| phpMyAdmin | sdecombats-phpmyadmin | 8083            | http://localhost:8083 |
+
+### Database Configuration for Docker
+
+The `config/env.php` file is pre-configured for Docker with the database host set to `mysql` (the Docker service name).
+
+If you need to modify database credentials, edit `config/env.php`.
+
+The database is automatically initialized with SQL files from the `data/` directory.
 
 ## How Do I Use/Deploy this Template?
 

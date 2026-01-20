@@ -1,7 +1,7 @@
 .footer-container {
     display: flex;
     flex-flow: row wrap;
-    height: 50rem;
+    /*height: 50rem;*/
     width: 100%;
 }
 
@@ -84,6 +84,12 @@
     font-size: 15px;
     line-height: 1.8;
     margin: 8px 0;
+}
+
+.footer-section-copyright {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between
 }
 
 .footer-social {

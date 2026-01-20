@@ -3,14 +3,15 @@
 use App\Helpers\UserContext;
 use App\Helpers\ViewHelper;
 
-ViewHelper ::loadHeader('Home');
+ViewHelper::loadHeader('Home');
+// dd($image);
 
 $title = $title ?? 'AWESOMENESS AWAITS!';
 $image = $image ?? './././assets/images/placeholders/base_placeholder.png';
 $totalSlides = $totalSlides ?? 5;
 $activeSlide = $activeSlide ?? 0;
+$user = UserContext::getCurrentUser();
 
-$user = UserContext ::getCurrentUser();
 
 ?>
 
@@ -22,13 +23,13 @@ $user = UserContext ::getCurrentUser();
             <div class="carousel-indicators">
                 <?php for ($i = 0; $i < $totalSlides; $i++): ?>
                     <button class="carousel-indicator <?= $i === $activeSlide ? 'active' : '' ?>"
-                            data-slide="<?= $i ?>"
-                            aria-label="Slide <?= $i + 1 ?>">
+                        data-slide="<?= $i ?>"
+                        aria-label="Slide <?= $i + 1 ?>">
                     </button>
                 <?php endfor; ?>
             </div>
             <a>
-                <button type="button" class="base-button">RESERVE NOW</button>
+                <button type="button" class="base-button" id="home-carousel-button">RESERVE NOW</button>
             </a>
         </div>
     </section>
@@ -95,7 +96,7 @@ $user = UserContext ::getCurrentUser();
                 </div>
                 <img src="./assets/images/down-arrow.png" class="down-arrow" alt="down arrow">
 
-               </div>
+            </div>
         </div>
     </section>
 
@@ -103,3 +104,7 @@ $user = UserContext ::getCurrentUser();
         <button type="button" class="base-button">BOOK YOUR NEXT ADVENTURE TODAY</button>
     </a>
 </div>
+
+<?php
+
+ViewHelper::loadFooter('Home');

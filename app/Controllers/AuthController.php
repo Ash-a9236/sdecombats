@@ -151,7 +151,7 @@ class AuthController extends BaseController {
         if (is_numeric($email)) {
             $user = $this -> staffM -> verifyCredentials($email, $password);
 
-            if ($user != null) {
+            if ($user != 500) {
                 SessionManager ::set('user_id', $user['user_id']);
                 SessionManager ::set('name', $user['name']);
                 SessionManager ::set('level', $user['level']);
@@ -171,7 +171,7 @@ class AuthController extends BaseController {
 
         } else if (str_contains($email, '@') && !is_numeric($email)) {
             $user = $this -> userM -> verifyCredentials($email, $password);
-            if ($user != null) {
+            if ($user != 500) {
                 SessionManager ::set('user_id', $user['user_id']);
                 SessionManager ::set('fname', $user['fname']);
                 SessionManager ::set('lname', $user['lname']);
